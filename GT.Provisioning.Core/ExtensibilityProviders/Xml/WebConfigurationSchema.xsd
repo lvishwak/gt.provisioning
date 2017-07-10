@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="WebProviderConfiguration">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="webs" maxOccurs="1" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="web" maxOccurs="unbounded" >
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="RoleAssignments" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" minOccurs="0" name="RoleAssignment">
+                            <xsd:complexType>
+                              <xsd:attribute name="Principal" type="xsd:string" use="required" />
+                              <xsd:attribute name="RoleDefinition" type="xsd:string" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="Language" type="xsd:int" use="required" />
+                  <xsd:attribute name="Title" type="xsd:string" use="required" />
+                  <xsd:attribute name="Description" type="xsd:string" />
+                  <xsd:attribute name="Url" type="xsd:string" use="required" />
+                  <xsd:attribute name="UseSamePermissionsAsParentSite" type="xsd:boolean" use="required" />
+                  <xsd:attribute name="InheritNavigation" type="xsd:boolean" use="required" />
+                  <xsd:attribute name="BaseTemplate" type="xsd:string" use="required" />
+                  <xsd:attribute name="PnPTemplate" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://schemas.dev.office.com/PnP/207/05/ProvisioningSchema ProvisioningSchema-2016-05.xsd">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.6.1608.0, Culture=neutral, PublicKeyToken=3751622786b357c2">
+  </pnp:Preferences>
+  <pnp:Templates ID="gt-templates">
+    <pnp:ProvisioningTemplate ID="gt-clientspace-post-template"
+                              Version="1.0"
+                              DisplayName="Client Space"
+                              Description=""                              
+                              BaseSiteTemplate="STS#0">
+      <pnp:WebSettings Title="{parameter:sitetitle}"
+                       SiteLogo="{sitecollection}/SiteAssets/gt_logo.png"
+                       Description="{parameter:sitedescription}" />
+      <pnp:PropertyBagEntries>
+        <pnp:PropertyBagEntry Key="ClientNumber" Value="0179922" Overwrite="true"/>
+        <pnp:PropertyBagEntry Key="ClientName" Value="Traditional Medicinals, Inc." Overwrite="true"/>
+        <pnp:PropertyBagEntry Key="EngagementId" Value="78376" Overwrite="true"/>
+      </pnp:PropertyBagEntries>
+      <!--<pnp:Lists>
+        <pnp:ListInstance Title="Document Library"
+                          Description=""
+                          Url="DocumentLibrary"
+                          TemplateType="101"
+                          TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101"
+                          ContentTypesEnabled="false"
+                          OnQuickLaunch="false">
+          <pnp:Folders>
+            <pnp:Folder Name="1 Deliverables" />
+            <pnp:Folder Name="2 Engagement Administration" />
+            <pnp:Folder Name="3 PBC Request" />
+          </pnp:Folders>
+        </pnp:ListInstance>
+      </pnp:Lists>-->
+      <pnp:ComposedLook Name="Grant Thornton"
+                        ColorFile="{themecatalog}/15/gt.spcolor"
+                        FontFile=""
+                        BackgroundFile=""
+                        Version="1">        
+      </pnp:ComposedLook>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

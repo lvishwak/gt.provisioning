@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GT.Provisioning.Runner", "GT.Provisioning.Runner\GT.Provisioning.Runner.csproj", "{AF27BB4D-1016-4ADF-9759-2268B478B9F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{AB973840-C312-491F-9145-EC052D9DE6DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4A27A43B-1CE0-439A-9773-1D611E3910AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GT.Provisioning.Core", "GT.Provisioning.Core\GT.Provisioning.Core.csproj", "{767DBBD3-36E0-433F-B64C-F0515C9117D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{95652F71-D5CE-440C-82D9-1578609E8814}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Templates\gt-clienthub-template.xml = Solution Items\Templates\gt-clienthub-template.xml
+		Solution Items\Templates\gt-clientspace-post-template.xml = Solution Items\Templates\gt-clientspace-post-template.xml
+		Solution Items\Templates\gt-teamspace-pre-template.xml = Solution Items\Templates\gt-teamspace-pre-template.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{8CB0BCED-F703-4C6D-9409-035D55D042D0}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Templates\Images\gt_logo.png = Solution Items\Templates\Images\gt_logo.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "theme", "theme", "{B5B5A5A6-D88E-43E0-A557-F3F08DE8EF27}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Templates\theme\gt.spcolor = Solution Items\Templates\theme\gt.spcolor
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF27BB4D-1016-4ADF-9759-2268B478B9F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF27BB4D-1016-4ADF-9759-2268B478B9F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF27BB4D-1016-4ADF-9759-2268B478B9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF27BB4D-1016-4ADF-9759-2268B478B9F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{767DBBD3-36E0-433F-B64C-F0515C9117D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767DBBD3-36E0-433F-B64C-F0515C9117D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767DBBD3-36E0-433F-B64C-F0515C9117D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767DBBD3-36E0-433F-B64C-F0515C9117D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{767DBBD3-36E0-433F-B64C-F0515C9117D8} = {AB973840-C312-491F-9145-EC052D9DE6DB}
+		{95652F71-D5CE-440C-82D9-1578609E8814} = {4A27A43B-1CE0-439A-9773-1D611E3910AE}
+		{8CB0BCED-F703-4C6D-9409-035D55D042D0} = {95652F71-D5CE-440C-82D9-1578609E8814}
+		{B5B5A5A6-D88E-43E0-A557-F3F08DE8EF27} = {95652F71-D5CE-440C-82D9-1578609E8814}
+	EndGlobalSection
+EndGlobal

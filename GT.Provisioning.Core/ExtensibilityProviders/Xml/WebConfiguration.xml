@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<WebProviderConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                          xsi:noNamespaceSchemaLocation="WebConfigurationSchema.xsd">
+  <webs>
+    <web Title="Team Space"
+         Description="Team space"
+         Url="teamspace"
+         Language="1033"
+         UseSamePermissionsAsParentSite="true"
+         InheritNavigation="true"
+         BaseTemplate="STS#0"
+         PnPTemplate="gt-teamspace-pre-template.xml">
+    </web>
+    <web Title="Client Space"
+         Description="Client space"
+         Url="clientspace"
+         Language="1033"
+         UseSamePermissionsAsParentSite="true"
+         InheritNavigation="true"         
+         BaseTemplate="STS#0"
+         PnPTemplate="gt-clientspace-post-template.xml">
+    </web>
+  </webs>
+</WebProviderConfiguration>

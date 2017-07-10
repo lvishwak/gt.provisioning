@@ -1,0 +1,143 @@
+﻿<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema ProvisioningSchema-2016-05.xsd">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.6.1608.0, Culture=neutral, PublicKeyToken=3751622786b357c2"></pnp:Preferences>
+  <pnp:Templates ID="gt-templates">
+    <pnp:ProvisioningTemplate ID="gt-clienthub-template"
+                              Version="1"
+                              DisplayName="Client Hub"
+                              Description=""
+                              BaseSiteTemplate="STS#0">
+      <pnp:WebSettings Title="{parameter:sitetitle}"
+                       SiteLogo="{sitecollection}/SiteAssets/images/gt_logo.png"
+                       Description="{parameter:sitedescription}" />
+      <pnp:RegionalSettings AdjustHijriDays="0"
+                            AlternateCalendarType="None"
+                            CalendarType="Gregorian"
+                            Collation="25"
+                            FirstDayOfWeek="Monday"
+                            FirstWeekOfYear="0"
+                            LocaleId="1033"
+                            ShowWeeks="false"
+                            Time24="true"
+                            TimeZone="11"
+                            WorkDayEndHour="5:00PM"
+                            WorkDays="62"
+                            WorkDayStartHour="8:00AM" />
+      <pnp:PropertyBagEntries>
+        <pnp:PropertyBagEntry Key="ClientNumber" Value="0179922" Overwrite="true"/>
+        <pnp:PropertyBagEntry Key="ClientName" Value="Traditional Medicinals, Inc." Overwrite="true"/>
+        <pnp:PropertyBagEntry Key="EngagementId" Value="78376" Overwrite="true"/>
+      </pnp:PropertyBagEntries>
+      <pnp:Security>
+        <pnp:SiteGroups>
+          <pnp:SiteGroup Title="Level 1" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup Title="Level 4" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup Title="SharePoint Administrators" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup Title="Service Line Administrators" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup Title="SharePoint_WGCStorageSpaceAdmins" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+        </pnp:SiteGroups>
+        <pnp:Permissions>
+          <pnp:RoleAssignments>
+            <pnp:RoleAssignment Principal="Level 1" RoleDefinition="Read"/>
+            <pnp:RoleAssignment Principal="Level 4" RoleDefinition="Read"/>
+            <pnp:RoleAssignment Principal="SharePoint Administrators" RoleDefinition="Full Control"/>
+            <pnp:RoleAssignment Principal="Service Line Administrators" RoleDefinition="Contribute"/>
+            <pnp:RoleAssignment Principal="SharePoint_WGCStorageSpaceAdmins" RoleDefinition="Read"/>
+          </pnp:RoleAssignments>
+        </pnp:Permissions>
+      </pnp:Security>
+      <pnp:Lists>
+        <pnp:ListInstance Title="Document Library"
+                          Description=""
+                          Url="Lists/DocumentLibrary"
+                          TemplateType="101"
+                          ContentTypesEnabled="false"
+                          OnQuickLaunch="false">
+          <pnp:Folders>
+            <pnp:Folder Name="1 Deliverables" />
+            <pnp:Folder Name="2 Carryover Information" />
+            <pnp:Folder Name="3 Correspondence" />
+            <pnp:Folder Name="4 Reportable Transactions" />
+            <pnp:Folder Name="5 EMP and Budget" />
+            <pnp:Folder Name="6 Workpapers" />
+          </pnp:Folders>
+        </pnp:ListInstance>
+        <pnp:ListInstance Title="Review Notes"
+                          Description=""
+                          Url="Lists/ReviewNotes"
+                          TemplateType="100"
+                          ContentTypesEnabled="false"
+                          OnQuickLaunch="false">
+        </pnp:ListInstance>
+      </pnp:Lists>
+      <pnp:Files>
+        <pnp:File Folder="/siteassets/images"
+                  Level="Published"
+                  Src="images\gt_logo.png"
+                  Overwrite="true"></pnp:File>
+        <pnp:File Folder="{themecatalog}/15"
+                  Level="Published"
+                  Src="theme\gt.spcolor"
+                  Overwrite="true"></pnp:File>
+      </pnp:Files>
+      <pnp:ComposedLook Name="Grant Thornton"
+                        ColorFile="{themecatalog}/15/gt.spcolor"
+                        FontFile=""
+                        BackgroundFile=""
+                        Version="1">        
+      </pnp:ComposedLook>
+      <pnp:Providers>
+        <pnp:Provider Enabled="true"
+                      HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityProvider, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <pnp:Configuration>
+            <WebProviderConfiguration xmlns="http://schemas.sogeti.com/webconfiguration">
+              <webs>
+                <web Title="Team Space"
+                     Description="Team space"
+                     Url="teamspace"
+                     Language="1033"
+                     InheritPermissions="true"
+                     InheritNavigation="true"
+                     BaseTemplate="STS#0"
+                     PnPTemplate="gt-teamspace-pre-template.xml">
+                </web>
+                <web Title="Client Space"
+                     Description="Client space"
+                     Url="clientspace"
+                     Language="1033"
+                     InheritPermissions="true"
+                     InheritNavigation="true"
+                     BaseTemplate="STS#0"
+                     PnPTemplate="gt-clientspace-post-template.xml">
+                </web>
+              </webs>
+            </WebProviderConfiguration>
+          </pnp:Configuration>
+        </pnp:Provider>
+      </pnp:Providers>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
