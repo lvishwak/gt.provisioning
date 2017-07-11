@@ -140,6 +140,7 @@
     <Compile Include="Configuration\ConfigurationHelper.cs" />
     <Compile Include="Configuration\IAppSettingConfiguration.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ExtensibilityProviders\Definitions\RoleAssignmentDefinition.cs" />
     <Compile Include="ExtensibilityProviders\WebExtensibilityProvider.cs" />
     <Compile Include="ExtensibilityProviders\Definitions\WebDefinition.cs" />
     <Compile Include="ExtensibilityProviders\WebInformation.cs" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:schemaLocation="http://schemas.dev.office.com/PnP/207/05/ProvisioningSchema ProvisioningSchema-2016-05.xsd">
+                  xsi:schemaLocation="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema ProvisioningSchema-2016-05.xsd">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.6.1608.0, Culture=neutral, PublicKeyToken=3751622786b357c2">
   </pnp:Preferences>
   <pnp:Templates ID="gt-templates">
@@ -10,15 +10,16 @@
                               DisplayName="Team Space"
                               Description=""                              
                               BaseSiteTemplate="STS#0">
-      <pnp:WebSettings Title="{parameter:sitetitle}"
-                       SiteLogo="{sitecollection}/SiteAssets/gt_logo.png"
-                       Description="{parameter:sitedescription}" />
+      <pnp:WebSettings Title="Team Space"
+                       SiteLogo="{sitecollection}/SiteAssets/images/gt_logo.png"
+                       Description="Team space" />
       <pnp:PropertyBagEntries>
         <pnp:PropertyBagEntry Key="ClientNumber" Value="0179922" Overwrite="true"/>
         <pnp:PropertyBagEntry Key="ClientName" Value="Traditional Medicinals, Inc." Overwrite="true"/>
         <pnp:PropertyBagEntry Key="EngagementId" Value="78376" Overwrite="true"/>
       </pnp:PropertyBagEntries>
-      <!--<pnp:Lists>
+      
+      <pnp:Lists>
         <pnp:ListInstance Title="Document Library"
                           Description=""
                           Url="DocumentLibrary"
@@ -43,7 +44,7 @@
                           ContentTypesEnabled="false"
                           OnQuickLaunch="false">
         </pnp:ListInstance>
-      </pnp:Lists>-->
+      </pnp:Lists>
       <pnp:ComposedLook Name="Grant Thornton"
                         ColorFile="{themecatalog}/15/gt.spcolor"
                         FontFile=""

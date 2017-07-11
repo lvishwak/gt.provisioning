@@ -1,4 +1,5 @@
-﻿using OfficeDevPnP.Core.Utilities;
+﻿using GT.Provisioning.Core.ExtensibilityProviders.Definitions;
+using OfficeDevPnP.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,7 +39,7 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
             {
                 if (result.webs != null && result.webs.Any())
                 {
-                    source.Webs.AddRange(result.webs.Select(w => new Definitions.WebDefinition()
+                    source.Webs.AddRange(result.webs.Select(w => new WebDefinition()
                     {
                         Title = w.Title,
                         Description = w.Description,
@@ -47,7 +48,14 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                         InheritNavigation = w.InheritNavigation,
                         BaseTemplate = w.BaseTemplate,
                         PnPTemplate = w.PnPTemplate,
-                        Language = w.Language
+                        Language = w.Language,
+                        RoleAssignments = w.RoleAssignments.Any() ? (from roleAssignment in w.RoleAssignments
+                                                                     select new RoleAssignmentDefinition
+                                                                     {
+                                                                         Principal = roleAssignment.Principal,
+                                                                         RoleDefinition = roleAssignment.RoleDefinition
+                                                                     }).ToList()
+                                         : null
                     }));
                 }
             }

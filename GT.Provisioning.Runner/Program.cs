@@ -23,6 +23,7 @@ namespace GT.Provisioning.Runner
                     Language = 1033
                 });
 
+            Console.WriteLine("Press any key continue....");
             Console.ReadLine();
         }
     }

@@ -89,6 +89,9 @@ namespace GT.Provisioning.Core.Jobs.Handlers
 
                             throw exception;
                         }
+
+                        newWeb.Context.Load(newWeb);
+                        newWeb.Context.ExecuteQueryRetry();
                     }
 
                     if (provisioningTemplate != null)
@@ -112,9 +115,6 @@ namespace GT.Provisioning.Core.Jobs.Handlers
         {
             using (PnPMonitoredScope Log = new PnPMonitoredScope("ApplyProvisioningTemplate"))
             {
-                web.Context.Load(web);
-                web.Context.ExecuteQueryRetry();
-
                 try
                 {
                     var applyingInfo = new ProvisioningTemplateApplyingInformation

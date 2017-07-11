@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 		Solution Items\Templates\gt-clienthub-template.xml = Solution Items\Templates\gt-clienthub-template.xml
 		Solution Items\Templates\gt-clientspace-post-template.xml = Solution Items\Templates\gt-clientspace-post-template.xml
 		Solution Items\Templates\gt-teamspace-pre-template.xml = Solution Items\Templates\gt-teamspace-pre-template.xml
+		Solution Items\Templates\ProvisioningSchema-2017-05.xsd = Solution Items\Templates\ProvisioningSchema-2017-05.xsd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{8CB0BCED-F703-4C6D-9409-035D55D042D0}"

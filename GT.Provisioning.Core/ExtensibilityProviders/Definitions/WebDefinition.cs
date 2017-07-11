@@ -23,5 +23,7 @@ namespace GT.Provisioning.Core.ExtensibilityProviders.Definitions
         public String BaseTemplate { get; set; }
 
         public String PnPTemplate { get; set; }
+
+        public List<RoleAssignmentDefinition> RoleAssignments { get; set; } = new List<RoleAssignmentDefinition>();
     }
 }

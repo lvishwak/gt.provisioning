@@ -2,7 +2,12 @@
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema ProvisioningSchema-2016-05.xsd">
-  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.6.1608.0, Culture=neutral, PublicKeyToken=3751622786b357c2"></pnp:Preferences>
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.6.1608.0, Culture=neutral, PublicKeyToken=3751622786b357c2">
+    <pnp:Parameters>
+      <pnp:Parameter Key="sitetitle" Required="true">Traditional Medicinals, Inc.</pnp:Parameter>
+      <pnp:Parameter Key="sitedescription" Required="true">Traditional Medicinals, Inc. | Smoke testing Dec 4</pnp:Parameter>
+    </pnp:Parameters>
+  </pnp:Preferences> 
   <pnp:Templates ID="gt-templates">
     <pnp:ProvisioningTemplate ID="gt-clienthub-template"
                               Version="1"
@@ -107,8 +112,7 @@
                         ColorFile="{themecatalog}/15/gt.spcolor"
                         FontFile=""
                         BackgroundFile=""
-                        Version="1">        
-      </pnp:ComposedLook>
+                        Version="1"></pnp:ComposedLook>
       <pnp:Providers>
         <pnp:Provider Enabled="true"
                       HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityProvider, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -123,6 +127,10 @@
                      InheritNavigation="true"
                      BaseTemplate="STS#0"
                      PnPTemplate="gt-teamspace-pre-template.xml">
+                  <RoleAssignments>
+                    <RoleAssignment Principal="Level 1" RoleDefinition="Read" />
+                    <RoleAssignment Principal="Level 4" RoleDefinition="Read" />
+                  </RoleAssignments>
                 </web>
                 <web Title="Client Space"
                      Description="Client space"
@@ -132,6 +140,10 @@
                      InheritNavigation="true"
                      BaseTemplate="STS#0"
                      PnPTemplate="gt-clientspace-post-template.xml">
+                  <RoleAssignments>
+                    <RoleAssignment Principal="Level 1" RoleDefinition="Read" />
+                    <RoleAssignment Principal="Level 4" RoleDefinition="Read" />
+                  </RoleAssignments>
                 </web>
               </webs>
             </WebProviderConfiguration>

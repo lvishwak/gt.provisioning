@@ -10,6 +10,10 @@
          InheritNavigation="true"
          BaseTemplate="STS#0"
          PnPTemplate="gt-teamspace-pre-template.xml">
+      <RoleAssignments>
+        <RoleAssignment Principal="" RoleDefinition="" />
+        <RoleAssignment Principal="" RoleDefinition="" />
+      </RoleAssignments>
     </web>
     <web Title="Client Space"
          Description="Client space"
@@ -19,6 +23,10 @@
          InheritNavigation="true"         
          BaseTemplate="STS#0"
          PnPTemplate="gt-clientspace-post-template.xml">
+      <RoleAssignments>
+        <RoleAssignment Principal="" RoleDefinition="" />
+        <RoleAssignment Principal="" RoleDefinition="" />
+      </RoleAssignments>
     </web>
   </webs>
 </WebProviderConfiguration>
