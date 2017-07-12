@@ -52,7 +52,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                             : job.BaseTemplate;
                 }
 
-                using (var adminContext = AppOnlyContextProvider.GetAppOnlyContext(ConfigurationHelper.GetConfiguration.TenantAdminUrl))
+                using (var adminContext = AppOnlyContextProvider.GetAppOnlyTenantLevelClientContext())
                 {
                     adminContext.RequestTimeout = Timeout.Infinite;
 
@@ -123,7 +123,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
         {
             using (PnPMonitoredScope Log = new PnPMonitoredScope("ApplyProvisioningTemplate"))
             {
-                using (var siteContext = AppOnlyContextProvider.GetAppOnlyContext(siteCollectionUrl))
+                using (var siteContext = AppOnlyContextProvider.GetAppOnlyClientContext(siteCollectionUrl))
                 {
                     Site site = siteContext.Site;
                     Web web = site.RootWeb;

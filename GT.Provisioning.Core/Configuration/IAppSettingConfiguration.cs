@@ -14,8 +14,6 @@ namespace GT.Provisioning.Core.Configuration
 
         string HostSiteUrl { get; }
 
-        string TenantAdminUrl { get; }
-
         string PrimarySiteCollectionAdministrator { get; }
 
         string BaseSiteTemplate { get; }

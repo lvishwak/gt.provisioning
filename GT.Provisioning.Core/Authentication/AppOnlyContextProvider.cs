@@ -1,4 +1,5 @@
-﻿using Microsoft.SharePoint.Client;
+﻿using GT.Provisioning.Core.Configuration;
+using Microsoft.SharePoint.Client;
 using OfficeDevPnP.Core;
 using System;
 using System.Collections.Generic;
@@ -10,15 +11,24 @@ namespace GT.Provisioning.Core.Authentication
 {
     internal class AppOnlyContextProvider
     {
-        internal static ClientContext GetAppOnlyContext(string siteUrl, string appId = null, string appSecret = null)
+        internal static ClientContext GetAppOnlyTenantLevelClientContext()
+        {
+            Uri hostSiteUri = new Uri(ConfigurationHelper.GetConfiguration.HostSiteUrl);
+            Uri tenantAdminUri = new Uri(hostSiteUri.Scheme + "://" +
+                hostSiteUri.Host.Replace(".sharepoint.com", "-admin.sharepoint.com"));
+
+            return (GetAppOnlyClientContext(tenantAdminUri.ToString()));
+        }
+
+        internal static ClientContext GetAppOnlyClientContext(string siteUrl, string appId = null, string appSecret = null)
         {
             if (string.IsNullOrWhiteSpace(siteUrl))
             {
                 throw new ArgumentNullException(nameof(siteUrl));
             }
 
-            appId = appId ?? Configuration.ConfigurationHelper.GetConfiguration.ClientId;
-            appSecret = appSecret ?? Configuration.ConfigurationHelper.GetConfiguration.ClientSecret;
+            appId = appId ?? ConfigurationHelper.GetConfiguration.ClientId;
+            appSecret = appSecret ?? ConfigurationHelper.GetConfiguration.ClientSecret;
 
             AuthenticationManager authenticationManager = new AuthenticationManager();
             var clientContext = authenticationManager.GetAppOnlyAuthenticatedContext(siteUrl, appId, appSecret);

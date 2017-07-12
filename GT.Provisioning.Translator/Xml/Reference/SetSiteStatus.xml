@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Request id="2097877" type="SetSiteStatus" systemId="TaxSymphony" requestor="USGTAD\US40760">
+  <Site id="64dad54c-80e5-425b-9c1f-1df155547f20" status="Abandoned" />
+</Request>

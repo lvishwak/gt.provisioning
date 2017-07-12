@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Request id="2094623" type="CreateTaxSymphonyPOST" systemId="TaxSymphony" requestor="USGTAD\US52820">
+  <Site name="Pokemon Company International, The | Pokemon 2017 Tax Provision" visible="false" sourceSiteId="0240c3f0-ff15-43b2-8297-aa485ddaf7f8">
+    <Client name="Pokemon Company International, The" number="0177661" fiscalYear="">
+      <Engagement name="Pokemon 2017 Tax Provision" number="00087" partner="" partnerId="" lineOfBusiness="Corporate Tax" lineOfBusinessCode="405" serviceLine="Corporate Tax" serviceLineCode="405" location="Seattle" locationCode="880" />
+    </Client>
+    <GroupAssignments>
+      <GroupAssignment group="Level 1">
+        <Users>
+          <User loginName="USGTAD\US35458" />
+        </Users>
+      </GroupAssignment>
+      <GroupAssignment group="Level 4">
+        <Users>
+          <User loginName="USGTAD\Sharepoint_TPQDashboardTest" />
+        </Users>
+      </GroupAssignment>
+      <GroupAssignment group="SharePoint Administrators">
+        <Users>
+          <User loginName="USGTAD\sharepoint_rrla_administrators" />
+        </Users>
+      </GroupAssignment>
+      <GroupAssignment group="Service Line Administrators">
+        <Users>
+          <User loginName="USGTAD\svc_shpt_int_cea" />
+          <User loginName="USGTAD\svc_shpt_int_tax" />
+        </Users>
+      </GroupAssignment>
+      <GroupAssignment group="SharePoint_WGCStorageSpaceAdmins">
+        <Users>
+          <User loginName="USGTAD\WGC_StorageSpaceAdmins" />
+        </Users>
+      </GroupAssignment>
+    </GroupAssignments>
+    <TeamSpace>
+      <Lists>
+        <List name="Document Library" url="Lists/DocumentLibrary" templateType="101" action="migrate">
+          <Folders>
+            <Folder name="1 Deliverables" />
+            <Folder name="2 Carryover Information" />
+            <Folder name="3 Correspondence" />
+            <Folder name="4 Reportable Transactions" />
+            <Folder name="5 EMP and Budget" />
+            <Folder name="6 Workpapers" />
+          </Folders>
+        </List>
+        <List name="Review Notes" url="Lists/ReviewNotes" templateType="100" action="migrate" />
+      </Lists>
+      <Properties>
+        <Property name="ClientNumber" value="0177661" />
+        <Property name="ClientName " value="Pokemon Company International, The" />
+        <Property name="EngagementId" value="115481" />
+      </Properties>
+    </TeamSpace>
+    <ClientSpace>
+      <Lists>
+        <List name="Document Library" url="Lists/DocumentLibrary" templateType="101">
+          <Folders>
+            <Folder name="1 Deliverables" />
+            <Folder name="2 Engagement Administration" />
+            <Folder name="3 PBC Request" />
+          </Folders>
+        </List>
+      </Lists>
+      <Properties>
+        <Property name="ClientNumber" value="0177661" />
+        <Property name="ClientName " value="Pokemon Company International, The" />
+        <Property name="EngagementId" value="115481" />
+      </Properties>
+    </ClientSpace>
+  </Site>
+</Request>

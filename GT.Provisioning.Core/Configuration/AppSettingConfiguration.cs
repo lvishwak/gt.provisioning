@@ -15,8 +15,6 @@ namespace GT.Provisioning.Core.Configuration
 
         public string HostSiteUrl => ConfigurationManager.AppSettings[Constants.AppSettings.HostSiteUrl_AppSetting_Key];
 
-        public string TenantAdminUrl => ConfigurationManager.AppSettings[Constants.AppSettings.TenantAdminUrl_AppSetting_Key];
-
         public string PrimarySiteCollectionAdministrator => ConfigurationManager.AppSettings[Constants.AppSettings.PrimarySiteCollectionAdmin_AppSetting_Key];
 
         public string BaseSiteTemplate => ConfigurationManager.AppSettings[Constants.AppSettings.BaseSiteTemplate_AppSetting_Key];

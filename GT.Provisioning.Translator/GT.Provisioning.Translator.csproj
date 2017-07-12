@@ -141,5 +141,13 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Xml\Reference\CreateTaxSymphonyPOST.xml" />
+    <Content Include="Xml\Reference\CreateTaxSymphonyPRE.xml" />
+    <Content Include="Xml\Reference\SetSiteGroupMembers.xml" />
+    <Content Include="Xml\Reference\SetSiteName.xml" />
+    <Content Include="Xml\Reference\SetSiteStatus.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

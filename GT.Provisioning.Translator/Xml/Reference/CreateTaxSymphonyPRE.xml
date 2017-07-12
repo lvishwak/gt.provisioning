@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Request id="2096932" type="CreateTaxSymphonyPRE" systemId="TaxSymphony" requestor="USGTAD\US48420">
+  <Site name="Saint Josephs University | YE2017 Tax Compliance" visible="false">
+    <Project name="Saint Josephs University | YE2017 Tax Compliance">
+      <BusinessCase>Saint Josephs University | YE2017 Tax Compliance</BusinessCase>
+    </Project>
+    <GroupAssignments>
+      <GroupAssignment group="Level 1">
+        <Users>
+          <User loginName="USGTAD\US48420" />
+        </Users>
+      </GroupAssignment>
+      <GroupAssignment group="Level 4">
+        <Users>
+          <User loginName="USGTAD\Sharepoint_TPQDashboardTest" />
+        </Users>
+      </GroupAssignment>
+      <GroupAssignment group="SharePoint Administrators">
+        <Users>
+          <User loginName="USGTAD\sharepoint_rrla_administrators" />
+        </Users>
+      </GroupAssignment>
+      <GroupAssignment group="Service Line Administrators">
+        <Users>
+          <User loginName="USGTAD\svc_shpt_int_cea" />
+          <User loginName="USGTAD\svc_shpt_int_tax" />
+        </Users>
+      </GroupAssignment>
+    </GroupAssignments>
+    <TeamSpace>
+      <Lists>
+        <List name="Document Library" url="Lists/DocumentLibrary" templateType="101">
+          <Folders>
+            <Folder name="1 Deliverables" />
+            <Folder name="2 Carryover Information" />
+            <Folder name="3 Correspondence" />
+            <Folder name="4 Reportable Transactions" />
+            <Folder name="5 EMP and Budget" />
+            <Folder name="6 Workpapers" />
+          </Folders>
+        </List>
+      </Lists>
+      <Properties>
+        <Property name="EngagementId" value="122032" />
+      </Properties>
+    </TeamSpace>
+  </Site>
+</Request>
