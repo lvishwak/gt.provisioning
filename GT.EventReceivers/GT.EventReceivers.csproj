@@ -21,6 +21,7 @@
     <WorkflowPartId>{4804f0dc-4ec5-4198-ba3a-f3fc7364189a}</WorkflowPartId>
     <CspkgPartId>{061d05bc-5c8d-4615-9660-8dce2440c6d7}</CspkgPartId>
     <SqlPackagePartId>{636b0d67-bf2a-493f-8aa4-fa05c3cb12a3}</SqlPackagePartId>
+    <ActivePublishProfile>gt-rer - Web Deploy</ActivePublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,13 +46,9 @@
     <Content Include="AppIcon.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>
-    <Content Include="Features\SyncContact\SyncContact.Template.xml">
-      <DependentUpon>SyncContact.feature</DependentUpon>
-    </Content>
     <Content Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </Content>
-    <Content Include="SyncContactEventReceiver\Elements.xml" />
   </ItemGroup>
   <ItemGroup>
     <AppManifestFile Include="AppManifest.xml">
@@ -71,15 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Features\SyncContact\SyncContact.feature">
-      <FeatureId>{499e1947-16ba-45f5-a1bc-c5db086cfc84}</FeatureId>
-    </None>
     <None Include="Package\Package.package">
       <PackageId>{022bb983-0fb5-45c0-9587-09a00e4b1beb}</PackageId>
     </None>
-    <None Include="SyncContactEventReceiver\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{e42b0657-7633-4988-ba3f-9952989f3dcb}</SharePointProjectItemId>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
