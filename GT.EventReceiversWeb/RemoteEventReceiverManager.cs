@@ -14,6 +14,8 @@ namespace GT.EventReceiversWeb
         private const string RECEIVER_NAME = "SyncContactEventReceiver";
         private const string SOURCE_LIST_TITLE = "Contacts";
         private const string DESTINATION_LIST_TITLE = "My Contacts";
+        private const string TEAMSPACE_RELATIVE_URL = "teamspace";
+        private const Int16 SEQUENCE_NUMBER = 1000;
 
         public void AssociateRemoteEventsToHostWeb(ClientContext clientContext)
         {
@@ -54,9 +56,9 @@ namespace GT.EventReceiversWeb
                 OperationContext op = OperationContext.Current;
                 Message msg = op.RequestContext.RequestMessage;
 #endif
-                // deployment
-                string remoteUrl = string.Format("https://{0}/SyncContactEventReceiver.svc",
-                  OperationContext.Current.Channel.LocalAddress.Uri.DnsSafeHost + "/services");
+                // 
+                string remoteUrl 
+                    = ($"https://{OperationContext.Current.Channel.LocalAddress.Uri.DnsSafeHost}/services/SyncContactEventReceiver.svc");
 
                 EventReceiverDefinitionCreationInformation receiver =
                     new EventReceiverDefinitionCreationInformation()
@@ -64,7 +66,8 @@ namespace GT.EventReceiversWeb
                         EventType = EventReceiverType.ItemAdded,
                         ReceiverName = RECEIVER_NAME,
                         Synchronization = EventReceiverSynchronization.Synchronous,
-                        ReceiverUrl = msg.Headers.To.ToString()
+                        ReceiverUrl = msg.Headers.To.ToString(),
+                        SequenceNumber = SEQUENCE_NUMBER
                     };
 
                 //Add the new event receiver to a list in the host web
@@ -91,14 +94,11 @@ namespace GT.EventReceiversWeb
                 //This will fail when deploying via F5, but works when deployed to production
                 rer.DeleteObject();
                 clientContext.ExecuteQuery();
-
             }
             catch (Exception exception)
             {
                 Trace.WriteLine(exception.Message);
             }
-
-            clientContext.ExecuteQuery();
         }
 
         public void ItemAddedToListEventHandler(ClientContext clientContext, Guid listId, int listItemId)
@@ -137,15 +137,6 @@ namespace GT.EventReceiversWeb
             {
                 Trace.WriteLine(exception.Message);
             }
-        }
-
-        private List GetDestinationList(Web web, string listTitle)
-        {
-            List list = web.Lists.GetByTitle(listTitle);
-            web.Context.Load(list);
-            web.Context.ExecuteQuery();
-
-            return list;
         }
 
         private void CopyItem(ListItem sourceListItem, FieldCollection sourceFields, List destinationList)
