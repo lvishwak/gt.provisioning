@@ -49,11 +49,7 @@ namespace GT.EventReceiversWeb.Services
         }
 
         /// <summary>
-        /// Handles when an app is installed.  Activates a feature in the
-        /// host web.  The feature is not required.  
-        /// Next, if the Jobs list is
-        /// not present, creates it.  Finally it attaches a remote event
-        /// receiver to the list.  
+        /// Handles when an app is installed. it attaches a remote event receiver to the list.  
         /// </summary>
         /// <param name="properties"></param>
         private void HandleAppInstalled(SPRemoteEventProperties properties)
@@ -69,8 +65,7 @@ namespace GT.EventReceiversWeb.Services
         }
 
         /// <summary>
-        /// Removes the remote event receiver from the list and 
-        /// adds a new item to the list.
+        /// Removes the remote event receiver from the list
         /// </summary>
         /// <param name="properties"></param>
         private void HandleAppUninstalling(SPRemoteEventProperties properties)
@@ -86,8 +81,7 @@ namespace GT.EventReceiversWeb.Services
         }
 
         // <summary>
-        /// Handles the ItemAdded event by modifying the Description
-        /// field of the item.
+        /// Handles the ItemAdded event 
         /// </summary>
         /// <param name="properties"></param>
         private void HandleItemAdded(SPRemoteEventProperties properties)
