@@ -101,6 +101,11 @@ namespace GT.EventReceiversWeb
             }
         }
 
+        public void ItemUpdatedToListEventHandler(ClientContext clientContext, Guid listId, int listItemId)
+        {
+
+        }
+
         public void ItemAddedToListEventHandler(ClientContext clientContext, Guid listId, int listItemId)
         {
             try

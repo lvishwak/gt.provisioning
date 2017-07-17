@@ -149,6 +149,8 @@
     <Content Include="Xml\Reference\SetSiteGroupMembers.xml" />
     <Content Include="Xml\Reference\SetSiteName.xml" />
     <Content Include="Xml\Reference\SetSiteStatus.xml" />
+    <Content Include="Xslt\request-pnp-xml.xslt" />
+    <Content Include="Xslt\SampleFile.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

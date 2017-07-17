@@ -29,10 +29,13 @@ namespace GT.EventReceiversWeb.Services
                 case SPRemoteEventType.ItemAdded:
                     HandleItemAdded(properties);
                     break;
+                case SPRemoteEventType.ItemUpdated:
+                    HandleItemUpdate(properties);
+                    break;
             }
 
             return result;
-        }
+        }        
 
         /// <summary>
         /// Handles events that occur after an action occurs, such as after a user adds an item to a list or deletes an item from a list.
@@ -85,6 +88,22 @@ namespace GT.EventReceiversWeb.Services
         /// </summary>
         /// <param name="properties"></param>
         private void HandleItemAdded(SPRemoteEventProperties properties)
+        {
+            using (ClientContext clientContext =
+                TokenHelper.CreateRemoteEventReceiverClientContext(properties))
+            {
+                if (clientContext != null)
+                {
+                    new RemoteEventReceiverManager().ItemAddedToListEventHandler(clientContext, properties.ItemEventProperties.ListId, properties.ItemEventProperties.ListItemId);
+                }
+            }
+        }
+
+        // <summary>
+        /// Handles the ItemUpdated event
+        /// </summary>
+        /// <param name="properties"></param>
+        private void HandleItemUpdate(SPRemoteEventProperties properties)
         {
             using (ClientContext clientContext =
                 TokenHelper.CreateRemoteEventReceiverClientContext(properties))
