@@ -141,6 +141,7 @@
     <Compile Include="Configuration\IAppSettingConfiguration.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ExtensibilityProviders\Definitions\RoleAssignmentDefinition.cs" />
+    <Compile Include="ExtensibilityProviders\MigrateLibraryContentExtensibilityHandler.cs" />
     <Compile Include="ExtensibilityProviders\WebExtensibilityProvider.cs" />
     <Compile Include="ExtensibilityProviders\Definitions\WebDefinition.cs" />
     <Compile Include="ExtensibilityProviders\WebInformation.cs" />
@@ -149,6 +150,8 @@
       <DependentUpon>WebConfigurationSchema.xsd</DependentUpon>
     </Compile>
     <Compile Include="JobStatus.cs" />
+    <Compile Include="Jobs\ApplyTemplateProvisioningJob.cs" />
+    <Compile Include="Jobs\Handlers\ApplyTemplateProvisioningJobHandler.cs" />
     <Compile Include="Jobs\Handlers\ProvisioningJobHandler.cs" />
     <Compile Include="Jobs\Handlers\SiteCollectionProvisioningJobHandler.cs" />
     <Compile Include="Jobs\Handlers\SubSiteProvisioningJobHandler.cs" />

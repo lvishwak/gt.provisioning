@@ -10,5 +10,7 @@ namespace GT.Provisioning.Core.Repositories
     public interface IProvisioningRepository
     {
         void Provision(ProvisioningJob provisioningJob);
+
+        void ApplyTemplate(ApplyTemplateProvisioningJob provisioningJob);
     }
 }

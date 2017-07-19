@@ -26,6 +26,23 @@ namespace GT.Provisioning.Core.Repositories
             }
         }
 
+        public void ApplyTemplate(ApplyTemplateProvisioningJob provisioningJob)
+        {
+            ProvisioningJobHandler applyTemplateJobHandler 
+                = new ApplyTemplateProvisioningJobHandler();
+
+            if (provisioningJob.JobId == Guid.Empty)
+            {
+                provisioningJob.JobId = Guid.NewGuid();
+            }
+
+            provisioningJob.CreationTimeStamp = DateTime.UtcNow;
+            provisioningJob.JobType = provisioningJob.GetType().FullName;
+            provisioningJob.Status = JobStatus.Pending;
+
+            applyTemplateJobHandler.RunJob(provisioningJob);
+        }
+
         private void ProvisionSiteCollection(ProvisioningJob provisioningJob)
         {
             using (PnPMonitoredScope Log = new PnPMonitoredScope("ProvisionSiteCollection"))
