@@ -140,13 +140,13 @@
     <Compile Include="Configuration\ConfigurationHelper.cs" />
     <Compile Include="Configuration\IAppSettingConfiguration.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="ExtensibilityProviders\Definitions\RoleAssignmentDefinition.cs" />
-    <Compile Include="ExtensibilityProviders\MigrateLibraryContentExtensibilityHandler.cs" />
-    <Compile Include="ExtensibilityProviders\WebExtensibilityHandler.cs" />
-    <Compile Include="ExtensibilityProviders\Definitions\WebDefinition.cs" />
-    <Compile Include="ExtensibilityProviders\WebInformation.cs" />
-    <Compile Include="ExtensibilityProviders\XmlFormatter.cs" />
-    <Compile Include="ExtensibilityProviders\Xml\WebConfigurationSchema.cs">
+    <Compile Include="ExtensibilityHandlers\Definitions\RoleAssignmentDefinition.cs" />
+    <Compile Include="ExtensibilityHandlers\MigrateLibraryContentExtensibilityHandler.cs" />
+    <Compile Include="ExtensibilityHandlers\WebExtensibilityHandler.cs" />
+    <Compile Include="ExtensibilityHandlers\Definitions\WebDefinition.cs" />
+    <Compile Include="ExtensibilityHandlers\WebInformation.cs" />
+    <Compile Include="ExtensibilityHandlers\XmlFormatter.cs" />
+    <Compile Include="ExtensibilityHandlers\Xml\WebConfigurationSchema.cs">
       <DependentUpon>WebConfigurationSchema.xsd</DependentUpon>
     </Compile>
     <Compile Include="JobStatus.cs" />
@@ -168,13 +168,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ExtensibilityProviders\Xml\WebConfigurationSchema.xsd">
+    <None Include="ExtensibilityHandlers\Xml\WebConfigurationSchema.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ExtensibilityProviders\Xml\WebConfiguration.xml" />
+    <Content Include="ExtensibilityHandlers\Xml\WebConfiguration.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
