@@ -142,7 +142,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="ExtensibilityProviders\Definitions\RoleAssignmentDefinition.cs" />
     <Compile Include="ExtensibilityProviders\MigrateLibraryContentExtensibilityHandler.cs" />
-    <Compile Include="ExtensibilityProviders\WebExtensibilityProvider.cs" />
+    <Compile Include="ExtensibilityProviders\WebExtensibilityHandler.cs" />
     <Compile Include="ExtensibilityProviders\Definitions\WebDefinition.cs" />
     <Compile Include="ExtensibilityProviders\WebInformation.cs" />
     <Compile Include="ExtensibilityProviders\XmlFormatter.cs" />

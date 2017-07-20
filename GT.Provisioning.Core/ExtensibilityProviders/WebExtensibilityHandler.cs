@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace GT.Provisioning.Core.ExtensibilityProviders
 {
-    public class WebExtensibilityProvider : IProvisioningExtensibilityHandler
+    public class WebExtensibilityHandler : IProvisioningExtensibilityHandler
     {
         private readonly string logSource = "GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityProvider";
 

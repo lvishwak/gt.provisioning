@@ -115,7 +115,7 @@
                         Version="1"></pnp:ComposedLook>
       <pnp:Providers>
         <pnp:Provider Enabled="true"
-                      HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityProvider, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+                      HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <pnp:Configuration>
             <WebProviderConfiguration xmlns="http://schemas.sogeti.com/webconfiguration">
               <webs>
