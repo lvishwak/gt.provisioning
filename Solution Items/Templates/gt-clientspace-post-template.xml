@@ -8,7 +8,7 @@
     <pnp:ProvisioningTemplate ID="gt-clientspace-post-template"
                               Version="1.0"
                               DisplayName="Client Space"
-                              Description=""                              
+                              Description=""
                               BaseSiteTemplate="STS#0">
       <pnp:WebSettings Title="Client Space"
                        SiteLogo="{sitecollection}/SiteAssets/images/gt_logo.png"
@@ -17,7 +17,7 @@
         <pnp:PropertyBagEntry Key="ClientNumber" Value="0179922" Overwrite="true"/>
         <pnp:PropertyBagEntry Key="ClientName" Value="Traditional Medicinals, Inc." Overwrite="true"/>
         <pnp:PropertyBagEntry Key="EngagementId" Value="78376" Overwrite="true"/>
-      </pnp:PropertyBagEntries>      
+      </pnp:PropertyBagEntries>
       <pnp:Lists>
         <pnp:ListInstance Title="Document Library"
                           Description=""
@@ -37,8 +37,20 @@
                         ColorFile="{themecatalog}/15/gt.spcolor"
                         FontFile=""
                         BackgroundFile=""
-                        Version="1">        
-      </pnp:ComposedLook>
+                        Version="1"></pnp:ComposedLook>
+      <pnp:Providers>
+        <pnp:Provider Enabled="true"
+                      HandlerType="GT.Provisioning.Core.ExtensibilityProviders.MigrateLibraryContentExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <pnp:Configuration>
+            <Migrate xmlns="http://schemas.sogeti.com/migratelibraryconfiguration">
+              <Lists>
+                <List Url="Lists/ReviewNotes" Source="{sitecollection}/teamspace" Destination="{sitecollection}/clientspace"></List>
+                <List Url="DocumentLibrary" Source="{sitecollection}/teamspace" Destination="{sitecollection}/clientspace"></List>
+              </Lists>
+            </Migrate>
+          </pnp:Configuration>
+        </pnp:Provider>
+      </pnp:Providers>
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>

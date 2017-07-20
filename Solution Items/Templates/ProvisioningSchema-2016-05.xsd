@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsd:schema targetNamespace="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema"
+<xsd:schema targetNamespace="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
     elementFormDefault="qualified"
-    xmlns="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema"
-    xmlns:pnp="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema"
+    xmlns="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
+    xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <!-- The main element -->
@@ -471,24 +471,6 @@
 
       </xsd:element>
 
-      <xsd:element name="SiteWebhooks" minOccurs="0" maxOccurs="1" type="pnp:SiteWebhooksList">
-        <xsd:annotation>
-          <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-          <xsd:documentation xml:lang="en">
-            Defines any list of Webhooks for the current site.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-
-      <xsd:element name="ClientSidePages" type="pnp:ClientSidePages" minOccurs="0" maxOccurs="1">
-        <xsd:annotation>
-          <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-          <xsd:documentation xml:lang="en">
-            The Client-side Pages to provision into the target Site through the Provisioning Template, optional element.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-
     </xsd:all>
 
     <xsd:attribute name="ID" type="xsd:ID" use="required">
@@ -537,43 +519,6 @@
           The Description of the Provisioning Template, optional attribute.
         </xsd:documentation>
       </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="TemplateCultureInfo" type="pnp:ReplaceableString" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          The default CultureInfo of the Provisioning Template, used to format all input values, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="Scope" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Declares the target scope of the current Provisioning Template
-        </xsd:documentation>
-      </xsd:annotation>
-      <xsd:simpleType>
-        <xsd:restriction base="xsd:string">
-          <xsd:enumeration value="RootSite">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                The scope is a Root web of a Site Collection
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="Web">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                The scope is a child Web of a Site Collection
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-        </xsd:restriction>
-      </xsd:simpleType>
-
     </xsd:attribute>
 
   </xsd:complexType>
@@ -1166,14 +1111,6 @@
         </xsd:complexType>
       </xsd:element>
     </xsd:sequence>
-    <xsd:attribute name="EnableTreeView" type="xsd:boolean" use="optional" default="false">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Declares whether the tree view has to be enabled at the site level or not, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
   </xsd:complexType>
 
   <xsd:complexType name="ManagedNavigation">
@@ -1254,7 +1191,7 @@
       </xsd:annotation>
     </xsd:attribute>
   </xsd:complexType>
-
+  
   <xsd:complexType name="Features">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
@@ -1626,15 +1563,6 @@
       </xsd:annotation>
     </xsd:attribute>
 
-    <xsd:attribute name="Remove" type="xsd:boolean" use="optional" default="false">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Allows to remove a role assignment, instead of adding it. It is an optional attribute, and by default it assumes a value of false.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
   </xsd:complexType>
 
   <xsd:complexType name="ObjectSecurity">
@@ -1778,47 +1706,6 @@
               </xsd:complexType>
             </xsd:element>
           </xsd:sequence>
-
-          <xsd:attribute name="KeyColumn" type="xsd:string" use="optional">
-            <xsd:annotation>
-              <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-              <xsd:documentation xml:lang="en">
-                Optional attribute to declare the name of the Key Column, if any, used to identify any already existing DataRows.
-                If this attribute has a value and the target list already has items with matching KeyColumn values, the engine will handle the matching DataRows based on the value of the UpdateBehavior attribute.
-                If UpdateBehavior has a value of Skip, the DataRows will be skipped.
-                If UpdateBehavior has a value of Overwrite, the existing items will be updated with the values defined in the DataRows.
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-
-          <xsd:attribute name="UpdateBehavior" use="optional" default="Skip">
-            <xsd:annotation>
-              <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-              <xsd:documentation xml:lang="en">
-                If the DataRow already exists on target list, this attribute defines whether
-                the DataRow will be overwritten or skipped.
-              </xsd:documentation>
-            </xsd:annotation>
-            <xsd:simpleType>
-              <xsd:restriction base="xsd:string">
-                <xsd:enumeration value="Overwrite">
-                  <xsd:annotation>
-                    <xsd:documentation xml:lang="en">
-                      Any existing DataRow will be overwritten.
-                    </xsd:documentation>
-                  </xsd:annotation>
-                </xsd:enumeration>
-                <xsd:enumeration value="Skip">
-                  <xsd:annotation>
-                    <xsd:documentation xml:lang="en">
-                      Any existing DataRow will be skipped.
-                    </xsd:documentation>
-                  </xsd:annotation>
-                </xsd:enumeration>
-              </xsd:restriction>
-            </xsd:simpleType>
-          </xsd:attribute>
-
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="Folders" minOccurs="0">
@@ -1867,22 +1754,6 @@
         <xsd:annotation>
           <xsd:documentation xml:lang="en">
             Defines any Custom Action for the List Instance, optional element.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="Webhooks" type="pnp:WebhooksList" minOccurs="0" maxOccurs="1">
-        <xsd:annotation>
-          <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-          <xsd:documentation xml:lang="en">
-            Defines any Webhook for the current list instance.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="IRMSettings" type="pnp:IRMSettings" minOccurs="0" maxOccurs="1">
-        <xsd:annotation>
-          <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-          <xsd:documentation xml:lang="en">
-            Declares the Information Rights Management settings for the list or library.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -2044,303 +1915,6 @@
       </xsd:annotation>
     </xsd:attribute>
 
-    <xsd:attribute name="NoCrawl" type="xsd:boolean" use="optional" default="false">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines if the current list or library has to be included in crawling, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="ListExperience" use="optional" default="Auto">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines the current list UI/UX experience (valid for SPO only).
-        </xsd:documentation>
-      </xsd:annotation>
-      <xsd:simpleType>
-        <xsd:restriction base="xsd:string">
-          <xsd:enumeration value="Auto">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                SPO will automatically define the right experience based on the settings of the current list, it is the default value.
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="ClassicExperience">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                The Classic experience will be forced for the current list.
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="NewExperience">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                The Modern experience will be forced for the current list.
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-        </xsd:restriction>
-      </xsd:simpleType>
-    </xsd:attribute>
-
-    <xsd:attribute name="DefaultDisplayFormUrl" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines a value that specifies the location of the default display form for the list.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="DefaultEditFormUrl" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines a value that specifies the URL of the edit form to use for list items in the list.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="DefaultNewFormUrl" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines a value that specifies the location of the default new form for the list.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="Direction" use="optional" default="NONE">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines a value that specifies the reading order of the list.
-        </xsd:documentation>
-      </xsd:annotation>
-      <xsd:simpleType>
-        <xsd:restriction base="xsd:string">
-          <xsd:enumeration value="NONE">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                None
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="LTR">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                Left to Right
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="RTL">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                Right to Left
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-        </xsd:restriction>
-      </xsd:simpleType>
-    </xsd:attribute>
-
-    <xsd:attribute name="ImageUrl" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines a value that specifies the URI for the icon of the list, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="IrmExpire" type="xsd:boolean" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines if IRM Expire property, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="IrmReject" type="xsd:boolean" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines the IRM Reject property, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="IsApplicationList" type="xsd:boolean" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines a value that specifies a flag that a client application can use to determine whether to display the list, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="ReadSecurity" type="xsd:int" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines the Read Security property, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="ValidationFormula" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines a value that specifies the data validation criteria for a list item, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="ValidationMessage" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines a value that specifies the error message returned when data validation fails for a list item, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="IRMSettings">
-    <xsd:annotation>
-      <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-      <xsd:documentation xml:lang="en">
-        Declares the Information Rights Management settings for the list or library.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:attribute name="Enabled" type="xsd:boolean" use="required">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether the IRM settings have to be enabled or not.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="AllowPrint" type="xsd:boolean" use="optional" default="true">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether a viewer can print the downloaded document.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="AllowScript" type="xsd:boolean" use="optional" default="true">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether a viewer can run a script on the downloaded document.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="AllowWriteCopy" type="xsd:boolean" use="optional" default="true">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether a viewer can write on a copy of the downloaded document.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="DisableDocumentBrowserView" type="xsd:boolean" use="optional" default="true">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether to block Office Web Application Companion applications (WACs) from showing this document.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="DocumentAccessExpireDays" type="xsd:int" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines the number of days after which the downloaded document will expire.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="DocumentLibraryProtectionExpiresInDays" type="pnp:ReplaceableInt" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines the expire days for the Information Rights Management (IRM) protection of this document library will expire.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="EnableDocumentAccessExpire" type="xsd:boolean" use="optional" default="false">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether the downloaded document will expire.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="EnableDocumentBrowserPublishingView" type="xsd:boolean" use="optional" default="true">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether to enable Office Web Application Companion applications (WACs) to publishing view.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="EnableGroupProtection" type="xsd:boolean" use="optional" default="true">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether the permission of the downloaded document is applicable to a group.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="EnableLicenseCacheExpire" type="xsd:boolean" use="optional" default="false">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines whether a user must verify their credentials after some interval.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="GroupName" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines the group name (email address) that the permission is also applicable to.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="LicenseCacheExpireDays" type="xsd:int" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines the number of days that the application that opens the document caches the IRM license. When these elapse, the application will connect to the IRM server to validate the license.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="PolicyDescription" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines the permission policy description.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="PolicyTitle" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          Defines the permission policy title.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
   </xsd:complexType>
 
   <xsd:complexType name="Folder">
@@ -2362,14 +1936,6 @@
         <xsd:annotation>
           <xsd:documentation xml:lang="en">
             Defines the security rules for the row that will be added to the List Instance, optional element.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="PropertyBagEntries" type="pnp:PropertyBagEntries" minOccurs="0" maxOccurs="1">
-        <xsd:annotation>
-          <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-          <xsd:documentation xml:lang="en">
-            The Property Bag entries of the Folder, optional collection of elements.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -2592,15 +2158,6 @@
       </xsd:annotation>
     </xsd:attribute>
 
-    <xsd:attribute name="Hidden" type="xsd:boolean" use="optional" default="false">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Declares if the Content Type should be Hidden from New button of the list or library, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
   </xsd:complexType>
 
   <xsd:complexType name="DocumentSetTemplate">
@@ -2631,16 +2188,6 @@
               </xsd:complexType>
             </xsd:element>
           </xsd:sequence>
-
-          <xsd:attribute name="RemoveExistingContentTypes" type="xsd:boolean" use="optional" default="false">
-            <xsd:annotation>
-              <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-              <xsd:documentation xml:lang="en">
-                The RemoveExistingContentTypes flag for the Allowed Content Types of the current Document Set, optional attribute.
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="DefaultDocuments" minOccurs="0" maxOccurs="1">
@@ -2830,14 +2377,6 @@
             </xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Remove" type="xsd:boolean" use="optional" default="false">
-          <xsd:annotation>
-            <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-            <xsd:documentation xml:lang="en">
-              Declares if the FieldRef should be Removed from the list or library, optional attribute.
-            </xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -3020,448 +2559,6 @@
       </xsd:annotation>
     </xsd:attribute>
 
-    <xsd:attribute name="ClientSideComponentId" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The Client-Side Component Id of a customizer, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="ClientSideComponentProperties" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The Client-Side Component Properties of a customizer, optional attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="SiteWebhooksList">
-    <xsd:annotation>
-      <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-      <xsd:documentation xml:lang="en">
-        Defines a collection of elements of type SiteWebhook.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:sequence>
-      <xsd:element name="Webhook" type="pnp:SiteWebhook"
-                   minOccurs="1" maxOccurs="unbounded" />
-    </xsd:sequence>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="WebhooksList">
-    <xsd:annotation>
-      <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-      <xsd:documentation xml:lang="en">
-        Defines a collection of elements of type Webhook.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:sequence>
-      <xsd:element name="Webhook" type="pnp:Webhook"
-                   minOccurs="1" maxOccurs="unbounded" />
-    </xsd:sequence>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="Webhook">
-    <xsd:annotation>
-      <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-      <xsd:documentation xml:lang="en">
-        Defines a single element of type Webhook.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:attribute name="ServerNotificationUrl" type="pnp:ReplaceableString" use="required">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The Server Notification URL of the Webhook, required attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="ExpiresInDays" type="pnp:ReplaceableInt" use="required">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The expire days for the subscription of the Webhook, required attribute.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="SiteWebhook">
-    <xsd:annotation>
-      <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-      <xsd:documentation xml:lang="en">
-        Defines a single element of type SiteWebhook.
-      </xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="pnp:Webhook">
-        <xsd:attribute name="SiteWebhookType">
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:enumeration value="WebCreated">
-                <xsd:annotation>
-                  <xsd:documentation xml:lang="en">
-                    A WebHook for the WebCreated event of Site.
-                  </xsd:documentation>
-                </xsd:annotation>
-              </xsd:enumeration>
-              <xsd:enumeration value="WebMoved">
-                <xsd:annotation>
-                  <xsd:documentation xml:lang="en">
-                    A WebHook for the WebMoved event of Site.
-                  </xsd:documentation>
-                </xsd:annotation>
-              </xsd:enumeration>
-              <xsd:enumeration value="WebDeleted">
-                <xsd:annotation>
-                  <xsd:documentation xml:lang="en">
-                    A WebHook for the WebDeleted event of Site.
-                  </xsd:documentation>
-                </xsd:annotation>
-              </xsd:enumeration>
-              <xsd:enumeration value="ListAdded">
-                <xsd:annotation>
-                  <xsd:documentation xml:lang="en">
-                    A WebHook for the ListAdded event of Site.
-                  </xsd:documentation>
-                </xsd:annotation>
-              </xsd:enumeration>
-              <xsd:enumeration value="ListCreated">
-                <xsd:annotation>
-                  <xsd:documentation xml:lang="en">
-                    A WebHook for the ListCreated event of Site.
-                  </xsd:documentation>
-                </xsd:annotation>
-              </xsd:enumeration>
-            </xsd:restriction>
-          </xsd:simpleType>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-
-  <xsd:complexType name="ClientSidePages">
-    <xsd:annotation>
-      <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-      <xsd:documentation xml:lang="en">
-        Defines a collection of elements of type ClientSidePage.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:sequence>
-      <xsd:element name="ClientSidePage" type="pnp:ClientSidePage"
-                   minOccurs="1" maxOccurs="unbounded" />
-    </xsd:sequence>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="ClientSidePage">
-    <xsd:annotation>
-      <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-      <xsd:documentation xml:lang="en">
-        Defines a single element of type ClientSidePage.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:sequence>
-
-      <xsd:element name="Zones" minOccurs="0" maxOccurs="1">
-        <xsd:annotation>
-          <xsd:documentation xml:lang="en">
-            Defines the Canvas Zones for a single ClientSidePage.
-          </xsd:documentation>
-        </xsd:annotation>
-
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="Zone" type="pnp:CanvasZone" minOccurs="0" maxOccurs="unbounded">
-              <xsd:annotation>
-                <xsd:documentation xml:lang="en">
-                  Defines a Canvas Zone for a single ClientSidePage.
-                </xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
-          </xsd:sequence>
-        </xsd:complexType>
-
-      </xsd:element>
-
-    </xsd:sequence>
-
-    <xsd:attribute name="PagesLibrary" type="xsd:string" use="required">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Defines the target Pages Library for a single ClientSidePage.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="PromoteAsNewsArticle" type="xsd:boolean" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          Declares to promote the page as a news article.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="CanvasZone">
-    <xsd:annotation>
-      <xsd:documentation xml:lang="en">
-        A Canvas Zone for a Client-side Page.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:sequence>
-      <xsd:element name="Controls" minOccurs="0" maxOccurs="1">
-        <xsd:annotation>
-          <xsd:documentation xml:lang="en">
-            A collection of Canvas Controls for a Client-side Page.
-          </xsd:documentation>
-        </xsd:annotation>
-
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="CanvasControl" type="pnp:CanvasControl" minOccurs="0" maxOccurs="unbounded">
-              <xsd:annotation>
-                <xsd:documentation xml:lang="en">
-                  A single Canvas Control for a Client-side Page.
-                </xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-
-    <xsd:attribute name="Order" type="xsd:int" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The order of the Canvas Zone for a Client-side Page.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="Type">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The type of the Canvas Zone for a Client-side Page.
-        </xsd:documentation>
-      </xsd:annotation>
-
-      <xsd:simpleType>
-        <xsd:restriction base="xsd:string">
-          <xsd:enumeration value="OneColumn">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                One column
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="OneColumnFullWidth">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                One column, full browser width. This one only works for communication sites in combination with image or hero webparts
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="TwoColumn">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                Two columns of the same size
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="ThreeColumn">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                Three columns of the same size
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="TwoColumnLeft">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                Two columns, left one is 2/3, right one 1/3
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-          <xsd:enumeration value="TwoColumnRight">
-            <xsd:annotation>
-              <xsd:documentation xml:lang="en">
-                Two columns, left one is 1/3, right one 2/3
-              </xsd:documentation>
-            </xsd:annotation>
-          </xsd:enumeration>
-        </xsd:restriction>
-      </xsd:simpleType>
-    </xsd:attribute>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="CanvasControl">
-    <xsd:annotation>
-      <xsd:documentation xml:lang="en">
-        Defines a Canvas Control for a Client-side Page.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:sequence>
-      <xsd:element name="CanvasControlProperties">
-        <xsd:annotation>
-          <xsd:documentation xml:lang="en">
-            Custom properties for the client-side web part control.
-          </xsd:documentation>
-        </xsd:annotation>
-
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="CanvasControlProperty" type="pnp:StringDictionaryItem" minOccurs="0" maxOccurs="unbounded">
-              <xsd:annotation>
-                <xsd:documentation xml:lang="en">
-                  A single property of a client-side web part control.
-                </xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-
-    <xsd:attribute name="WebPartType" use="required">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The Type of Client-side Web Part.
-        </xsd:documentation>
-      </xsd:annotation>
-
-      <xsd:simpleType>
-        <xsd:restriction base="xsd:string">
-          <xsd:enumeration value="Custom" />
-          <xsd:enumeration value="ContentRollup" />
-          <xsd:enumeration value="BingMap" />
-          <xsd:enumeration value="ContentEmbed" />
-          <xsd:enumeration value="DocumentEmbed" />
-          <xsd:enumeration value="Image" />
-          <xsd:enumeration value="ImageGallery" />
-          <xsd:enumeration value="LinkPreview" />
-          <xsd:enumeration value="NewsFeed" />
-          <xsd:enumeration value="NewsReel" />
-          <xsd:enumeration value="PowerBIReportEmbed" />
-          <xsd:enumeration value="QuickChart" />
-          <xsd:enumeration value="SiteActivity" />
-          <xsd:enumeration value="VideoEmbed" />
-          <xsd:enumeration value="YammerEmbed" />
-          <xsd:enumeration value="Events" />
-          <xsd:enumeration value="GroupCalendar" />
-          <xsd:enumeration value="Hero" />
-          <xsd:enumeration value="List" />
-          <xsd:enumeration value="PageTitle" />
-          <xsd:enumeration value="People" />
-          <xsd:enumeration value="QuickLinks" />
-        </xsd:restriction>
-      </xsd:simpleType>
-
-    </xsd:attribute>
-
-    <xsd:attribute name="CustomWebPartName" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The Name of the client-side web part if the WebPartType attribute has a value of "Custom".
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="JsonControlData" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The JSON Control Data for Canvas Control of a Client-side Page.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="ControlId" type="pnp:GUID" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The Instance Id for Canvas Control of a Client-side Page.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="Order" type="xsd:int" use="optional" default="0">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The order of the Canvas Control for a Client-side Page.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="Section" type="xsd:int" use="optional" default="0">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The Section of the Zone in which the Canvas Control will be inserted. Optional, default 0.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-  </xsd:complexType>
-
-  <xsd:complexType name="CanvasSection">
-    <xsd:annotation>
-      <xsd:documentation xml:lang="en">
-        Defines a Canvas Zone for a Client-side Page.
-      </xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:sequence>
-      <xsd:element name="Controls" minOccurs="0" maxOccurs="1">
-        <xsd:annotation>
-          <xsd:documentation xml:lang="en">
-            A collection of Canvas Controls for a Client-side Page.
-          </xsd:documentation>
-        </xsd:annotation>
-
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="CanvasControl" type="pnp:CanvasControl" minOccurs="0" maxOccurs="unbounded">
-              <xsd:annotation>
-                <xsd:documentation xml:lang="en">
-                  A single Canvas Control for a Client-side Page.
-                </xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-
-    <xsd:attribute name="Order" type="xsd:int" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The order of the Canvas Zone for a Client-side Page.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
-    <xsd:attribute name="SectionFactor" type="xsd:int" use="optional">
-      <xsd:annotation>
-        <xsd:documentation xml:lang="en">
-          The Section Factor for Canvas Section of a Client-side Page.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
   </xsd:complexType>
 
   <xsd:complexType name="FileProperties">
@@ -3538,16 +2635,7 @@
         </xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-
-    <xsd:attribute name="TargetFileName" type="pnp:ReplaceableString" use="optional">
-      <xsd:annotation>
-        <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-        <xsd:documentation xml:lang="en">
-          The Target file name for the File, optional attribute. If missing, the original file name will be used.
-        </xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-
+    
   </xsd:complexType>
 
   <xsd:complexType name="Directory">
@@ -4322,53 +3410,6 @@
         </xsd:complexType>
       </xsd:element>
 
-      <xsd:element name="ImageRenditions" minOccurs="0" maxOccurs="1">
-        <xsd:annotation>
-          <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-          <xsd:documentation xml:lang="en">
-            Defines the Image Renditions for the current Publishing site, optional collection of elements.
-          </xsd:documentation>
-        </xsd:annotation>
-
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="ImageRendition" minOccurs="0" maxOccurs="unbounded">
-              <xsd:annotation>
-                <xsd:documentation xml:lang="en">
-                  Defines an available Image Rendition for the current Publishing site.
-                </xsd:documentation>
-              </xsd:annotation>
-
-              <xsd:complexType>
-                <xsd:attribute name="Name" type="pnp:ReplaceableString" use="required">
-                  <xsd:annotation>
-                    <xsd:documentation xml:lang="en">
-                      Defines the name of the Image Rendition for the current Publishing site, required attribute.
-                    </xsd:documentation>
-                  </xsd:annotation>
-                </xsd:attribute>
-                <xsd:attribute name="Width" type="pnp:ReplaceableInt" use="required">
-                  <xsd:annotation>
-                    <xsd:documentation xml:lang="en">
-                      Defines the width of the Image Rendition for the current Publishing site, required attribute.
-                    </xsd:documentation>
-                  </xsd:annotation>
-                </xsd:attribute>
-                <xsd:attribute name="Height" type="pnp:ReplaceableInt" use="required">
-                  <xsd:annotation>
-                    <xsd:documentation xml:lang="en">
-                      Defines the height of the Image Rendition for the current Publishing site, required attribute.
-                    </xsd:documentation>
-                  </xsd:annotation>
-                </xsd:attribute>
-              </xsd:complexType>
-
-            </xsd:element>
-          </xsd:sequence>
-        </xsd:complexType>
-
-      </xsd:element>
-
     </xsd:sequence>
 
     <xsd:attribute name="AutoCheckRequirements" use="required">
@@ -4838,33 +3879,6 @@
               Declares if the TermGroup is the Site Collection Term Group, optional attribute.
             </xsd:documentation>
           </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="UpdateBehavior" use="optional" default="Skip">
-          <xsd:annotation>
-            <xsd:appinfo>Added with schema version 201705</xsd:appinfo>
-            <xsd:documentation xml:lang="en">
-              If the TermGroup already exists on target, this attribute defines whether
-              the TermGroup will be overwritten or skipped.
-            </xsd:documentation>
-          </xsd:annotation>
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:enumeration value="Overwrite">
-                <xsd:annotation>
-                  <xsd:documentation xml:lang="en">
-                    Any existing TermGroup will be overwritten
-                  </xsd:documentation>
-                </xsd:annotation>
-              </xsd:enumeration>
-              <xsd:enumeration value="Skip">
-                <xsd:annotation>
-                  <xsd:documentation xml:lang="en">
-                    Any existing TermGroup will be skipped
-                  </xsd:documentation>
-                </xsd:annotation>
-              </xsd:enumeration>
-            </xsd:restriction>
-          </xsd:simpleType>
         </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>

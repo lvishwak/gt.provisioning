@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.SharePoint.Client;
+using OfficeDevPnP.Core.Framework.Provisioning.Model;
+using System.IO;
+using OfficeDevPnP.Core.Framework.Provisioning.Providers.Xml;
 
 namespace GT.Provisioning.Core.Jobs.Handlers
 {
@@ -19,6 +22,8 @@ namespace GT.Provisioning.Core.Jobs.Handlers
             {
                 throw new ArgumentException("$(Invalid job type for ApplyTemplateProvisioningJobHandler)");
             }
+
+            ApplyTemplate(applyTemplateProvisioningJob);
         }
 
         private void ApplyTemplate(ApplyTemplateProvisioningJob job)
@@ -40,14 +45,21 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                                 }
                         };
 
-                        targetWeb.ApplyProvisioningTemplate(job.PnPTemplate, applyingInfo);
+                        var provisioningTemplate = GetProvisioningTemplateFromStream(job.PnPTemplate);
+                        targetWeb.ApplyProvisioningTemplate(provisioningTemplate, applyingInfo);
                     }
                     catch (Exception exception)
                     {
-                        Log.LogError(exception, $"Error occured while applying template to site {job.TargetSiteUrl}");
+                        Log.LogError(exception, $"Error occured while applying template to site {job.TargetSiteUrl}. Inner exception: {exception.Message}");
                     }
                 }
             }
+        }
+
+        private ProvisioningTemplate GetProvisioningTemplateFromStream(Stream fileStream)
+        {
+            var schemaFormatter = XMLPnPSchemaFormatter.LatestFormatter;
+            return schemaFormatter.ToProvisioningTemplate(fileStream);
         }
     }
 }

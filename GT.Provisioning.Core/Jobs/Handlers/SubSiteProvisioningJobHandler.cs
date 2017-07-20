@@ -82,6 +82,8 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                         }
                         catch (Exception exception)
                         {
+                            Log.LogError($"Error occured while creating subsite {job.RelativeUrl}. Inner exception: {exception.Message}");
+
                             if (parentWeb.WebExists(job.RelativeUrl))
                             {
                                 parentWeb.DeleteWeb(job.RelativeUrl);

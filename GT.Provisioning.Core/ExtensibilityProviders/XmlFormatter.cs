@@ -63,7 +63,7 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
             return source;
         }
 
-        private XmlDocument RemoveXmlns(XDocument d)
+        public XmlDocument RemoveXmlns(XDocument d)
         {
             d.Root.DescendantsAndSelf().Attributes().Where(x => x.IsNamespaceDeclaration).Remove();
 

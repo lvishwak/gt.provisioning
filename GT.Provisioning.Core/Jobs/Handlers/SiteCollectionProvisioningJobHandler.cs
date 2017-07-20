@@ -91,7 +91,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                         }
                         catch (Exception exception)
                         {
-                            Log.LogError($"Error occured while creating site collection {job.RelativeUrl}");
+                            Log.LogError($"Error occured while creating site collection {job.RelativeUrl}. Inner exception: {exception.Message}");
 
                             if (tenant.SiteExists(siteUrl))
                             {

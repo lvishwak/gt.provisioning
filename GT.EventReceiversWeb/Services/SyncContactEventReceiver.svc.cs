@@ -110,7 +110,7 @@ namespace GT.EventReceiversWeb.Services
             {
                 if (clientContext != null)
                 {
-                    new RemoteEventReceiverManager().ItemAddedToListEventHandler(clientContext, properties.ItemEventProperties.ListId, properties.ItemEventProperties.ListItemId);
+                    new RemoteEventReceiverManager().ItemUpdatedToListEventHandler(clientContext, properties.ItemEventProperties.ListId, properties.ItemEventProperties.ListItemId);
                 }
             }
         }

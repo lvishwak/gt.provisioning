@@ -9,6 +9,8 @@ using OfficeDevPnP.Core.Diagnostics;
 using OfficeDevPnP.Core.Framework.Provisioning.Model;
 using OfficeDevPnP.Core.Framework.Provisioning.ObjectHandlers;
 using OfficeDevPnP.Core.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
+using System.Xml.Linq;
+using System.IO;
 
 namespace GT.Provisioning.Core.ExtensibilityProviders
 {
@@ -31,44 +33,92 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                 return;
             }
 
-            string listTitle = "Review Notes";
-            string destinationWebRelativeUrl = "/sites/00123/clientspace";
-
             var web = ctx.Web;
             ctx.Load(web);
             ctx.ExecuteQueryRetry();
 
-            // copy specified library to destination web
-            MigrateListItems(web, listTitle, destinationWebRelativeUrl);
+            var configurationXmlElement = ParseXml(configurationData);
+            var migrateLists = from l in configurationXmlElement.Descendants("List")
+                               select new
+                               {
+                                   Url = l.Attribute("Url").Value,
+                                   sourceUrl = l.Attribute("Source").Value,
+                                   destWebUrl = l.Attribute("Destination").Value
+                               };
+
+            foreach (var list in migrateLists)
+            {
+                string listUrl = tokenParser.ParseString(list.Url);
+                string destWebRelativeUrl = tokenParser.ParseString(list.destWebUrl);
+                string sourceWebRelativeUrl = tokenParser.ParseString(list.sourceUrl);
+
+                // copy specified library to destination web
+                MigrateListItems(ctx
+                    , listUrl
+                    , sourceWebRelativeUrl
+                    , destWebRelativeUrl);
+            }
         }
 
-        private void MigrateListItems(Web sourceWeb, string sourceListTitle, string destinationSiteUrl)
+        private XElement ParseXml(string xmlString)
         {
-            // Get source list
-            var sourceClientContext = sourceWeb.Context;
-            var lists = sourceClientContext.LoadQuery(sourceWeb.Lists.Where(l => l.Title.ToUpperInvariant() == sourceListTitle.ToUpperInvariant()));
-            sourceClientContext.ExecuteQuery();
+            byte[] encodedString = Encoding.UTF8.GetBytes(xmlString);
+            MemoryStream sourceStream = new MemoryStream(encodedString);
+            sourceStream.Flush();
+            sourceStream.Position = 0;
 
-            var sourceList = lists.FirstOrDefault();
-            if (null == sourceList)
+            // remove xml namespace
+            XElement xElement = XElement.Load(sourceStream);
+            foreach (XElement XE in xElement.DescendantsAndSelf())
             {
-                throw new ArgumentNullException(nameof(sourceList));
+                XE.Name = XE.Name.LocalName;
+                XE.ReplaceAttributes(
+                    (from xattrib in XE.Attributes()
+                     .Where(xa => !xa.IsNamespaceDeclaration)
+                     select new XAttribute(xattrib.Name.LocalName, xattrib.Value))
+                     );
             }
 
-            // get all items to migrate including folder
+            return xElement;
+        }
+
+        private void MigrateListItems(ClientContext clientContext
+            , string sourceListUrl
+            , string sourceWebUrl
+            , string destinationWebUrl)
+        {
+            var siteCollectionContext = clientContext.GetSiteCollectionContext();
+            var sourceWeb = siteCollectionContext.Site.OpenWeb(sourceWebUrl);
+            var destinationWeb = siteCollectionContext.Site.OpenWeb(destinationWebUrl);
+
+            // Get source list
+            var sourceClientContext = sourceWeb.Context;
+            var sourceList = sourceWeb.GetListByUrl(sourceListUrl);
+            sourceClientContext.Load(sourceList);
+            sourceClientContext.ExecuteQuery();
+
             var sourceListItems = sourceList.GetItems(CamlQuery.CreateAllItemsQuery());
             sourceClientContext.Load(sourceListItems);
             sourceClientContext.ExecuteQueryRetry();
 
-            var siteCollectionContext = sourceWeb.Context.GetSiteCollectionContext();
-            var destinationWeb = siteCollectionContext.Site.OpenWeb(destinationSiteUrl);
-
+            // update destination list
             var destinationClientContext = destinationWeb.Context;
 
-            // copy items
             foreach (var listItem in sourceListItems)
             {
-                
+                switch (listItem.FileSystemObjectType)
+                {
+                    case FileSystemObjectType.Invalid:
+                        break;
+                    case FileSystemObjectType.File:
+                        break;
+                    case FileSystemObjectType.Folder:
+                        break;
+                    case FileSystemObjectType.Web:
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
