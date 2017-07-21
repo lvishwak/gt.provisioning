@@ -24,7 +24,7 @@ namespace GT.Provisioning.Runner
             //        Language = 1033
             //    });
 
-            var fileStream = File.Open("gt-clienthub-template.xml", FileMode.Open);
+            var fileStream = File.Open("gt-clientspace-post-template.xml", FileMode.Open);
 
             ProvisioningFactory.Current.ApplyTemplate(new ApplyTemplateProvisioningJob()
             {
