@@ -122,19 +122,17 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                         ProcessListItem(listItem, sourceList.Fields, sourceWeb, destinationWeb, destinationList);
                         break;
                     case FileSystemObjectType.Folder:
-                        ProcessFolder(listItem, sourceWeb, destinationWeb);
+                        EnsureFolder(listItem, sourceWeb, destinationWeb);
                         break;
                     case FileSystemObjectType.Web:
                         break;
                     default:
                         break;
                 }
-
-                destinationClientContext.ExecuteQueryRetry();
             }
         }
 
-        private Microsoft.SharePoint.Client.Folder ProcessFolder(ListItem listItem
+        private Microsoft.SharePoint.Client.Folder EnsureFolder(ListItem listItem
             , Web sourceWeb
             , Web destinationWeb)
         {
@@ -156,30 +154,98 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
             return null;
         }
 
-        private void ProcessListItem(ListItem listItem, Microsoft.SharePoint.Client.FieldCollection fields, Web sourceWeb, Web destinationWeb, List destinationList)
+        private void ProcessListItem(ListItem listItem
+            , Microsoft.SharePoint.Client.FieldCollection fields
+            , Web sourceWeb
+            , Web destinationWeb
+            , List destinationList)
         {
-            if (destinationList.BaseType == BaseType.DocumentLibrary)
+            switch (destinationList.BaseType)
             {
-
-            }
-            else if (destinationList.BaseType == BaseType.GenericList)
-            {
-                CopyItems(listItem, fields, sourceWeb, destinationWeb, destinationList);
-            }
-            else
-            {
-                // not handled other base type
+                case BaseType.None:
+                    break;
+                case BaseType.GenericList:
+                    CopyItems(listItem, fields, sourceWeb, destinationWeb, destinationList);
+                    break;
+                case BaseType.DocumentLibrary:
+                    CopyFiles(listItem, fields, sourceWeb, destinationWeb, destinationList);
+                    break;
+                case BaseType.Unused:
+                    break;
+                case BaseType.DiscussionBoard:
+                    break;
+                case BaseType.Survey:
+                    break;
+                case BaseType.Issue:
+                    break;
+                default:
+                    break;
             }
         }
 
         /// <summary>
-        /// Copy files
+        /// copy files
         /// </summary>
-        /// <param name="sourceLibrary"></param>
-        /// <param name="destinationLibrary"></param>
-        private void CopyFiles(List sourceLibrary, List destinationLibrary)
+        /// <param name="sourceListItem"></param>
+        /// <param name="sourceFields"></param>
+        /// <param name="sourceWeb"></param>
+        /// <param name="destinationWeb"></param>
+        /// <param name="destinationList"></param>
+        private void CopyFiles(ListItem sourceListItem
+            , Microsoft.SharePoint.Client.FieldCollection sourceFields
+            , Web sourceWeb
+            , Web destinationWeb
+            , List destinationList)
         {
+            using (PnPMonitoredScope Log = new PnPMonitoredScope("CopyFiles"))
+            {
+                sourceWeb.Context.Load(sourceListItem);
+                sourceWeb.Context.ExecuteQueryRetry();
 
+                try
+                {
+                    // get folder reference
+                    if (sourceListItem["FileDirRef"] != null)
+                    {
+                        var folderUrl = sourceListItem["FileDirRef"].ToString();
+                        folderUrl = folderUrl.Replace(sourceWeb.ServerRelativeUrl, destinationWeb.ServerRelativeUrl);
+
+                        var destinationFolder = destinationWeb.GetFolderByServerRelativeUrl(folderUrl);
+
+                        // get file name
+                        var fileName = sourceListItem["FileLeafRef"].ToString();
+
+                        // get file stream
+                        var streamResult = sourceListItem.File.OpenBinaryStream();
+                        sourceWeb.Context.ExecuteQueryRetry();
+                                                
+                        var uploadedFile = destinationFolder.UploadFile(fileName: fileName, stream: streamResult.Value, overwriteIfExists: true);
+
+                        // update uploaded file properties
+                        ListItem destinationListItem = uploadedFile.ListItemAllFields;
+                        foreach (Microsoft.SharePoint.Client.Field field in sourceFields)
+                        {
+                            if (!field.ReadOnlyField
+                                && !field.Hidden
+                                && (field.InternalName != "Attachments")
+                                && (field.InternalName != "ContentType"))
+                            {
+                                if (destinationList.FieldExistsByName(field.InternalName))
+                                {
+                                    destinationListItem[field.InternalName] = sourceListItem[field.InternalName];
+                                    destinationListItem.Update();
+                                }
+                            }
+                        }
+
+                        destinationWeb.Context.ExecuteQueryRetry();
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Log.LogDebug(exception, exception.Message);
+                }
+            }
         }
 
         /// <summary>
@@ -229,12 +295,14 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                                 }
                             }
                         }
+
+                        destinationWeb.Context.ExecuteQueryRetry();
                     }
                 }
                 catch (Exception exception)
                 {
                     Log.LogDebug(exception, exception.Message);
-                }                
+                }
             }
         }
     }
