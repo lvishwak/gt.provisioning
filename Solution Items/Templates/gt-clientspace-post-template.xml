@@ -19,6 +19,42 @@
         <pnp:PropertyBagEntry Key="EngagementId" Value="78376" Overwrite="true"/>
       </pnp:PropertyBagEntries>
       <pnp:Lists>
+        <pnp:ListInstance Title="Contacts"
+                          Description=""
+                          DocumentTemplate=""
+                          TemplateType="105"
+                          Url="Lists/Contacts"
+                          MinorVersionLimit="0"
+                          MaxVersionLimit="0"
+                          DraftVersionVisibility="0"
+                          TemplateFeatureID="00bfea71-7e6d-4186-9ba8-c047ac750105"
+                          EnableFolderCreation="false">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0106" Default="true" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{E986C3FE-8BC1-4293-B149-6B772B5BFFD3}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All contacts" Url="/sites/POC000002/Lists/Contacts/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/contacts.png?rev=42">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="Title" />
+                  <FieldRef Name="FirstName" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="Attachments" />
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="FirstName" />
+                <FieldRef Name="Company" />
+                <FieldRef Name="Role" />
+                <FieldRef Name="WorkPhone" />
+                <FieldRef Name="Email" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+        </pnp:ListInstance>
         <pnp:ListInstance Title="Document Library"
                           Description=""
                           Url="DocumentLibrary"

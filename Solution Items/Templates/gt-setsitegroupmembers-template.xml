@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema ProvisioningSchema-2016-05.xsd">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.6.1608.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
+  <pnp:Templates ID="gt-templates">
+    <pnp:ProvisioningTemplate ID="gt-setsitegroupmembers-template"
+                              Version="1"
+                              DisplayName="Site Group Members"
+                              Description=""
+                              BaseSiteTemplate="STS#0">
+      <pnp:Security>
+        <pnp:SiteGroups>
+          <pnp:SiteGroup Title="Level 1" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup Title="Level 4" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup Title="SharePoint Administrators" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup Title="Service Line Administrators" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+          <pnp:SiteGroup Title="SharePoint_WGCStorageSpaceAdmins" Description="" Owner="lokesh@dreamsonline.onmicrosoft.com">
+            <pnp:Members>
+              <pnp:User Name="lokesh@dreamsonline.onmicrosoft.com"/>
+            </pnp:Members>
+          </pnp:SiteGroup>
+        </pnp:SiteGroups>
+        <pnp:Permissions>
+          <pnp:RoleAssignments>
+            <pnp:RoleAssignment Principal="Level 1" RoleDefinition="Read"/>
+            <pnp:RoleAssignment Principal="Level 4" RoleDefinition="Read"/>
+            <pnp:RoleAssignment Principal="SharePoint Administrators" RoleDefinition="Full Control"/>
+            <pnp:RoleAssignment Principal="Service Line Administrators" RoleDefinition="Contribute"/>
+            <pnp:RoleAssignment Principal="SharePoint_WGCStorageSpaceAdmins" RoleDefinition="Read"/>
+          </pnp:RoleAssignments>
+        </pnp:Permissions>
+      </pnp:Security>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
