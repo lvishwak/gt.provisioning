@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Request id="2098786" type="SetSiteGroupMembers" systemId="TaxSymphony" requestor="USGTAD\US38808">
-  <Site id="29483830-140a-47c0-9e46-a643e48394bb">
+  <Site id="https://dreamsonline.sharepoint.com/sites/nsc/clientspace">
     <GroupAssignments>
       <GroupAssignment group="Level 1.6">
         <Users>

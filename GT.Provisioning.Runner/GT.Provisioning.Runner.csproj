@@ -53,6 +53,10 @@
       <Project>{767dbbd3-36e0-433f-b64c-f0515c9117d8}</Project>
       <Name>GT.Provisioning.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GT.Provisioning.Translator\GT.Provisioning.Translator.csproj">
+      <Project>{20be9032-ac9b-4aef-a6a0-a7eb01e77e7a}</Project>
+      <Name>GT.Provisioning.Translator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -13,22 +10,40 @@ namespace GT.Provisioning.Translator
 {
     public class PnPXmlTransformer
     {
-        public Stream TransformXml(Stream xmlDoc)
+        public RequestMessage TransformXmlStringWithXslString(string xmlFilePath)
         {
-            // get message type from request
-            RequestMessageType requestMessageType = GetMessageType(xmlDoc);
+            try
+            {
+                // read the request xml as string
+                String requestXml = File.ReadAllText(xmlFilePath);
 
-            // get xslt file
-            var xslt = new XslCompiledTransform();
-            string xsltFilePath = XsltFile(requestMessageType);
-            xslt.Load(xsltFilePath);
+                // build request message object
+                RequestMessage requestMessage = GetMessage(requestXml);
 
-            XPathDocument xmlDocument = new XPathDocument(xmlDoc);
-            var streamWriter = new StreamWriter(Console.OpenStandardOutput());
-            streamWriter.AutoFlush = true;
-            xslt.Transform(xmlDocument, null, streamWriter);
+                // get xslt file
+                var xslCompiledTransform = new XslCompiledTransform();
+                string xsltFilePath = XsltFile(requestMessage.MessageType);
+                xslCompiledTransform.Load(xsltFilePath);
 
-            return streamWriter.BaseStream;
+                //process our xml
+                XmlTextReader xmlTextReader =
+                    new XmlTextReader(new StringReader(requestXml));
+                XPathDocument xPathDocument = new XPathDocument(xmlTextReader);
+
+                //handle the output stream
+                StringBuilder stringBuilder = new StringBuilder();
+                TextWriter textWriter = new StringWriter(stringBuilder);
+
+                //do the transform
+                xslCompiledTransform.Transform(xPathDocument, null, textWriter);
+                requestMessage.Request = GenerateStreamFromString(stringBuilder.ToString());
+
+                return requestMessage;
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }           
         }
 
         private string XsltFile(RequestMessageType messageType)
@@ -52,18 +67,18 @@ namespace GT.Provisioning.Translator
                     xsltFile = "setsitestatus-request-xml.xslt";
                     break;
                 default:
-                    break;
+                    throw new ArgumentOutOfRangeException(nameof(messageType));
             }
 
             return xsltFile;
         }
 
-        private RequestMessageType GetMessageType(Stream sourceStream)
+        private RequestMessage GetMessage(string xmlString)
         {
-            //byte[] encodedString = Encoding.UTF8.GetBytes(requestXml);
-            //MemoryStream sourceStream = new MemoryStream(encodedString);
-            //sourceStream.Flush();
-            //sourceStream.Position = 0;
+            byte[] encodedString = Encoding.UTF8.GetBytes(xmlString);
+            MemoryStream sourceStream = new MemoryStream(encodedString);
+            sourceStream.Flush();
+            sourceStream.Position = 0;
 
             XElement xElement = XElement.Load(sourceStream);
             var requestMessage = new RequestMessage
@@ -74,7 +89,17 @@ namespace GT.Provisioning.Translator
                 Requester = xElement.Attribute("requestor").Value
             };
 
-            return requestMessage.MessageType;
+            return requestMessage;
+        }
+
+        private Stream GenerateStreamFromString(string xmlString)
+        {
+            MemoryStream stream = new MemoryStream();
+            StreamWriter writer = new StreamWriter(stream);
+            writer.Write(xmlString);
+            writer.Flush();
+            stream.Position = 0;
+            return stream;
         }
     }
 }
