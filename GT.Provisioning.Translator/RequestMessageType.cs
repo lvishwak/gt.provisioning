@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GT.Provisioning.Translator
 {
-    public enum MessageType
+    public enum RequestMessageType
     {
         CreateTaxSymphonyPost = 0,
         CreateTaxSymphonyPre,
