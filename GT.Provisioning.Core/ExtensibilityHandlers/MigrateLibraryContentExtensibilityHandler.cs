@@ -1,16 +1,15 @@
-﻿using OfficeDevPnP.Core.Framework.Provisioning.Extensibility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SharePoint.Client;
+﻿using Microsoft.SharePoint.Client;
 using OfficeDevPnP.Core.Diagnostics;
+using OfficeDevPnP.Core.Framework.Provisioning.Extensibility;
 using OfficeDevPnP.Core.Framework.Provisioning.Model;
 using OfficeDevPnP.Core.Framework.Provisioning.ObjectHandlers;
 using OfficeDevPnP.Core.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
-using System.Xml.Linq;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml.Linq;
 
 namespace GT.Provisioning.Core.ExtensibilityProviders
 {
@@ -121,17 +120,17 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                         break;
                     case FileSystemObjectType.File:
                         ProcessListItem(listItem, sourceList.Fields, sourceWeb, destinationWeb, destinationList);
-                        destinationClientContext.ExecuteQueryRetry();
                         break;
                     case FileSystemObjectType.Folder:
                         ProcessFolder(listItem, sourceWeb, destinationWeb);
-                        destinationClientContext.ExecuteQueryRetry();
                         break;
                     case FileSystemObjectType.Web:
                         break;
                     default:
                         break;
                 }
+
+                destinationClientContext.ExecuteQueryRetry();
             }
         }
 
@@ -186,93 +185,57 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
         /// <summary>
         /// Copy list items
         /// </summary>
-        /// <param name="sourceListItem"></param>
-        /// <param name="sourceFields"></param>
-        /// <param name="destinationList"></param>
+        /// <param name="sourceListItem">List item to be copied to destination lisst</param>
+        /// <param name="sourceFields">Fields collection</param>
+        /// <param name="destinationList">destination list where item to be copied</param>
         private void CopyItems(ListItem sourceListItem
             , Microsoft.SharePoint.Client.FieldCollection sourceFields
             , Web sourceWeb
             , Web destinationWeb
             , List destinationList)
         {
-            sourceWeb.Context.Load(sourceListItem);
-            sourceWeb.Context.ExecuteQueryRetry();
-
-            // get folder reference
-            Microsoft.SharePoint.Client.Folder containerFolder = ProcessFolder(sourceListItem, sourceWeb, destinationWeb);
-
-            // set folderUrl path to create list item inside folder.
-            ListItemCreationInformation listItemCreationInformation = null;
-            if (null != containerFolder)
+            using (PnPMonitoredScope Log = new PnPMonitoredScope("CopyItems"))
             {
-                listItemCreationInformation = new ListItemCreationInformation();
-                listItemCreationInformation.FolderUrl = containerFolder.ServerRelativeUrl;
-            }
+                sourceWeb.Context.Load(sourceListItem);
+                sourceWeb.Context.ExecuteQueryRetry();
 
-            var destinationListItem = destinationList.AddItem(listItemCreationInformation);
-
-            foreach (Microsoft.SharePoint.Client.Field field in sourceFields)
-            {
-                if (!field.ReadOnlyField
-                    && !field.Hidden
-                    && (field.InternalName != "Attachments")
-                    && (field.InternalName != "ContentType"))
+                try
                 {
-                    try
+                    // get folder reference
+                    if (sourceListItem["FileDirRef"] != null)
                     {
-                        destinationListItem[field.InternalName] = sourceListItem[field.InternalName];
-                        destinationListItem.Update();
-                    }
-                    catch (Exception exception)
-                    {
-                        throw exception;
+                        var folderUrl = sourceListItem["FileDirRef"].ToString();
+
+                        // update web url
+                        folderUrl = folderUrl.Replace(sourceWeb.ServerRelativeUrl, destinationWeb.ServerRelativeUrl);
+
+                        // set folderUrl path to create list item inside folder.
+                        var destinationListItem = destinationList.AddItem(new ListItemCreationInformation()
+                        {
+                            FolderUrl = folderUrl
+                        });
+
+                        foreach (Microsoft.SharePoint.Client.Field field in sourceFields)
+                        {
+                            if (!field.ReadOnlyField
+                                && !field.Hidden
+                                && (field.InternalName != "Attachments")
+                                && (field.InternalName != "ContentType"))
+                            {
+                                if (destinationList.FieldExistsByName(field.InternalName))
+                                {
+                                    destinationListItem[field.InternalName] = sourceListItem[field.InternalName];
+                                    destinationListItem.Update();
+                                }
+                            }
+                        }
                     }
                 }
+                catch (Exception exception)
+                {
+                    Log.LogDebug(exception, exception.Message);
+                }                
             }
         }
-
-        //private void UpdateAttachments(Web sourceWeb
-        //    , Web destinationWeb
-        //    , int srcItemID
-        //    , int destItemID)
-        //{
-        //    try
-        //    {
-        //        string src = string.Format("{0}/lists/{1}/Attachments/{2}", sourceWeb.Url, srcItemID);
-        //        Microsoft.SharePoint.Client.Folder attachmentsFolder = sourceWeb.GetFolderByServerRelativeUrl(src);
-        //        sourceWeb.Context.Load(attachmentsFolder);
-
-        //        Microsoft.SharePoint.Client.FileCollection attachments = attachmentsFolder.Files;
-        //        sourceWeb.Context.Load(attachments);
-        //        sourceWeb.Context.ExecuteQuery();
-
-        //        if (attachments.Count > 0)
-        //        {
-        //            foreach (Microsoft.SharePoint.Client.File attachment in attachments)
-        //            {
-        //                ClientResult<Stream> clientResultStream = attachment.OpenBinaryStream();
-        //                sourceWeb.Context.ExecuteQuery();
-        //                var stream = clientResultStream.Value;
-
-        //                AttachmentCreationInformation attachFileInfo = new AttachmentCreationInformation();
-        //                Byte[] buffer = new Byte[attachment.Length];
-        //                int bytesRead = stream.Read(buffer, 0, buffer.Length);
-        //                MemoryStream stream2 = new MemoryStream(buffer);
-        //                attachFileInfo.ContentStream = stream2;
-        //                attachFileInfo.FileName = attachment.Name;
-        //                //dstcontext.ExecuteQuery();
-
-        //                //Attachment a = destitem.AttachmentFiles.Add(attachFileInfo);
-        //                //dstcontext.Load(a);
-        //                //dstcontext.ExecuteQuery();
-        //                //stream2.Close();
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //Log exception
-        //    }
-        //}
     }
 }
