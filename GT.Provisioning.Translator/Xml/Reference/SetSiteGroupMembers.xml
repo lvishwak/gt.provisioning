@@ -2,10 +2,16 @@
 <Request id="2098786" type="SetSiteGroupMembers" systemId="TaxSymphony" requestor="USGTAD\US38808">
   <Site id="https://dreamsonline.sharepoint.com/sites/nsc/clientspace">
     <GroupAssignments>
-      <GroupAssignment group="Level 1.6">
+      <GroupAssignment group="Level 1">
         <Users>
-          <User loginName="USGTAD\US40243" action="add" />
-          <User loginName="USGTAD\US44850" action="remove" />
+          <User loginName="jay@dreamsonline.onmicrosoft.com" action="remove" />
+          <User loginName="jocelyn@dreamsonline.onmicrosoft.com" action="add" />
+        </Users>
+      </GroupAssignment>
+      <GroupAssignment group="Level 4">
+        <Users>
+          <User loginName="jay@dreamsonline.onmicrosoft.com" action="remove" />
+          <User loginName="jocelyn@dreamsonline.onmicrosoft.com" action="add" />
         </Users>
       </GroupAssignment>
     </GroupAssignments>

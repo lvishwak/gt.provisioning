@@ -30,6 +30,13 @@ namespace GT.Provisioning.Core.Jobs.Handlers
         {
             using (PnPMonitoredScope Log = new PnPMonitoredScope("ApplyTemplate"))
             {
+                var provisioningTemplate = GetProvisioningTemplateFromStream(job.PnPTemplate);
+                if (provisioningTemplate.Parameters.Count > 0
+                    && provisioningTemplate.Parameters.ContainsKey("siteid"))
+                {
+                    job.TargetSiteUrl = provisioningTemplate.Parameters["siteid"];
+                }
+
                 using (var appOnlyClientContext = AppOnlyContextProvider.GetAppOnlyClientContext(job.TargetSiteUrl))
                 {
                     try
@@ -44,8 +51,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                                     Log.LogInfo($"{step}/{total} Provisioning {message}");
                                 }
                         };
-
-                        var provisioningTemplate = GetProvisioningTemplateFromStream(job.PnPTemplate);
+                        
                         targetWeb.ApplyProvisioningTemplate(provisioningTemplate, applyingInfo);
                     }
                     catch (Exception exception)

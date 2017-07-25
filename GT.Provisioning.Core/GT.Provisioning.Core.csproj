@@ -153,6 +153,7 @@
     <Compile Include="Jobs\ApplyTemplateProvisioningJob.cs" />
     <Compile Include="Jobs\Handlers\ApplyTemplateProvisioningJobHandler.cs" />
     <Compile Include="Jobs\Handlers\ProvisioningJobHandler.cs" />
+    <Compile Include="ExtensibilityHandlers\RoleAssignmentExtensibilityHandler.cs" />
     <Compile Include="Jobs\Handlers\SiteCollectionProvisioningJobHandler.cs" />
     <Compile Include="Jobs\Handlers\SubSiteProvisioningJobHandler.cs" />
     <Compile Include="Jobs\ProvisioningJob.cs" />

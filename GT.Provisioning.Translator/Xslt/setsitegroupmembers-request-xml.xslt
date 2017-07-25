@@ -22,14 +22,55 @@
         </pnp:Parameters>
       </pnp:Preferences>
       <pnp:Templates ID="gt-templates">
-        <pnp:ProvisioningTemplate ID="gt-setsitename-template"
+        <pnp:ProvisioningTemplate ID="gt-setsitegroupmembers-template"
                                   Version="1"
-                                  DisplayName="Set Sitename Template"
+                                  DisplayName="Set SiteGroupMembers Template"
                                   Description=""
                                   BaseSiteTemplate="STS#0">
-        </pnp:ProvisioningTemplate>        
+          <pnp:WebSettings Title="Test"/>
+          <pnp:Providers>
+            <pnp:Provider Enabled="true"
+                          HandlerType="GT.Provisioning.Core.ExtensibilityProviders.RoleAssignmentExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <pnp:Configuration>
+                <GroupAssignmentConfiguration xmlns="http://schemas.sogeti.com/GroupAssignmentConfiguration">
+                  <GroupAssignments>
+                    <xsl:apply-templates select="GroupAssignments"></xsl:apply-templates>
+                  </GroupAssignments>
+                </GroupAssignmentConfiguration>
+              </pnp:Configuration>
+            </pnp:Provider>
+          </pnp:Providers>
+        </pnp:ProvisioningTemplate>
       </pnp:Templates>
     </pnp:Provisioning>
+  </xsl:template>
+
+  <xsl:template match="GroupAssignments" name="GroupAssignments">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template match="GroupAssignment" name="GroupAssignment">
+    <xsl:element name="GroupAssignment">
+      <xsl:attribute name="group">
+        <xsl:value-of select="@group"/>
+      </xsl:attribute>
+      <xsl:apply-templates select="Users"></xsl:apply-templates>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="Users" name="Users">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template match="User" name="User">
+    <xsl:element name="User">
+      <xsl:attribute name="loginName">
+        <xsl:value-of select="@loginName"/>
+      </xsl:attribute>
+      <xsl:attribute name="action">
+        <xsl:value-of select="@action"/>
+      </xsl:attribute>
+    </xsl:element>
   </xsl:template>
 
 </xsl:stylesheet>
