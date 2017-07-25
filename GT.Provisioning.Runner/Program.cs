@@ -14,14 +14,18 @@ namespace GT.Provisioning.Runner
     {
         static void Main(string[] args)
         {
-            PnPXmlTransformer transformer = new PnPXmlTransformer();
-            var request = transformer.TransformXmlStringWithXslString("SetSiteGroupMembers.xml");
-
-            ProvisioningFactory.Current.ApplyTemplate(new ApplyTemplateProvisioningJob()
+            if (CommandLineArguments.ProcessCommandLineArguments(args))
             {
-                TargetSiteUrl = "https://dreamsonline.sharepoint.com/sites/nsc/teamspace/",
-                PnPTemplate = request.Request
-            });
+                string messageFilePath = CommandLineArguments.ConfigurationFilePath;
+
+                PnPXmlTransformer transformer = new PnPXmlTransformer();
+                var request = transformer.TransformXmlStringWithXslString(messageFilePath);
+
+                ProvisioningFactory.Current.ApplyTemplate(new ApplyTemplateProvisioningJob()
+                {
+                    PnPTemplate = request.Request
+                });
+            }
 
             Console.WriteLine("Press any key continue....");
             Console.ReadLine();
