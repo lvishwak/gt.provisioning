@@ -26,19 +26,21 @@
                                   Version="1"
                                   DisplayName="Set SiteGroupMembers Template"
                                   Description=""
-                                  BaseSiteTemplate="STS#0">          
-          <pnp:Providers>
-            <pnp:Provider Enabled="true"
-                          HandlerType="GT.Provisioning.Core.ExtensibilityProviders.RoleAssignmentExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-              <pnp:Configuration>
-                <GroupAssignmentConfiguration xmlns="http://schemas.sogeti.com/GroupAssignmentConfiguration">
-                  <GroupAssignments>
-                    <xsl:apply-templates select="GroupAssignments"></xsl:apply-templates>
-                  </GroupAssignments>
-                </GroupAssignmentConfiguration>
-              </pnp:Configuration>
-            </pnp:Provider>
-          </pnp:Providers>
+                                  BaseSiteTemplate="STS#0">
+          <xsl:if test="((Site/GroupAssignments)!='')">
+            <pnp:Providers>
+              <pnp:Provider Enabled="true"
+                            HandlerType="GT.Provisioning.Core.ExtensibilityProviders.RoleAssignmentExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+                <pnp:Configuration>
+                  <GroupAssignmentConfiguration xmlns="http://schemas.sogeti.com/GroupAssignmentConfiguration">
+                    <GroupAssignments>
+                      <xsl:apply-templates select="GroupAssignments"></xsl:apply-templates>
+                    </GroupAssignments>
+                  </GroupAssignmentConfiguration>
+                </pnp:Configuration>
+              </pnp:Provider>
+            </pnp:Providers>
+          </xsl:if>
         </pnp:ProvisioningTemplate>
       </pnp:Templates>
     </pnp:Provisioning>

@@ -44,8 +44,7 @@
                 <FieldRef Name="Attachments" />
                 <FieldRef Name="LinkTitle" />
                 <FieldRef Name="FirstName" />
-                <FieldRef Name="Company" />
-                <FieldRef Name="Role" />
+                <FieldRef Name="Company" />                
                 <FieldRef Name="WorkPhone" />
                 <FieldRef Name="Email" />
               </ViewFields>

@@ -19,6 +19,11 @@ namespace GT.Provisioning.Translator
 
                 // build request message object
                 RequestMessage requestMessage = GetMessage(requestXml);
+                if (requestMessage != null && requestMessage.MessageType == RequestMessageType.None)
+                {
+                    requestMessage.Request = GenerateStreamFromString(requestXml);
+                    return requestMessage;
+                }
 
                 // get xslt file
                 var xslCompiledTransform = new XslCompiledTransform();
@@ -43,7 +48,7 @@ namespace GT.Provisioning.Translator
             catch (Exception exception)
             {
                 throw exception;
-            }           
+            }
         }
 
         private string XsltFile(RequestMessageType messageType)
@@ -52,10 +57,11 @@ namespace GT.Provisioning.Translator
 
             switch (messageType)
             {
-                case RequestMessageType.CreateTaxSymphonyPost:
-                    xsltFile = "migratelibrary-request-xml.xslt";
+                case RequestMessageType.TaxSymphonyPost:
+                    xsltFile = "posttaxsymphony-request-xml.xslt";
                     break;
-                case RequestMessageType.CreateTaxSymphonyPre:
+                case RequestMessageType.TaxSymphonyPre:
+                    xsltFile = "pretaxsymphony-request-xml.xslt";
                     break;
                 case RequestMessageType.SetSiteGroupMembers:
                     xsltFile = "setsitegroupmembers-request-xml.xslt";
@@ -83,10 +89,10 @@ namespace GT.Provisioning.Translator
             XElement xElement = XElement.Load(sourceStream);
             var requestMessage = new RequestMessage
             {
-                Id = Int32.Parse(xElement.Attribute("id").Value),
-                MessageType = (RequestMessageType)Enum.Parse(typeof(RequestMessageType), xElement.Attribute("type").Value),
-                SystemId = xElement.Attribute("systemId").Value,
-                Requester = xElement.Attribute("requestor").Value
+                Id = xElement.Attribute("id") != null ? Int32.Parse(xElement.Attribute("id").Value) : default(Int32),
+                MessageType = xElement.Attribute("type") != null ? (RequestMessageType)Enum.Parse(typeof(RequestMessageType), xElement.Attribute("type").Value) : RequestMessageType.None,
+                SystemId = xElement.Attribute("systemId") != null ? xElement.Attribute("systemId").Value : string.Empty,
+                Requester = xElement.Attribute("requestor") != null ? xElement.Attribute("requestor").Value : string.Empty
             };
 
             return requestMessage;

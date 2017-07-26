@@ -97,16 +97,21 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                         if (web.IsUserInGroup(groupName, user.userLoginName))
                         {
                             Log.LogInfo($"User {user.userLoginName} already exists in group {groupName}.");
-                            continue;
                         }
-
-                        Log.LogInfo($"Adding user {user.userLoginName} to group {groupName}.");
-                        web.AddUserToGroup(groupName, user.userLoginName);
+                        else
+                        {
+                            Log.LogInfo($"Adding user {user.userLoginName} to group {groupName}.");
+                            web.AddUserToGroup(groupName, user.userLoginName);
+                        }
                     }
 
                     if (user.action.ToLowerInvariant() == "remove")
                     {
-                        if (web.IsUserInGroup(groupName, user.userLoginName))
+                        if (!web.IsUserInGroup(groupName, user.userLoginName))
+                        {
+                            Log.LogInfo($"User {user.userLoginName} does not exists in group {groupName}.");
+                        }
+                        else
                         {
                             var siteUser = web.EnsureUser(user.userLoginName);
                             var siteGroup = web.SiteGroups.GetByName(groupName);
@@ -116,10 +121,8 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                             {
                                 Log.LogInfo($"Removing user {user.userLoginName} from group {groupName}.");
                                 web.RemoveUserFromGroup(siteGroup, siteUser);
-                            }                                
+                            }
                         }
-
-                        Log.LogInfo($"User {user.userLoginName} does not exists in group {groupName}.");
                     }
                 }
             }

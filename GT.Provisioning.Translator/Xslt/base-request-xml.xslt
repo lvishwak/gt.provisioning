@@ -4,9 +4,7 @@
 >
     <xsl:output method="xml" indent="yes"/>
 
-    <xsl:template match="@* | node()">
-        <xsl:copy>
-            <xsl:apply-templates select="@* | node()"/>
-        </xsl:copy>
+    <xsl:template match="/">
+      <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"></pnp:Provisioning>
     </xsl:template>
 </xsl:stylesheet>

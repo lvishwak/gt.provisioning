@@ -1,34 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Request id="2094623" type="CreateTaxSymphonyPOST" systemId="TaxSymphony" requestor="USGTAD\US52820">
-  <Site name="Pokemon Company International, The | Pokemon 2017 Tax Provision" visible="false" sourceSiteId="0240c3f0-ff15-43b2-8297-aa485ddaf7f8">
+<Request id="2094623" type="TaxSymphonyPost" systemId="TaxSymphony" requestor="USGTAD\US52820">
+  <Site name="Pokemon Company International, The | Pokemon 2017 Tax Provision" visible="false" sourceSiteId="https://dreamsonline.sharepoint.com/sites/nsc">
     <Client name="Pokemon Company International, The" number="0177661" fiscalYear="">
       <Engagement name="Pokemon 2017 Tax Provision" number="00087" partner="" partnerId="" lineOfBusiness="Corporate Tax" lineOfBusinessCode="405" serviceLine="Corporate Tax" serviceLineCode="405" location="Seattle" locationCode="880" />
     </Client>
     <GroupAssignments>
-      <GroupAssignment group="Level 1">
+      <GroupAssignment group="Level 1" owner="lokesh@dreamsonline.microsoft.com">        
+      </GroupAssignment>
+      <GroupAssignment group="Level 4" owner="lokesh@dreamsonline.microsoft.com">
         <Users>
-          <User loginName="USGTAD\US35458" />
+          <User loginName="jay@dreamsonline.onmicrosoft.com" />
         </Users>
       </GroupAssignment>
-      <GroupAssignment group="Level 4">
+      <GroupAssignment group="SharePoint Administrators" owner="lokesh@dreamsonline.microsoft.com">
         <Users>
-          <User loginName="USGTAD\Sharepoint_TPQDashboardTest" />
+          <User loginName="jay@dreamsonline.onmicrosoft.com" />
         </Users>
       </GroupAssignment>
-      <GroupAssignment group="SharePoint Administrators">
+      <GroupAssignment group="Service Line Administrators" owner="lokesh@dreamsonline.microsoft.com">
         <Users>
-          <User loginName="USGTAD\sharepoint_rrla_administrators" />
+          <User loginName="jay@dreamsonline.onmicrosoft.com" />
+          <User loginName="jocelyn@dreamsonline.onmicrosoft.com" />
         </Users>
       </GroupAssignment>
-      <GroupAssignment group="Service Line Administrators">
+      <GroupAssignment group="SharePoint_WGCStorageSpaceAdmins" owner="lokesh@dreamsonline.microsoft.com">
         <Users>
-          <User loginName="USGTAD\svc_shpt_int_cea" />
-          <User loginName="USGTAD\svc_shpt_int_tax" />
-        </Users>
-      </GroupAssignment>
-      <GroupAssignment group="SharePoint_WGCStorageSpaceAdmins">
-        <Users>
-          <User loginName="USGTAD\WGC_StorageSpaceAdmins" />
+          <User loginName="jocelyn@dreamsonline.onmicrosoft.com" />
         </Users>
       </GroupAssignment>
     </GroupAssignments>

@@ -8,8 +8,9 @@ namespace GT.Provisioning.Translator
 {
     public enum RequestMessageType
     {
-        CreateTaxSymphonyPost = 0,
-        CreateTaxSymphonyPre,
+        None = 0,
+        TaxSymphonyPost,
+        TaxSymphonyPre,
         SetSiteGroupMembers,
         SetSiteName,
         SetSiteStatus
