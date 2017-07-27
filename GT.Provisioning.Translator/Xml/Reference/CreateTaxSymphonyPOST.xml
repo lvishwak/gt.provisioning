@@ -31,7 +31,7 @@
     </GroupAssignments>
     <TeamSpace>
       <Lists>
-        <List name="Document Library" url="Lists/DocumentLibrary" templateType="101" action="migrate">
+        <List name="Document Library" url="Lists/DocumentLibrary" templateType="101">
           <Folders>
             <Folder name="1 Deliverables" />
             <Folder name="2 Carryover Information" />
@@ -41,7 +41,7 @@
             <Folder name="6 Workpapers" />
           </Folders>
         </List>
-        <List name="Review Notes" url="Lists/ReviewNotes" templateType="100" action="migrate" />
+        <List name="Review Notes" url="Lists/ReviewNotes" templateType="100" />
       </Lists>
       <Properties>
         <Property name="ClientNumber" value="0177661" />
@@ -65,5 +65,11 @@
         <Property name="EngagementId" value="115481" />
       </Properties>
     </ClientSpace>
+    <Migrate>
+      <Lists>
+        <List url="Lists/ReviewNotes" source="{sitecollection}/teamspace" destination="{sitecollection}/clientspace"></List>
+        <List url="DocumentLibrary" source="{sitecollection}/teamspace" destination="{sitecollection}/clientspace"></List>
+      </Lists>
+    </Migrate>
   </Site>
 </Request>

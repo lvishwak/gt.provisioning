@@ -80,6 +80,14 @@
               </pnp:Provider>
             </pnp:Providers>
           </xsl:if>
+          <xsl:if test="Migrate/Lists">
+            <pnp:Provider Enabled="true"
+                      HandlerType="GT.Provisioning.Core.ExtensibilityProviders.MigrateLibraryContentExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <pnp:Configuration>
+                <xsl:call-template name="migrate"></xsl:call-template>
+              </pnp:Configuration>
+            </pnp:Provider>
+          </xsl:if>
         </pnp:ProvisioningTemplate>
       </pnp:Templates>
     </pnp:Provisioning>
@@ -201,6 +209,26 @@
         </xsl:element>
       </webs>
     </WebProviderConfiguration>
+  </xsl:template>
+
+  <xsl:template match="Migrate" name="migrate">
+    <xsl:if test="Migrate/Lists">
+      <xsl:element name="Lists">
+        <xsl:for-each select="Migrate/Lists/List">
+          <xsl:element name="List">
+            <xsl:attribute name="Url">
+              <xsl:value-of select="@url"/>
+            </xsl:attribute>
+            <xsl:attribute name="Source">
+              <xsl:value-of select="@source"/>
+            </xsl:attribute>
+            <xsl:attribute name="Destination">
+              <xsl:value-of select="@destination"/>
+            </xsl:attribute>
+          </xsl:element>
+        </xsl:for-each>
+      </xsl:element>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
