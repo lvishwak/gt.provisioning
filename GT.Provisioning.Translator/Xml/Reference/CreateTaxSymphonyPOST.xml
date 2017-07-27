@@ -5,25 +5,25 @@
       <Engagement name="Pokemon 2017 Tax Provision" number="00087" partner="" partnerId="" lineOfBusiness="Corporate Tax" lineOfBusinessCode="405" serviceLine="Corporate Tax" serviceLineCode="405" location="Seattle" locationCode="880" />
     </Client>
     <GroupAssignments>
-      <GroupAssignment group="Level 1" owner="lokesh@dreamsonline.microsoft.com">        
+      <GroupAssignment group="Level 1" owner="lokesh@dreamsonline.onmicrosoft.com">        
       </GroupAssignment>
-      <GroupAssignment group="Level 4" owner="lokesh@dreamsonline.microsoft.com">
+      <GroupAssignment group="Level 4" owner="lokesh@dreamsonline.onmicrosoft.com">
         <Users>
           <User loginName="jay@dreamsonline.onmicrosoft.com" />
         </Users>
       </GroupAssignment>
-      <GroupAssignment group="SharePoint Administrators" owner="lokesh@dreamsonline.microsoft.com">
+      <GroupAssignment group="SharePoint Administrators" owner="lokesh@dreamsonline.onmicrosoft.com">
         <Users>
           <User loginName="jay@dreamsonline.onmicrosoft.com" />
         </Users>
       </GroupAssignment>
-      <GroupAssignment group="Service Line Administrators" owner="lokesh@dreamsonline.microsoft.com">
+      <GroupAssignment group="Service Line Administrators" owner="lokesh@dreamsonline.onmicrosoft.com">
         <Users>
           <User loginName="jay@dreamsonline.onmicrosoft.com" />
           <User loginName="jocelyn@dreamsonline.onmicrosoft.com" />
         </Users>
       </GroupAssignment>
-      <GroupAssignment group="SharePoint_WGCStorageSpaceAdmins" owner="lokesh@dreamsonline.microsoft.com">
+      <GroupAssignment group="SharePoint_WGCStorageSpaceAdmins" owner="lokesh@dreamsonline.onmicrosoft.com">
         <Users>
           <User loginName="jocelyn@dreamsonline.onmicrosoft.com" />
         </Users>

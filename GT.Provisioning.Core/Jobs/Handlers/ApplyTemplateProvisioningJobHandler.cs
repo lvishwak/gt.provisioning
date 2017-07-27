@@ -39,35 +39,50 @@ namespace GT.Provisioning.Core.Jobs.Handlers
 
                 using (var adminContext = AppOnlyContextProvider.GetAppOnlyTenantLevelClientContext())
                 {
+                    var siteCollectionUrl = job.TargetSiteUrl;
                     adminContext.RequestTimeout = Timeout.Infinite;
 
                     // Create the Site Collection and wait for its creation (we're asynchronous)
                     var tenant = new Tenant(adminContext);
 
                     // check if site already exists.
-                    if (tenant.CheckIfSiteExists(job.TargetSiteUrl, Constants.Site_Status_Active))
+                    if (tenant.CheckIfSiteExists(siteCollectionUrl, Constants.Site_Status_Active))
                     {
-                        Log.LogError($"Site with url \"{job.TargetSiteUrl}\" already exists. Applying template.");
-                        ApplyProvisioningTemplate(job.TargetSiteUrl, provisioningTemplate, Log);                        
+                        Log.LogError($"Site with url \"{siteCollectionUrl}\" already exists. Applying template.");
+                        ApplyProvisioningTemplate(siteCollectionUrl, provisioningTemplate, Log);
                     }
                     else
                     {
                         // check for site collection or subsite
-                        if (IsSiteCollection(job.TargetSiteUrl))
+                        if (IsSiteCollection(siteCollectionUrl))
                         {
-                            tenant.CreateSiteCollection(new SiteEntity()
-                            {                             
-                                Title = provisioningTemplate.Parameters["sitetitle"],
-                                Url = job.TargetSiteUrl,
-                                SiteOwnerLogin = ConfigurationHelper.GetConfiguration.PrimarySiteCollectionAdministrator,
-                                StorageMaximumLevel = 100,
-                                StorageWarningLevel = 70,
-                                Template =  ConfigurationHelper.GetConfiguration.BaseSiteTemplate,
-                                Lcid = 1033,
-                                TimeZoneId = 13,
-                            }, removeFromRecycleBin: true, wait: true);
+                            try
+                            {
+                                tenant.CreateSiteCollection(new SiteEntity()
+                                {
+                                    Title = provisioningTemplate.Parameters["sitetitle"],
+                                    Url = siteCollectionUrl,
+                                    SiteOwnerLogin = ConfigurationHelper.GetConfiguration.PrimarySiteCollectionAdministrator,
+                                    StorageMaximumLevel = 100,
+                                    StorageWarningLevel = 70,
+                                    Template = ConfigurationHelper.GetConfiguration.BaseSiteTemplate,
+                                    Lcid = 1033,
+                                    TimeZoneId = 13,
+                                }, removeFromRecycleBin: true, wait: true);
 
-                            ApplyProvisioningTemplate(job.TargetSiteUrl, provisioningTemplate, Log);
+                                ApplyProvisioningTemplate(siteCollectionUrl, provisioningTemplate, Log);
+                            }
+                            catch (Exception exception)
+                            {
+                                Log.LogError($"Error occured while creating site collection {siteCollectionUrl}. Inner exception: {exception.Message}");
+
+                                if (tenant.SiteExists(siteCollectionUrl))
+                                {
+                                    tenant.DeleteSiteCollection(siteCollectionUrl, useRecycleBin: false);
+                                }
+
+                                throw exception;
+                            }
                         }
                     }
                 }

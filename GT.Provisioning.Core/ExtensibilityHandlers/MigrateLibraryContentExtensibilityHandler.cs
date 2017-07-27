@@ -99,6 +99,11 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
 
             // Get source list
             var sourceClientContext = sourceWeb.Context;
+            if(!sourceWeb.ListExists(listUrl))
+            {
+                return;
+            }
+
             var sourceList = sourceWeb.GetListByUrl(listUrl);
             sourceClientContext.Load(sourceList, l => l.Fields, l => l.BaseType);
             sourceClientContext.ExecuteQuery();

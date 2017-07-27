@@ -8,7 +8,7 @@ using System.Xml.Xsl;
 
 namespace GT.Provisioning.Translator
 {
-    public class PnPXmlTransformer
+    public class XmlTransformer
     {
         public RequestMessage TransformXmlStringWithXslString(string xmlFilePath)
         {

@@ -137,7 +137,7 @@
   <ItemGroup>
     <Compile Include="RequestMessage.cs" />
     <Compile Include="RequestMessageType.cs" />
-    <Compile Include="PnPXmlTransformer.cs" />
+    <Compile Include="XmlTransformer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -48,12 +48,15 @@ namespace GT.Provisioning.Core.ExtensibilityHandlers.ModelHandler
                         clientContext.ExecuteQueryRetry();
 
                         var rootFolder = list.RootFolder;
-                        foreach (var folder in listInstance.Folders)
+                        if (listInstance.Folders != null && listInstance.Folders.Count > 0)
                         {
-                            rootFolder.AddSubFolder(folder.Name);
-                        }
+                            foreach (var folder in listInstance.Folders)
+                            {
+                                rootFolder.AddSubFolder(folder.Name);
+                            }
 
-                        clientContext.ExecuteQueryRetry();
+                            clientContext.ExecuteQueryRetry();
+                        }
                     }
                 }
             }
