@@ -37,9 +37,10 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                     job.TargetSiteUrl = provisioningTemplate.Parameters["siteid"];
                 }
 
+                var siteCollectionUrl = job.TargetSiteUrl;
+
                 using (var adminContext = AppOnlyContextProvider.GetAppOnlyTenantLevelClientContext())
                 {
-                    var siteCollectionUrl = job.TargetSiteUrl;
                     adminContext.RequestTimeout = Timeout.Infinite;
 
                     // Create the Site Collection and wait for its creation (we're asynchronous)
@@ -48,7 +49,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                     // check if site already exists.
                     if (tenant.CheckIfSiteExists(siteCollectionUrl, Constants.Site_Status_Active))
                     {
-                        Log.LogError($"Site with url \"{siteCollectionUrl}\" already exists. Applying template.");
+                        Log.LogInfo($"Site with url \"{siteCollectionUrl}\" already exists. Applying template.");
                         ApplyProvisioningTemplate(siteCollectionUrl, provisioningTemplate, Log);
                     }
                     else
@@ -84,6 +85,8 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                                 throw exception;
                             }
                         }
+
+                        Log.LogInfo($"Successfully applied template applied to site with url {siteCollectionUrl}.");
                     }
                 }
             }

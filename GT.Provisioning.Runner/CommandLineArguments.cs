@@ -64,7 +64,7 @@ namespace GT.Provisioning.Runner
             Console.WriteLine("USAGE: {0}", filename);
             Console.WriteLine("       /c:<CONFIGURATION_FILE>");
             Console.WriteLine();
-            Console.WriteLine(" /c    - Required. Configuration file name.");
+            Console.WriteLine(" /c    - Required. Configuration file path.");
             Console.WriteLine();
 
             Console.ForegroundColor = originalColor;

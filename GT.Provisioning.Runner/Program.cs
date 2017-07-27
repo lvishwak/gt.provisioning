@@ -18,7 +18,7 @@ namespace GT.Provisioning.Runner
             {
                 string messageFilePath = CommandLineArguments.ConfigurationFilePath;
 
-                PnPXmlTransformer transformer = new PnPXmlTransformer();
+                XmlTransformer transformer = new XmlTransformer();
                 var request = transformer.TransformXmlStringWithXslString(messageFilePath);
 
                 ProvisioningFactory.Current.ApplyTemplate(new ApplyTemplateProvisioningJob()
