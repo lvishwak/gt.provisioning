@@ -19,5 +19,13 @@ namespace GT.Provisioning.Core
             internal const string PrimarySiteCollectionAdmin_AppSetting_Key = "PrimarySiteCollectionAdmin";
             internal const string BaseSiteTemplate_AppSetting_Key = "BaseSiteTemplate";
         }
+
+        internal class SiteProperties
+        {
+            internal const Int64 StorageMaximumLevel = 100;
+            internal const Int64 StorageWarningLevel = 70;
+            internal const Int32 Lcid = 1033;
+            internal const Int16 CentralTimeZone = 13; 
+        }
     }
 }

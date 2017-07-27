@@ -136,7 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RequestMessage.cs" />
-    <Compile Include="RequestMessageType.cs" />
+    <Compile Include="Enums\RequestMessageType.cs" />
     <Compile Include="XmlTransformer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

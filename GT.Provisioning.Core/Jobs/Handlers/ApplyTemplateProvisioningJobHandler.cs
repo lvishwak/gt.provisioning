@@ -59,16 +59,18 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                         {
                             try
                             {
+                                Log.LogInfo($"Creating site collection \"{siteCollectionUrl}\"");
+
                                 tenant.CreateSiteCollection(new SiteEntity()
                                 {
                                     Title = provisioningTemplate.Parameters["sitetitle"],
                                     Url = siteCollectionUrl,
                                     SiteOwnerLogin = ConfigurationHelper.GetConfiguration.PrimarySiteCollectionAdministrator,
-                                    StorageMaximumLevel = 100,
-                                    StorageWarningLevel = 70,
+                                    StorageMaximumLevel = Constants.SiteProperties.StorageMaximumLevel,
+                                    StorageWarningLevel = Constants.SiteProperties.StorageWarningLevel,
                                     Template = ConfigurationHelper.GetConfiguration.BaseSiteTemplate,
-                                    Lcid = 1033,
-                                    TimeZoneId = 13,
+                                    Lcid = Constants.SiteProperties.Lcid,
+                                    TimeZoneId = Constants.SiteProperties.CentralTimeZone
                                 }, removeFromRecycleBin: true, wait: true);
 
                                 ApplyProvisioningTemplate(siteCollectionUrl, provisioningTemplate, Log);
@@ -85,9 +87,9 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                                 throw exception;
                             }
                         }
-
-                        Log.LogInfo($"Successfully applied template applied to site with url {siteCollectionUrl}.");
                     }
+
+                    Log.LogInfo($"Successfully applied template applied to site with url {siteCollectionUrl}.");
                 }
             }
         }
