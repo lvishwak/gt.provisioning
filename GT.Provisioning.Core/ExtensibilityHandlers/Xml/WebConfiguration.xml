@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<WebProviderConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<WebProviderConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                           xsi:noNamespaceSchemaLocation="WebConfigurationSchema.xsd">
   <webs>
     <web Title="Team Space"
@@ -20,13 +20,20 @@
          Url="clientspace"
          Language="1033"
          UseSamePermissionsAsParentSite="true"
-         InheritNavigation="true"         
+         InheritNavigation="true"
          BaseTemplate="STS#0"
          PnPTemplate="gt-clientspace-post-template.xml">
       <RoleAssignments>
         <RoleAssignment Principal="" RoleDefinition="" />
         <RoleAssignment Principal="" RoleDefinition="" />
       </RoleAssignments>
+      <Lists>
+        <List name="Document Library" url="Lists/DocumentLibrary" templateType="101">
+          <Folders>
+            <Folder name="1 Deliverables"/>
+          </Folders>
+        </List>        
+      </Lists>
     </web>
   </webs>
 </WebProviderConfiguration>

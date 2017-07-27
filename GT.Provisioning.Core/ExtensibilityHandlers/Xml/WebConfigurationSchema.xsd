@@ -21,6 +21,32 @@
                         </xsd:sequence>
                       </xsd:complexType>
                     </xsd:element>
+                    <xsd:element name="Lists" maxOccurs="1" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="List" maxOccurs="unbounded" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element minOccurs="0" maxOccurs="1" name="Folders">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element maxOccurs="unbounded" minOccurs="1" name="Folder">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="name" type="xsd:string" use="required" />
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="name" type="xsd:string" use="required" />
+                              <xsd:attribute name="url" type="xsd:string" use="required" />
+                              <xsd:attribute name="templateType" type="xsd:string" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
                   </xsd:sequence>
                   <xsd:attribute name="Language" type="xsd:int" use="optional" />
                   <xsd:attribute name="Title" type="xsd:string" use="optional" />

@@ -1,13 +1,14 @@
-﻿using GT.Provisioning.Core.ExtensibilityProviders.Definitions;
+﻿using GT.Provisioning.Core.ExtensibilityHandlers.Definitions;
+using GT.Provisioning.Core.ExtensibilityProviders.Definitions;
 using OfficeDevPnP.Core.Utilities;
 using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using static GT.Provisioning.Core.Constants;
 
 namespace GT.Provisioning.Core.ExtensibilityProviders
 {
@@ -46,16 +47,30 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                         Url = w.Url,
                         UseSamePermissionsAsParentSite = w.UseSamePermissionsAsParentSite,
                         InheritNavigation = w.InheritNavigation,
-                        BaseTemplate = w.BaseTemplate,
+                        BaseTemplate = (string.IsNullOrEmpty(w.BaseTemplate)) ? ConfigurationManager.AppSettings[AppSettings.BaseSiteTemplate_AppSetting_Key] : w.BaseTemplate,
                         PnPTemplate = w.PnPTemplate,
-                        Language = w.Language,
-                        RoleAssignments = w.RoleAssignments.Any() ? (from roleAssignment in w.RoleAssignments
-                                                                     select new RoleAssignmentDefinition
-                                                                     {
-                                                                         Principal = roleAssignment.Principal,
-                                                                         RoleDefinition = roleAssignment.RoleDefinition
-                                                                     }).ToList()
-                                         : null
+                        Language = (w.Language == default(int)) ? 1033 : w.Language,
+                        RoleAssignments = (w.RoleAssignments != null && w.RoleAssignments.Any())
+                        ? (from roleAssignment in w.RoleAssignments
+                           select new RoleAssignmentDefinition
+                           {
+                               Principal = roleAssignment.Principal,
+                               RoleDefinition = roleAssignment.RoleDefinition
+                           }).ToList() : null,
+                        ListInstances = (w.Lists != null && w.Lists.Any())
+                        ? (from list in w.Lists
+                           select new ListDefinition
+                           {
+                               Title = list.name,
+                               Url = list.url,
+                               TemplateId = list.templateType,
+                               Folders = (list.Folders != null && list.Folders.Any())
+                               ? (from f in list.Folders
+                                  select new FolderDefinition
+                                  {
+                                      Name = f.name
+                                  }).ToList() : null
+                           }).ToList() : null
                     }));
                 }
             }

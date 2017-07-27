@@ -9,6 +9,7 @@ using OfficeDevPnP.Core.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using GT.Provisioning.Core.ExtensibilityHandlers.ModelHandler;
 
 namespace GT.Provisioning.Core.ExtensibilityProviders
 {
@@ -65,56 +66,58 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
             }
         }
 
-        private void ProvisionSubSite(Web parentWeb, IEnumerable<WebDefinition> webCollection)
+        private void ProvisionSubSite(Web parentWeb, IEnumerable<WebDefinition> webDefinitions)
         {
             var parentWebUrl = parentWeb.Url;
 
-            foreach (var web in webCollection)
+            foreach (var webDefinition in webDefinitions)
             {
                 ProvisioningFactory.Current.Provision(new SubSiteProvisioningJob()
                 {
-                    Title = web.Title,
-                    Description = web.Description,
-                    RelativeUrl = web.Url,
-                    InheritPermissions = web.UseSamePermissionsAsParentSite,
-                    InheritNavigation = web.InheritNavigation,
-                    BaseTemplate = web.BaseTemplate,
-                    PnPTemplate = web.PnPTemplate,
-                    Language = Convert.ToUInt32(web.Language),
+                    Title = webDefinition.Title,
+                    Description = webDefinition.Description,
+                    RelativeUrl = webDefinition.Url,
+                    InheritPermissions = webDefinition.UseSamePermissionsAsParentSite,
+                    InheritNavigation = webDefinition.InheritNavigation,
+                    BaseTemplate = webDefinition.BaseTemplate,
+                    PnPTemplate = webDefinition.PnPTemplate,
+                    Language = Convert.ToUInt32(webDefinition.Language),
                     ParentWebUrl = parentWebUrl
                 });
 
-                // if unique permissions defined
-                if (web.RoleAssignments.Any())
+                Web newWeb = parentWeb.GetWeb(webDefinition.Url);
+                if (webDefinition.ListInstances.Count > 0)
                 {
-                    if (parentWeb.WebExists(web.Url))
+                    ListModelHandler handler = new ListModelHandler();
+                    handler.Deploy(newWeb, webDefinition);
+                }
+
+                // if unique permissions defined
+                if (webDefinition.RoleAssignments != null && webDefinition.RoleAssignments.Any())
+                {
+                    // create unique role assignments for web
+                    newWeb.BreakRoleInheritance(copyRoleAssignments: false, clearSubscopes: false);
+
+                    foreach (var roleAssignment in webDefinition.RoleAssignments)
                     {
-                        Web newWeb = parentWeb.GetWeb(web.Url);
+                        var siteGroup
+                            = parentWeb.SiteGroups
+                                .Where(
+                                    g => g.Title == roleAssignment.Principal).FirstOrDefault();
 
-                        // create unique role assignments for web
-                        newWeb.BreakRoleInheritance(copyRoleAssignments: false, clearSubscopes: false);
+                        var permissionLevel
+                            = parentWeb.RoleDefinitions
+                                .Where(
+                                    r => r.Name == roleAssignment.RoleDefinition).FirstOrDefault();
 
-                        foreach (var roleAssignment in web.RoleAssignments)
+                        if (siteGroup != null && permissionLevel != null)
                         {
-                            var siteGroup
-                                = parentWeb.SiteGroups
-                                    .Where(
-                                        g => g.Title == roleAssignment.Principal).FirstOrDefault();
-
-                            var permissionLevel
-                                = parentWeb.RoleDefinitions
-                                    .Where(
-                                        r => r.Name == roleAssignment.RoleDefinition).FirstOrDefault();
-
-                            if (siteGroup != null && permissionLevel != null)
-                            {
-                                var roleDefinitionBindingCollection = new RoleDefinitionBindingCollection(parentWeb.Context)
+                            var roleDefinitionBindingCollection = new RoleDefinitionBindingCollection(parentWeb.Context)
                                 {
                                     permissionLevel
                                 };
 
-                                newWeb.RoleAssignments.Add(siteGroup, roleDefinitionBindingCollection);
-                            }
+                            newWeb.RoleAssignments.Add(siteGroup, roleDefinitionBindingCollection);
                         }
                     }
                 }

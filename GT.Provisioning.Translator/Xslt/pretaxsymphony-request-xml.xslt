@@ -17,7 +17,10 @@
       <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.6.1608.0, Culture=neutral, PublicKeyToken=3751622786b357c2">
         <pnp:Parameters>
           <pnp:Parameter Key="siteid" Required="true">
-            <xsl:value-of select="@sourceSiteId"/>
+            <xsl:value-of select="@id"/>
+          </pnp:Parameter>
+          <pnp:Parameter Key="sitetitle" Required="true">
+            <xsl:value-of select="@name"/>
           </pnp:Parameter>
         </pnp:Parameters>
       </pnp:Preferences>
@@ -59,7 +62,10 @@
               <pnp:Provider Enabled="true"
                             HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
                 <pnp:Configuration>
-                  <xsl:call-template name="teamSpace"></xsl:call-template>
+                  <xsl:call-template name="teamSpace">
+                    <xsl:with-param name="sitetitle">Team Space</xsl:with-param>
+                    <xsl:with-param name="siteurl">TeamSpace</xsl:with-param>
+                  </xsl:call-template>
                 </pnp:Configuration>
               </pnp:Provider>
             </pnp:Providers>
@@ -70,11 +76,17 @@
   </xsl:template>
 
   <xsl:template match="TeamSpace" name="teamSpace">
+    <xsl:param name="sitetitle"></xsl:param>
+    <xsl:param name="siteurl"></xsl:param>
     <WebProviderConfiguration xmlns="http://schemas.sogeti.com/webconfiguration">
       <webs>
-        <web Title="Team Space"
-             Description="Team space"
-             Url="clientnumber">
+        <xsl:element name="web">
+          <xsl:attribute name="Title">
+            <xsl:value-of select="$sitetitle"/>
+          </xsl:attribute>
+          <xsl:attribute name="Url">
+            <xsl:value-of select="$siteurl"/>
+          </xsl:attribute>
           <xsl:if test="TeamSpace/Lists">
             <Lists>
               <xsl:for-each select="TeamSpace/Lists/List">
@@ -115,7 +127,7 @@
               </xsl:for-each>
             </Properties>
           </xsl:if>
-        </web>
+        </xsl:element>
       </webs>
     </WebProviderConfiguration>
   </xsl:template>

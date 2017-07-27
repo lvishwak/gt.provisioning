@@ -16,11 +16,11 @@ namespace GT.Provisioning.Core.Jobs
         /// <summary>
         /// Defines the Storage Maximum Level for the Site Collection to provision
         /// </summary>
-        public Int64 StorageMaximumLevel { get; set; }
+        public Int64 StorageMaximumLevel { get; set; } = 100;
 
         /// <summary>
         /// Defines the Storage Warning Level for the Site Collection to provision
         /// </summary>
-        public Int64 StorageWarningLevel { get; set; }
+        public Int64 StorageWarningLevel { get; set; } = 70;
     }
 }

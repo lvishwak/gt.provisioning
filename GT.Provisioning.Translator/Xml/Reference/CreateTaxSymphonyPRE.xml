@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Request id="2096932" type="TaxSymphonyPre" systemId="TaxSymphony" requestor="USGTAD\US48420">
-  <Site name="Saint Josephs University | YE2017 Tax Compliance" visible="false">
+  <Site name="Saint Josephs University | YE2017 Tax Compliance" visible="false" id="https://dreamsonline.sharepoint.com/sites/nsc">
     <Project name="Saint Josephs University | YE2017 Tax Compliance">
       <BusinessCase>Saint Josephs University | YE2017 Tax Compliance</BusinessCase>
     </Project>
