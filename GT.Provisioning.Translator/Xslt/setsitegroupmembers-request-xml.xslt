@@ -27,7 +27,7 @@
                                   DisplayName="Set SiteGroupMembers Template"
                                   Description=""
                                   BaseSiteTemplate="STS#0">
-          <xsl:if test="((Site/GroupAssignments)!='')">
+          <xsl:if test="GroupAssignments">
             <pnp:Providers>
               <pnp:Provider Enabled="true"
                             HandlerType="GT.Provisioning.Core.ExtensibilityProviders.RoleAssignmentExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
