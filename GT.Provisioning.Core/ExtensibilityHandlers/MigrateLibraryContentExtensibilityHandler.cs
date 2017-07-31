@@ -60,6 +60,7 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                 string sourceWebRelativeUrl = tokenParser.ParseString(list.sourceUrl);
 
                 MigrateListItems(ctx
+                    , scope
                     , listUrl
                     , sourceWebRelativeUrl
                     , destWebRelativeUrl);
@@ -89,6 +90,7 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
         }
 
         private void MigrateListItems(ClientContext clientContext
+            , PnPMonitoredScope Log
             , string listUrl
             , string sourceWebUrl
             , string destinationWebUrl)
@@ -99,12 +101,13 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
 
             // Get source list
             var sourceClientContext = sourceWeb.Context;
-            if(!sourceWeb.ListExists(listUrl))
+            var sourceList = sourceWeb.GetListByUrl(listUrl);
+            if (null == sourceList)
             {
+                Log.LogInfo($"List with url \"{listUrl}\" not found at web {sourceWebUrl}.");
                 return;
             }
-
-            var sourceList = sourceWeb.GetListByUrl(listUrl);
+            
             sourceClientContext.Load(sourceList, l => l.Fields, l => l.BaseType);
             sourceClientContext.ExecuteQuery();
 
@@ -115,6 +118,12 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
             // get destination list
             var destinationClientContext = destinationWeb.Context;
             var destinationList = destinationWeb.GetListByUrl(listUrl);
+            if (null == destinationList)
+            {
+                Log.LogInfo($"List with url \"{listUrl}\" not found at web {sourceWebUrl}.");
+                return;
+            }
+
             destinationClientContext.Load(destinationList);
 
             foreach (var listItem in sourceListItems)
@@ -223,7 +232,7 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                         // get file stream
                         var streamResult = sourceListItem.File.OpenBinaryStream();
                         sourceWeb.Context.ExecuteQueryRetry();
-                                                
+
                         var uploadedFile = destinationFolder.UploadFile(fileName: fileName, stream: streamResult.Value, overwriteIfExists: true);
 
                         // update uploaded file properties

@@ -14,17 +14,26 @@ namespace GT.Provisioning.Runner
     {
         static void Main(string[] args)
         {
-            if (CommandLineArguments.ProcessCommandLineArguments(args))
+            try
             {
-                string messageFilePath = CommandLineArguments.ConfigurationFilePath;
-
-                XmlTransformer transformer = new XmlTransformer();
-                var request = transformer.TransformXmlStringWithXslString(messageFilePath);
-
-                ProvisioningFactory.Current.ApplyTemplate(new ApplyTemplateProvisioningJob()
+                if (CommandLineArguments.ProcessCommandLineArguments(args))
                 {
-                    PnPTemplate = request.Request
-                });
+                    string messageFilePath = CommandLineArguments.ConfigurationFilePath;                    
+                    XmlTransformer transformer = new XmlTransformer();
+                    var request = transformer.TransformXmlStringWithXslString(messageFilePath);
+
+                    ProvisioningFactory.Current.ApplyTemplate(new ApplyTemplateProvisioningJob()
+                    {
+                        PnPTemplate = request.Request
+                    });
+                }                
+            }
+            catch (Exception exception)
+            {
+                ConsoleColor originalColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(exception.Message);
+                Console.ForegroundColor = originalColor;
             }
 
             Console.WriteLine("Press any key continue....");
