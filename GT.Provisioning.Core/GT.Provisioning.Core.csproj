@@ -143,10 +143,12 @@
     <Compile Include="ExtensibilityHandlers\Definitions\BaseDefinition.cs" />
     <Compile Include="ExtensibilityHandlers\Definitions\FolderDefinition.cs" />
     <Compile Include="ExtensibilityHandlers\Definitions\ListDefinition.cs" />
+    <Compile Include="ExtensibilityHandlers\Definitions\PropertyDefinition.cs" />
     <Compile Include="ExtensibilityHandlers\Definitions\RoleAssignmentDefinition.cs" />
     <Compile Include="ExtensibilityHandlers\MigrateLibraryContentExtensibilityHandler.cs" />
     <Compile Include="ExtensibilityHandlers\ModelHandler\BaseModelHandler.cs" />
     <Compile Include="ExtensibilityHandlers\ModelHandler\ListModelHandler.cs" />
+    <Compile Include="ExtensibilityHandlers\ModelHandler\SecurityHandler.cs" />
     <Compile Include="ExtensibilityHandlers\WebExtensibilityHandler.cs" />
     <Compile Include="ExtensibilityHandlers\Definitions\WebDefinition.cs" />
     <Compile Include="ExtensibilityHandlers\WebInformation.cs" />

@@ -30,5 +30,7 @@ namespace GT.Provisioning.Core.ExtensibilityProviders.Definitions
         public List<RoleAssignmentDefinition> RoleAssignments { get; set; } = new List<RoleAssignmentDefinition>();
 
         public List<ListDefinition> ListInstances { get; set; } = new List<ListDefinition>();
+
+        public List<PropertyDefinition> Properties { get; set; }
     }
 }

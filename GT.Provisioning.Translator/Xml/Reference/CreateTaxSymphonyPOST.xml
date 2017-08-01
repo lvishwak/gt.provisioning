@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Request id="2094623" type="TaxSymphonyPost" systemId="TaxSymphony" requestor="USGTAD\US52820">
-  <Site name="Pokemon Company International, The | Pokemon 2017 Tax Provision" visible="false" sourceSiteId="https://dreamsonline.sharepoint.com/sites/nsc">
-    <Client name="Pokemon Company International, The" number="0177661" fiscalYear="">
+  <Site name="Pokemon Company International, The | Pokemon 2017 Tax Provision" visible="false" sourceSiteId="https://dreamsonline.sharepoint.com/sites/provisioningrequests">
+    <Client name="Pokemon Company International, The | Pokemon 2017 Tax Provision" number="0177661" fiscalYear="">
       <Engagement name="Pokemon 2017 Tax Provision" number="00087" partner="" partnerId="" lineOfBusiness="Corporate Tax" lineOfBusinessCode="405" serviceLine="Corporate Tax" serviceLineCode="405" location="Seattle" locationCode="880" />
     </Client>
     <GroupAssignments>
@@ -31,7 +31,7 @@
     </GroupAssignments>
     <TeamSpace>
       <Lists>
-        <List name="Document Library" url="Lists/DocumentLibrary" templateType="101">
+        <List name="Document Library" url="DocumentLibrary" templateType="101">
           <Folders>
             <Folder name="1 Deliverables" />
             <Folder name="2 Carryover Information" />
@@ -51,7 +51,7 @@
     </TeamSpace>
     <ClientSpace>
       <Lists>
-        <List name="Document Library" url="Lists/DocumentLibrary" templateType="101">
+        <List name="Document Library" url="DocumentLibrary" templateType="101">
           <Folders>
             <Folder name="1 Deliverables" />
             <Folder name="2 Engagement Administration" />
