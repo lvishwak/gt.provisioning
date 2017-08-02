@@ -34,10 +34,13 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                 if (provisioningTemplate.Parameters.Count > 0
                     && provisioningTemplate.Parameters.ContainsKey("siteid"))
                 {
-                    job.TargetSiteUrl = provisioningTemplate.Parameters["siteid"];
+                    // build complete url
+                    job.TargetSiteUrl = String.Format("{0}{1}",
+                        ConfigurationHelper.GetConfiguration.HostSiteUrl.Substring(0, ConfigurationHelper.GetConfiguration.HostSiteUrl.LastIndexOf("/") + 1),
+                        provisioningTemplate.Parameters["siteid"].TrimStart('/'));
                 }
 
-                var siteCollectionUrl = job.TargetSiteUrl;
+                var siteFullUrl = job.TargetSiteUrl;
 
                 using (var adminContext = AppOnlyContextProvider.GetAppOnlyTenantLevelClientContext())
                 {
@@ -47,24 +50,24 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                     var tenant = new Tenant(adminContext);
 
                     // check if site already exists.
-                    if (tenant.CheckIfSiteExists(siteCollectionUrl, Constants.Site_Status_Active))
+                    if (tenant.CheckIfSiteExists(siteFullUrl, Constants.Site_Status_Active))
                     {
-                        Log.LogInfo($"Site with url \"{siteCollectionUrl}\" already exists. Applying template.");
-                        ApplyProvisioningTemplate(siteCollectionUrl, provisioningTemplate, Log);
+                        Log.LogInfo($"Site with url \"{siteFullUrl}\" already exists. Applying template.");
+                        ApplyProvisioningTemplate(siteFullUrl, provisioningTemplate, Log);
                     }
                     else
                     {
                         // check for site collection or subsite
-                        if (IsSiteCollection(siteCollectionUrl))
+                        if (IsSiteCollection(siteFullUrl))
                         {
                             try
                             {
-                                Log.LogInfo($"Creating site collection \"{siteCollectionUrl}\"");
+                                Log.LogInfo($"Creating site collection \"{siteFullUrl}\"");
 
                                 tenant.CreateSiteCollection(new SiteEntity()
                                 {
                                     Title = provisioningTemplate.Parameters["sitetitle"],
-                                    Url = siteCollectionUrl,
+                                    Url = siteFullUrl,
                                     SiteOwnerLogin = ConfigurationHelper.GetConfiguration.PrimarySiteCollectionAdministrator,
                                     StorageMaximumLevel = Constants.SiteProperties.StorageMaximumLevel,
                                     StorageWarningLevel = Constants.SiteProperties.StorageWarningLevel,
@@ -73,15 +76,15 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                                     TimeZoneId = Constants.SiteProperties.CentralTimeZone
                                 }, removeFromRecycleBin: true, wait: true);
 
-                                ApplyProvisioningTemplate(siteCollectionUrl, provisioningTemplate, Log);
+                                ApplyProvisioningTemplate(siteFullUrl, provisioningTemplate, Log);
                             }
                             catch (Exception exception)
                             {
-                                Log.LogError($"Error occured while creating site collection {siteCollectionUrl}. Inner exception: {exception.Message}");
+                                Log.LogError($"Error occured while creating site collection {siteFullUrl}. Inner exception: {exception.Message}");
 
-                                if (tenant.SiteExists(siteCollectionUrl))
+                                if (tenant.SiteExists(siteFullUrl))
                                 {
-                                    tenant.DeleteSiteCollection(siteCollectionUrl, useRecycleBin: false);
+                                    tenant.DeleteSiteCollection(siteFullUrl, useRecycleBin: false);
                                 }
 
                                 throw exception;
@@ -89,7 +92,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                         }
                     }
 
-                    Log.LogInfo($"Successfully applied template applied to site with url {siteCollectionUrl}.");
+                    Log.LogInfo($"Successfully applied template applied to site with url {siteFullUrl}.");
                 }
             }
         }

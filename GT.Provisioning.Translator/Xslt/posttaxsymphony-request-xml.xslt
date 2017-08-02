@@ -32,6 +32,13 @@
                                   DisplayName="Post TaxSymphony Template"
                                   Description=""
                                   BaseSiteTemplate="STS#0">
+          <xsl:if test="@siteLogo != ''">
+            <xsl:element name="pnp:WebSettings">
+              <xsl:attribute name="SiteLogo">
+                <xsl:value-of select="@siteLogo"/>
+              </xsl:attribute>
+            </xsl:element>
+          </xsl:if>
           <xsl:if test="GroupAssignments">
             <pnp:Security>
               <pnp:SiteGroups>
@@ -59,27 +66,67 @@
               </pnp:SiteGroups>
             </pnp:Security>
           </xsl:if>
-
-          <xsl:if test="TeamSpace or ClientSpace">
-            <pnp:Providers>
-              <pnp:Provider Enabled="true"
-                            HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-                <pnp:Configuration>
-                  <xsl:call-template name="teamSpace">
-                    <xsl:with-param name="tssitetitle">Team Space</xsl:with-param>
-                    <xsl:with-param name="tssiteurl">TeamSpace</xsl:with-param>
-                  </xsl:call-template>
-                </pnp:Configuration>
-              </pnp:Provider>
-              <pnp:Provider Enabled="true"
-                            HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-                <pnp:Configuration>
-                  <xsl:call-template name="clientSpace">
-                    <xsl:with-param name="cssitetitle">Client Space</xsl:with-param>
-                    <xsl:with-param name="cssiteurl">clientspace</xsl:with-param>
-                  </xsl:call-template>
-                </pnp:Configuration>
-              </pnp:Provider>
+          <xsl:if test="Files">
+            <xsl:element name="pnp:Files">
+              <xsl:for-each select="Files/File">
+                <xsl:element name="pnp:File">
+                  <xsl:attribute name="Folder">
+                    <xsl:value-of select="@folder"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="Src">
+                    <xsl:value-of select="@src"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="Overwrite">
+                    <xsl:value-of select="@overwrite"/>
+                  </xsl:attribute>
+                </xsl:element>
+              </xsl:for-each>
+            </xsl:element>
+          </xsl:if>
+          <xsl:if test="ComposedLook">
+            <xsl:element name="pnp:ComposedLook">
+              <xsl:attribute name="Name">
+                <xsl:value-of select="ComposedLook/@name"/>
+              </xsl:attribute>
+              <xsl:attribute name="ColorFile">
+                <xsl:value-of select="ComposedLook/@colorFile"/>
+              </xsl:attribute>
+              <xsl:attribute name="FontFile">
+                <xsl:value-of select="ComposedLook/@fontFile"/>
+              </xsl:attribute>
+              <xsl:attribute name="BackgroundFile">
+                <xsl:value-of select="ComposedLook/@backgroundFile"/>
+              </xsl:attribute>
+            </xsl:element>
+          </xsl:if>
+          <xsl:if test="TeamSpace or ClientSpace or Migrate">
+            <xsl:element name="pnp:Providers">
+              <xsl:if test="TeamSpace">
+                <pnp:Provider
+                  Enabled="true"
+                  HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+                  <pnp:Configuration>
+                    <xsl:call-template name="teamSpace">
+                      <xsl:with-param name="tssitetitle">Team Space</xsl:with-param>
+                      <xsl:with-param name="tssiteurl">
+                        <xsl:value-of select="Client/Engagement/@number"/>
+                      </xsl:with-param>
+                    </xsl:call-template>
+                  </pnp:Configuration>
+                </pnp:Provider>
+              </xsl:if>
+              <xsl:if test="ClientSpace">
+                <pnp:Provider
+                  Enabled="true"
+                  HandlerType="GT.Provisioning.Core.ExtensibilityProviders.WebExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+                  <pnp:Configuration>
+                    <xsl:call-template name="clientSpace">
+                      <xsl:with-param name="cssitetitle">Client Space</xsl:with-param>
+                      <xsl:with-param name="cssiteurl">clientspace</xsl:with-param>
+                    </xsl:call-template>
+                  </pnp:Configuration>
+                </pnp:Provider>
+              </xsl:if>
               <xsl:if test="Migrate/Lists">
                 <pnp:Provider Enabled="true"
                               HandlerType="GT.Provisioning.Core.ExtensibilityProviders.MigrateLibraryContentExtensibilityHandler, GT.Provisioning.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -88,7 +135,7 @@
                   </pnp:Configuration>
                 </pnp:Provider>
               </xsl:if>
-            </pnp:Providers>
+            </xsl:element>
           </xsl:if>
         </pnp:ProvisioningTemplate>
       </pnp:Templates>

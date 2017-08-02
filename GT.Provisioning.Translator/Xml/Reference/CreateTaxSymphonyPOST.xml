@@ -1,11 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Request id="2094623" type="TaxSymphonyPost" systemId="TaxSymphony" requestor="USGTAD\US52820">
-  <Site name="Pokemon Company International, The | Pokemon 2017 Tax Provision" visible="false" sourceSiteId="https://dreamsonline.sharepoint.com/sites/provisioningrequests">
+  <Site name="Pokemon Company International, The | Pokemon 2017 Tax Provision" visible="false" siteLogo="{sitecollection}/SiteAssets/images/gt_logo.png">
     <Client name="Pokemon Company International, The | Pokemon 2017 Tax Provision" number="0177661" fiscalYear="">
       <Engagement name="Pokemon 2017 Tax Provision" number="00087" partner="" partnerId="" lineOfBusiness="Corporate Tax" lineOfBusinessCode="405" serviceLine="Corporate Tax" serviceLineCode="405" location="Seattle" locationCode="880" />
     </Client>
+    <Files>
+      <File
+        folder="{themecatalog}/15"        
+        src="theme\gt.spcolor"
+        overwrite="true">
+      </File>
+    </Files>
     <GroupAssignments>
-      <GroupAssignment group="Level 1" owner="lokesh@dreamsonline.onmicrosoft.com">        
+      <GroupAssignment group="Level 1" owner="lokesh@dreamsonline.onmicrosoft.com">
       </GroupAssignment>
       <GroupAssignment group="Level 4" owner="lokesh@dreamsonline.onmicrosoft.com">
         <Users>
@@ -65,6 +72,12 @@
         <Property name="EngagementId" value="115481" />
       </Properties>
     </ClientSpace>
+    <ComposedLook
+      name="Grant Thornton"
+      colorFile="{themecatalog}/15/gt.spcolor"
+      fontFile=""
+      backgroundFile="">
+    </ComposedLook>
     <Migrate>
       <Lists>
         <List url="Lists/ReviewNotes" source="{sitecollection}/teamspace" destination="{sitecollection}/clientspace"></List>
