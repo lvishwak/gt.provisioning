@@ -41,7 +41,7 @@ namespace GT.Provisioning.Core.ExtensibilityHandlers.ModelHandler
                         List list = web.CreateList(
                                 (ListTemplateType)Enum.Parse(typeof(ListTemplateType), listInstance.TemplateId, ignoreCase: true),
                                 listInstance.Title,
-                                urlPath: listInstance.Url.StripInvalidUrlChars(),
+                                urlPath: listInstance.Url,
                                 enableVersioning: false);
 
                         clientContext.Load(list, l => l.RootFolder);

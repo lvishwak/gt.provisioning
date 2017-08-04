@@ -5,10 +5,13 @@
       <Engagement name="Pokemon 2017 Tax Provision" number="00087" partner="" partnerId="" lineOfBusiness="Corporate Tax" lineOfBusinessCode="405" serviceLine="Corporate Tax" serviceLineCode="405" location="Seattle" locationCode="880" />
     </Client>
     <Files>
-      <File
-        folder="{themecatalog}/15"        
-        src="theme\gt.spcolor"
-        overwrite="true">
+      <File folder="{themecatalog}/15"        
+            src="theme\gt.spcolor"
+            overwrite="true">
+      </File>
+      <File folder="/siteassets/images"
+            src="images\gt_logo.png"
+            overwrite="true">
       </File>
     </Files>
     <GroupAssignments>
@@ -80,8 +83,8 @@
     </ComposedLook>
     <Migrate>
       <Lists>
-        <List url="Lists/ReviewNotes" source="{sitecollection}/teamspace" destination="{sitecollection}/clientspace"></List>
-        <List url="DocumentLibrary" source="{sitecollection}/teamspace" destination="{sitecollection}/clientspace"></List>
+        <List url="Lists/ReviewNotes" source="{sitecollection}/00087" destination="{sitecollection}/clientspace"></List>
+        <List url="DocumentLibrary" source="{sitecollection}/00087" destination="{sitecollection}/clientspace"></List>
       </Lists>
     </Migrate>
   </Site>
