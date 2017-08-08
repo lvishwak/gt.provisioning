@@ -118,6 +118,7 @@ namespace GT.Provisioning.Core.ExtensibilityProviders
                                 };
 
                             newWeb.RoleAssignments.Add(siteGroup, roleDefinitionBindingCollection);
+                            newWeb.Context.ExecuteQueryRetry();
                         }
                     }
                 }

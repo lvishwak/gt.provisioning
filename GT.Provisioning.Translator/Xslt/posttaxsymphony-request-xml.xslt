@@ -182,8 +182,22 @@
               </xsl:for-each>
             </Lists>
           </xsl:if>
+          <xsl:if test="TeamSpace/RoleAssignments">
+            <xsl:element name="RoleAssignments">
+              <xsl:for-each select="TeamSpace/RoleAssignments/RoleAssignment">
+                <xsl:element name="RoleAssignment">
+                  <xsl:attribute name="Principal">
+                    <xsl:value-of select="@principal"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="RoleDefinition">
+                    <xsl:value-of select="@permissionLevel"/>
+                  </xsl:attribute>
+                </xsl:element>
+              </xsl:for-each>
+            </xsl:element>
+          </xsl:if>
           <xsl:if test="TeamSpace/Properties">
-            <Properties>
+            <xsl:element name="Properties">
               <xsl:for-each select="TeamSpace/Properties/Property">
                 <xsl:element name="Property">
                   <xsl:attribute name="name">
@@ -194,7 +208,7 @@
                   </xsl:attribute>
                 </xsl:element>
               </xsl:for-each>
-            </Properties>
+            </xsl:element>
           </xsl:if>
         </xsl:element>
       </webs>
@@ -241,8 +255,22 @@
               </xsl:for-each>
             </Lists>
           </xsl:if>
+          <xsl:if test="ClientSpace/RoleAssignments">
+            <xsl:element name="RoleAssignments">
+              <xsl:for-each select="ClientSpace/RoleAssignments/RoleAssignment">
+                <xsl:element name="RoleAssignment">
+                  <xsl:attribute name="Principal">
+                    <xsl:value-of select="@principal"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="RoleDefinition">
+                    <xsl:value-of select="@permissionLevel"/>
+                  </xsl:attribute>
+                </xsl:element>
+              </xsl:for-each>
+            </xsl:element>
+          </xsl:if>
           <xsl:if test="ClientSpace/Properties">
-            <Properties>
+            <xsl:element name="Properties">
               <xsl:for-each select="ClientSpace/Properties/Property">
                 <xsl:element name="Property">
                   <xsl:attribute name="name">
@@ -253,7 +281,7 @@
                   </xsl:attribute>
                 </xsl:element>
               </xsl:for-each>
-            </Properties>
+            </xsl:element>
           </xsl:if>
         </xsl:element>
       </webs>
