@@ -123,7 +123,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
         {
             using (PnPMonitoredScope Log = new PnPMonitoredScope("ApplyProvisioningTemplate"))
             {
-                using (var siteContext = AppOnlyContextProvider.GetAppOnlyClientContext(siteCollectionUrl))
+                using (var siteContext = AppOnlyContextProvider.GetSharePointOnlineAuthenticatedContext(siteCollectionUrl))
                 {
                     Site site = siteContext.Site;
                     Web web = site.RootWeb;

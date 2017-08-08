@@ -28,9 +28,6 @@ namespace GT.Provisioning.Core.Repositories
 
         public void ApplyTemplate(ApplyTemplateProvisioningJob provisioningJob)
         {
-            ProvisioningJobHandler applyTemplateJobHandler 
-                = new ApplyTemplateProvisioningJobHandler();
-
             if (provisioningJob.JobId == Guid.Empty)
             {
                 provisioningJob.JobId = Guid.NewGuid();
@@ -40,55 +37,44 @@ namespace GT.Provisioning.Core.Repositories
             provisioningJob.JobType = provisioningJob.GetType().FullName;
             provisioningJob.Status = JobStatus.Pending;
 
+            var applyTemplateJobHandler = new ApplyTemplateProvisioningJobHandler();
             applyTemplateJobHandler.RunJob(provisioningJob);
         }
 
-        private void ProvisionSiteCollection(ProvisioningJob provisioningJob)
+        private void ProvisionSiteCollection(SiteCollectionProvisioningJob siteCollectionProvisioningJob)
         {
             using (PnPMonitoredScope Log = new PnPMonitoredScope("ProvisionSiteCollection"))
             {
-                var siteCollectionProvisioningJob = provisioningJob as SiteCollectionProvisioningJob;
-                if (siteCollectionProvisioningJob == null)
-                {
-                    // throw exception
-                }
-
-                ProvisioningJobHandler siteCollectionJobHandler
-                    = new SiteCollectionProvisioningJobHandler();
-
                 if (siteCollectionProvisioningJob.JobId == Guid.Empty)
                 {
                     siteCollectionProvisioningJob.JobId = Guid.NewGuid();
                 }
 
-                siteCollectionProvisioningJob.StorageWarningLevel = 70;
-                siteCollectionProvisioningJob.StorageMaximumLevel = 100;
+                siteCollectionProvisioningJob.StorageMaximumLevel = Constants.SiteProperties.StorageMaximumLevel;
+                siteCollectionProvisioningJob.StorageWarningLevel = Constants.SiteProperties.StorageWarningLevel;
                 siteCollectionProvisioningJob.CreationTimeStamp = DateTime.UtcNow;
-                siteCollectionProvisioningJob.JobType
-                    = siteCollectionProvisioningJob.GetType().FullName;
+                siteCollectionProvisioningJob.JobType = siteCollectionProvisioningJob.GetType().FullName;
                 siteCollectionProvisioningJob.Status = JobStatus.Pending;
 
-                siteCollectionJobHandler.RunJob(provisioningJob);
+                var siteCollectionJobHandler = new SiteCollectionProvisioningJobHandler();
+                siteCollectionJobHandler.RunJob(siteCollectionProvisioningJob);
             }
         }
 
-        private void ProvisionSubSite(ProvisioningJob subSiteProvisioningJob)
+        private void ProvisionSubSite(SubSiteProvisioningJob subSiteProvisioningJob)
         {
             using (PnPMonitoredScope Log = new PnPMonitoredScope("ProvisionSubSite"))
             {
-                ProvisioningJobHandler siteCollectionJobHandler
-                    = new SubSiteProvisioningJobHandler();
-
                 if (subSiteProvisioningJob.JobId == Guid.Empty)
                 {
                     subSiteProvisioningJob.JobId = Guid.NewGuid();
                 }
 
                 subSiteProvisioningJob.CreationTimeStamp = DateTime.UtcNow;
-                subSiteProvisioningJob.JobType
-                    = subSiteProvisioningJob.GetType().FullName;
+                subSiteProvisioningJob.JobType = subSiteProvisioningJob.GetType().FullName;
                 subSiteProvisioningJob.Status = JobStatus.Pending;
 
+                var siteCollectionJobHandler = new SubSiteProvisioningJobHandler();
                 siteCollectionJobHandler.RunJob(subSiteProvisioningJob);
             }
         }

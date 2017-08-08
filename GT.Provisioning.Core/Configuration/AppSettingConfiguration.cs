@@ -18,5 +18,9 @@ namespace GT.Provisioning.Core.Configuration
         public string PrimarySiteCollectionAdministrator => ConfigurationManager.AppSettings[Constants.AppSettings.PrimarySiteCollectionAdmin_AppSetting_Key];
 
         public string BaseSiteTemplate => ConfigurationManager.AppSettings[Constants.AppSettings.BaseSiteTemplate_AppSetting_Key];
+
+        public string TenantAdminUser => ConfigurationManager.AppSettings[Constants.AppSettings.TenantAdmin_AppSetting_Key];
+
+        public string TenantAdminPassword => ConfigurationManager.AppSettings[Constants.AppSettings.TenantAdminPassword_AppSetting_Key];
     }
 }

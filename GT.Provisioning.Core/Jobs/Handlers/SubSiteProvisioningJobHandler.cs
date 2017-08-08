@@ -51,7 +51,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
 
                 Web newWeb = null;
 
-                using (var siteContext = AppOnlyContextProvider.GetAppOnlyClientContext(job.ParentWebUrl))
+                using (var siteContext = AppOnlyContextProvider.GetSharePointOnlineAuthenticatedContext(job.ParentWebUrl))
                 {
                     Web parentWeb = siteContext.Web;
                     siteContext.Load(parentWeb, w => w.Language, w => w.RegionalSettings.TimeZone);

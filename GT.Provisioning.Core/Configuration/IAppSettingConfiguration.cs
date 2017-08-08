@@ -17,5 +17,9 @@ namespace GT.Provisioning.Core.Configuration
         string PrimarySiteCollectionAdministrator { get; }
 
         string BaseSiteTemplate { get; }
+
+        string TenantAdminUser { get; }
+
+        string TenantAdminPassword { get; }
     }
 }

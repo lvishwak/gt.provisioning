@@ -34,14 +34,25 @@ namespace GT.Provisioning.Core.Jobs.Handlers
                 if (provisioningTemplate.Parameters.Count > 0
                     && provisioningTemplate.Parameters.ContainsKey("siteid"))
                 {
-                    // build complete url
-                    job.TargetSiteUrl = String.Format("{0}{1}",
-                        ConfigurationHelper.GetConfiguration.HostSiteUrl.Substring(0, ConfigurationHelper.GetConfiguration.HostSiteUrl.LastIndexOf("/") + 1),
-                        provisioningTemplate.Parameters["siteid"].TrimStart('/'));
+                    var sharepointOnlineUrl = ConfigurationHelper.GetConfiguration.HostSiteUrl.Substring(0, ConfigurationHelper.GetConfiguration.HostSiteUrl.LastIndexOf("/") + 1);
+                    string siteId = provisioningTemplate.Parameters["siteid"];
+                    if (siteId.Contains(sharepointOnlineUrl))
+                    {
+                        job.TargetSiteUrl = provisioningTemplate.Parameters["siteid"];
+                    }
+                    else
+                    {
+                        // build complete url
+                        job.TargetSiteUrl = String.Format("{0}{1}",
+                            ConfigurationHelper.GetConfiguration.HostSiteUrl.Substring(0, ConfigurationHelper.GetConfiguration.HostSiteUrl.LastIndexOf("/") + 1),
+                            provisioningTemplate.Parameters["siteid"].TrimStart('/'));
+                    }
                 }
 
                 var siteFullUrl = job.TargetSiteUrl;
 
+                // need to refactor this code to remove site collection creation code to factory
+                // it should only contains code to apply template if site collection or subsite exists.
                 using (var adminContext = AppOnlyContextProvider.GetAppOnlyTenantLevelClientContext())
                 {
                     adminContext.RequestTimeout = Timeout.Infinite;
@@ -105,7 +116,7 @@ namespace GT.Provisioning.Core.Jobs.Handlers
 
         private void ApplyProvisioningTemplate(string siteUrl, ProvisioningTemplate provisioningTemplate, PnPMonitoredScope Log)
         {
-            using (var appOnlyClientContext = AppOnlyContextProvider.GetAppOnlyClientContext(siteUrl))
+            using (var appOnlyClientContext = AppOnlyContextProvider.GetSharePointOnlineAuthenticatedContext(siteUrl))
             {
                 try
                 {

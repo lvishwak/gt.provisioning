@@ -18,6 +18,8 @@ namespace GT.Provisioning.Core
             internal const string TenantAdminUrl_AppSetting_Key = "TenantAdminUrl";
             internal const string PrimarySiteCollectionAdmin_AppSetting_Key = "PrimarySiteCollectionAdmin";
             internal const string BaseSiteTemplate_AppSetting_Key = "BaseSiteTemplate";
+            internal const string TenantAdmin_AppSetting_Key = "TenantAdmin";
+            internal const string TenantAdminPassword_AppSetting_Key = "TenantAdminPassword";
         }
 
         internal class SiteProperties
