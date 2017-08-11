@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema ProvisioningSchema-2016-05.xsd">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.16.1706.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
   <pnp:Templates ID="CONTAINER-GT-TEMPLATE">
     <pnp:ProvisioningTemplate ID="gt-teamspace-template" Version="1" BaseSiteTemplate="STS#0">
-      <pnp:WebSettings NoCrawl="false" 
-                       WelcomePage="SitePages/Home.aspx" 
-                       SiteLogo="/TenantResources/images/logos/gtlogo.gif" 
-                       AlternateCSS="" 
-                       MasterPageUrl="{masterpagecatalog}/seattle.master" 
-                       CustomMasterPageUrl="{masterpagecatalog}/seattle.master" />      
+      <pnp:WebSettings NoCrawl="false"
+                       WelcomePage="SitePages/Home.aspx"
+                       SiteLogo="/TenantResources/images/logos/gtlogo.gif"
+                       AlternateCSS=""
+                       MasterPageUrl="{masterpagecatalog}/seattle.master"
+                       CustomMasterPageUrl="{masterpagecatalog}/seattle.master" />
       <pnp:SupportedUILanguages>
         <pnp:SupportedUILanguage LCID="1033" />
       </pnp:SupportedUILanguages>

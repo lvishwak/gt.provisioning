@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema ProvisioningSchema-2016-05.xsd">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.16.1706.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
   <pnp:Templates ID="CONTAINER-gt-teamspace-template">
     <pnp:ProvisioningTemplate ID="gt-teamspace-template" Version="1" BaseSiteTemplate="STS#0">
@@ -31,7 +33,7 @@
               <pnp:NavigationNode Title="GTUS Intranet Home" Url="http://www.gtus.com/" IsExternal="true"></pnp:NavigationNode>
               <pnp:NavigationNode Title="GrantThornton.com" Url="http://www.grantthornton.com/" IsExternal="true"></pnp:NavigationNode>
               <pnp:NavigationNode Title="OTIS" Url="https://otis.gt.com/" IsExternal="true"></pnp:NavigationNode>
-            </pnp:NavigationNode>            
+            </pnp:NavigationNode>
             <pnp:NavigationNode Title="Appropriate Use Statement" Url="{site}/sitepages/statement.aspx" IsExternal="false"></pnp:NavigationNode>
           </pnp:StructuralNavigation>
         </pnp:CurrentNavigation>
