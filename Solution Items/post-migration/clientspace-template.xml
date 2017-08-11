@@ -1,0 +1,875 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.16.1706.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
+  <pnp:Templates ID="CONTAINER-gt-clientspace-template">
+    <pnp:ProvisioningTemplate ID="gt-clientspace-template" Version="1" BaseSiteTemplate="STS#0">
+      <pnp:WebSettings RequestAccessEmail="" NoCrawl="false" WelcomePage="SitePages/Home.aspx" SiteLogo="/TenantResources/images/logos/gtlogo.gif" AlternateCSS="" MasterPageUrl="{masterpagecatalog}/seattle.master" CustomMasterPageUrl="{masterpagecatalog}/seattle.master" />
+      <pnp:RegionalSettings AdjustHijriDays="0" AlternateCalendarType="None" CalendarType="Gregorian" Collation="25" FirstDayOfWeek="Sunday" FirstWeekOfYear="0" LocaleId="1033" ShowWeeks="false" Time24="false" TimeZone="11" WorkDayEndHour="5:00PM" WorkDays="62" WorkDayStartHour="8:00AM" />
+      <pnp:SupportedUILanguages>
+        <pnp:SupportedUILanguage LCID="1033" />
+      </pnp:SupportedUILanguages>
+      <pnp:PropertyBagEntries>
+        <pnp:PropertyBagEntry Key="NoCrawl" Value="false" Overwrite="false" />
+      </pnp:PropertyBagEntries>
+      <pnp:Navigation>        
+        <pnp:CurrentNavigation NavigationType="StructuralLocal">
+          <pnp:StructuralNavigation RemoveExistingNodes="true">
+            <pnp:NavigationNode Title="Document Library" Url="{site}/DocumentLibrary/Forms/AllItems.aspx" />
+            <pnp:NavigationNode Title="Calendar" Url="{site}/Lists/Calendar/calendar.aspx" />
+            <pnp:NavigationNode Title="Contact Lists" Url="{site}/Lists/ContactLists/AllItems.aspx" />
+            <pnp:NavigationNode Title="Client Collboration Hub" Url="{sitecollection}" />
+            <pnp:NavigationNode Title="Appropriate Use Statement" Url="{site}/SitePages/Statement.aspx" />
+            <pnp:NavigationNode Title="Privacy Policy" Url="https://www.grantthornton.com/privacy-policy.aspx" IsExternal="true" />
+          </pnp:StructuralNavigation>
+        </pnp:CurrentNavigation>
+      </pnp:Navigation>      
+      <pnp:Pages>
+        <pnp:Page Url="{site}/SitePages/Home.aspx" Overwrite="true" Layout="TwoColumns">
+          <pnp:WebParts>
+            <pnp:WebPart Title="Document Library" Row="1" Column="1">
+              <pnp:Contents>
+                <webParts>
+                  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+                    <metaData>
+                      <type name="Microsoft.SharePoint.WebPartPages.XsltListViewWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+                      <importErrorMessage>Cannot import this Web Part.</importErrorMessage>
+                    </metaData>
+                    <data>
+                      <properties>
+                        <property name="ShowWithSampleData" type="bool">False</property>
+                        <property name="Default" type="string" />
+                        <property name="NoDefaultStyle" type="string" />
+                        <property name="CacheXslStorage" type="bool">True</property>
+                        <property name="ViewContentTypeId" type="string" />
+                        <property name="XmlDefinitionLink" type="string" />
+                        <property name="ManualRefresh" type="bool">False</property>
+                        <property name="ListUrl" type="string" null="true" />
+                        <property name="ListId" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">{listid:Document Library}</property>
+                        <property name="TitleUrl" type="string">{site}/DocumentLibrary</property>
+                        <property name="EnableOriginalValue" type="bool">False</property>
+                        <property name="Direction" type="direction">NotSet</property>
+                        <property name="ServerRender" type="bool">False</property>
+                        <property name="ViewFlags" type="Microsoft.SharePoint.SPViewFlags, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Html, TabularView, Hidden, Mobile</property>
+                        <property name="AllowConnect" type="bool">True</property>
+                        <property name="ListName" type="string">{{listid:Document Library}}</property>
+                        <property name="ListDisplayName" type="string" null="true" />
+                        <property name="AllowZoneChange" type="bool">True</property>
+                        <property name="ChromeState" type="chromestate">Normal</property>
+                        <property name="DisableSaveAsNewViewButton" type="bool">False</property>
+                        <property name="ViewFlag" type="string" />
+                        <property name="DataSourceID" type="string" />
+                        <property name="ExportMode" type="exportmode">All</property>
+                        <property name="AutoRefresh" type="bool">False</property>
+                        <property name="FireInitialRow" type="bool">True</property>
+                        <property name="AllowEdit" type="bool">True</property>
+                        <property name="Description" type="string" />
+                        <property name="HelpMode" type="helpmode">Modeless</property>
+                        <property name="BaseXsltHashKey" type="string" null="true" />
+                        <property name="AllowMinimize" type="bool">True</property>
+                        <property name="CacheXslTimeOut" type="int">86400</property>
+                        <property name="ChromeType" type="chrometype">Default</property>
+                        <property name="Xsl" type="string" null="true" />
+                        <property name="JSLink" type="string" null="true" />
+                        <property name="CatalogIconImageUrl" type="string">/_layouts/15/images/itdl.png?rev=44</property>
+                        <property name="SampleData" type="string" null="true" />
+                        <property name="UseSQLDataSourcePaging" type="bool">True</property>
+                        <property name="TitleIconImageUrl" type="string" />
+                        <property name="PageSize" type="int">-1</property>
+                        <property name="ShowTimelineIfAvailable" type="bool">True</property>
+                        <property name="Width" type="string" />
+                        <property name="DataFields" type="string" />
+                        <property name="Hidden" type="bool">False</property>
+                        <property name="Title" type="string" />
+                        <property name="PageType" type="Microsoft.SharePoint.PAGETYPE, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">PAGE_NORMALVIEW</property>
+                        <property name="DataSourcesString" type="string" />
+                        <property name="AllowClose" type="bool">True</property>
+                        <property name="InplaceSearchEnabled" type="bool">True</property>
+                        <property name="WebId" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">00000000-0000-0000-0000-000000000000</property>
+                        <property name="Height" type="string" />
+                        <property name="GhostedXslLink" type="string">main.xsl</property>
+                        <property name="DisableViewSelectorMenu" type="bool">False</property>
+                        <property name="DisplayName" type="string" />
+                        <property name="IsClientRender" type="bool">False</property>
+                        <property name="XmlDefinition" type="string">&lt;View Name="{083C2233-DE48-4C4E-9CD5-9E6862DAA76B}" MobileView="TRUE" Type="HTML" Hidden="TRUE" DisplayName="" Url="{site}/SitePages/Home.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=44" &gt;&lt;Query&gt;&lt;OrderBy&gt;&lt;FieldRef Name="FileLeafRef"/&gt;&lt;/OrderBy&gt;&lt;/Query&gt;&lt;ViewFields&gt;&lt;FieldRef Name="DocIcon"/&gt;&lt;FieldRef Name="LinkFilename"/&gt;&lt;FieldRef Name="Modified"/&gt;&lt;FieldRef Name="Editor"/&gt;&lt;/ViewFields&gt;&lt;RowLimit Paged="TRUE"&gt;30&lt;/RowLimit&gt;&lt;JSLink&gt;clienttemplates.js&lt;/JSLink&gt;&lt;XslLink Default="TRUE"&gt;main.xsl&lt;/XslLink&gt;&lt;Toolbar Type="Standard"/&gt;&lt;/View&gt;</property>
+                        <property name="InitialAsyncDataFetch" type="bool">False</property>
+                        <property name="AllowHide" type="bool">True</property>
+                        <property name="ParameterBindings" type="string">
+                          &lt;ParameterBinding Name="dvt_sortdir" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="dvt_sortfield" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="dvt_startposition" Location="Postback" DefaultValue=""/&gt;
+                          &lt;ParameterBinding Name="dvt_firstrow" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="OpenMenuKeyAccessible" Location="Resource(wss,OpenMenuKeyAccessible)" /&gt;
+                          &lt;ParameterBinding Name="open_menu" Location="Resource(wss,open_menu)" /&gt;
+                          &lt;ParameterBinding Name="select_deselect_all" Location="Resource(wss,select_deselect_all)" /&gt;
+                          &lt;ParameterBinding Name="idPresEnabled" Location="Resource(wss,idPresEnabled)" /&gt;&lt;ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noitemsinview_doclibrary)" /&gt;&lt;ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noitemsinview_doclibrary_howto2)" /&gt;
+                        </property>
+                        <property name="DataSourceMode" type="Microsoft.SharePoint.WebControls.SPDataSourceMode, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">List</property>
+                        <property name="AutoRefreshInterval" type="int">60</property>
+                        <property name="AsyncRefresh" type="bool">False</property>
+                        <property name="HelpUrl" type="string" />
+                        <property name="MissingAssembly" type="string">Cannot import this Web Part.</property>
+                        <property name="XslLink" type="string" null="true" />
+                        <property name="SelectParameters" type="string" />
+                        <property name="HasClientDataSource" type="bool">False</property>
+                      </properties>
+                    </data>
+                  </webPart>
+                </webParts>
+              </pnp:Contents>
+            </pnp:WebPart>
+            <pnp:WebPart Title="Engagement Matters" Row="1" Column="1">
+              <pnp:Contents>
+                <webParts>
+                  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+                    <metaData>
+                      <type name="Microsoft.SharePoint.WebPartPages.XsltListViewWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+                      <importErrorMessage>Cannot import this Web Part.</importErrorMessage>
+                    </metaData>
+                    <data>
+                      <properties>
+                        <property name="ShowWithSampleData" type="bool">False</property>
+                        <property name="Default" type="string" />
+                        <property name="NoDefaultStyle" type="string" />
+                        <property name="CacheXslStorage" type="bool">True</property>
+                        <property name="ViewContentTypeId" type="string" />
+                        <property name="XmlDefinitionLink" type="string" />
+                        <property name="ManualRefresh" type="bool">False</property>
+                        <property name="ListUrl" type="string" null="true" />
+                        <property name="ListId" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">{listid:Engagement Matters}</property>
+                        <property name="TitleUrl" type="string">{site}/Lists/EngagementMatters</property>
+                        <property name="EnableOriginalValue" type="bool">False</property>
+                        <property name="Direction" type="direction">NotSet</property>
+                        <property name="ServerRender" type="bool">False</property>
+                        <property name="ViewFlags" type="Microsoft.SharePoint.SPViewFlags, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Html, TabularView, Hidden</property>
+                        <property name="AllowConnect" type="bool">True</property>
+                        <property name="ListName" type="string">{{listid:Engagement Matters}}</property>
+                        <property name="ListDisplayName" type="string" null="true" />
+                        <property name="AllowZoneChange" type="bool">True</property>
+                        <property name="ChromeState" type="chromestate">Normal</property>
+                        <property name="DisableSaveAsNewViewButton" type="bool">False</property>
+                        <property name="ViewFlag" type="string" />
+                        <property name="DataSourceID" type="string" />
+                        <property name="ExportMode" type="exportmode">All</property>
+                        <property name="AutoRefresh" type="bool">False</property>
+                        <property name="FireInitialRow" type="bool">True</property>
+                        <property name="AllowEdit" type="bool">True</property>
+                        <property name="Description" type="string" />
+                        <property name="HelpMode" type="helpmode">Modeless</property>
+                        <property name="BaseXsltHashKey" type="string" null="true" />
+                        <property name="AllowMinimize" type="bool">True</property>
+                        <property name="CacheXslTimeOut" type="int">86400</property>
+                        <property name="ChromeType" type="chrometype">Default</property>
+                        <property name="Xsl" type="string" null="true" />
+                        <property name="JSLink" type="string" null="true" />
+                        <property name="CatalogIconImageUrl" type="string">/_layouts/15/images/itgen.png?rev=44</property>
+                        <property name="SampleData" type="string" null="true" />
+                        <property name="UseSQLDataSourcePaging" type="bool">True</property>
+                        <property name="TitleIconImageUrl" type="string" />
+                        <property name="PageSize" type="int">-1</property>
+                        <property name="ShowTimelineIfAvailable" type="bool">True</property>
+                        <property name="Width" type="string" />
+                        <property name="DataFields" type="string" />
+                        <property name="Hidden" type="bool">False</property>
+                        <property name="Title" type="string" />
+                        <property name="PageType" type="Microsoft.SharePoint.PAGETYPE, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">PAGE_NORMALVIEW</property>
+                        <property name="DataSourcesString" type="string" />
+                        <property name="AllowClose" type="bool">True</property>
+                        <property name="InplaceSearchEnabled" type="bool">True</property>
+                        <property name="WebId" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">00000000-0000-0000-0000-000000000000</property>
+                        <property name="Height" type="string" />
+                        <property name="GhostedXslLink" type="string">main.xsl</property>
+                        <property name="DisableViewSelectorMenu" type="bool">False</property>
+                        <property name="DisplayName" type="string" />
+                        <property name="IsClientRender" type="bool">False</property>
+                        <property name="XmlDefinition" type="string">&lt;View Name="{37AB0688-13A1-4A83-98E2-CC2ED47A6D75}" Type="HTML" Hidden="TRUE" DisplayName="" Url="{site}/SitePages/Home.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44" &gt;&lt;Query&gt;&lt;OrderBy&gt;&lt;FieldRef Name="ID"/&gt;&lt;/OrderBy&gt;&lt;/Query&gt;&lt;ViewFields&gt;&lt;FieldRef Name="ID"/&gt;&lt;FieldRef Name="Attachments"/&gt;&lt;FieldRef Name="LinkTitle"/&gt;&lt;FieldRef Name="Status"/&gt;&lt;FieldRef Name="Priority"/&gt;&lt;FieldRef Name="DueDate"/&gt;&lt;/ViewFields&gt;&lt;RowLimit Paged="TRUE"&gt;100&lt;/RowLimit&gt;&lt;Aggregations/&gt;&lt;JSLink&gt;clienttemplates.js&lt;/JSLink&gt;&lt;XslLink Default="TRUE"&gt;main.xsl&lt;/XslLink&gt;&lt;Toolbar Type="Standard"/&gt;&lt;/View&gt;</property>
+                        <property name="InitialAsyncDataFetch" type="bool">False</property>
+                        <property name="AllowHide" type="bool">True</property>
+                        <property name="ParameterBindings" type="string">
+                          &lt;ParameterBinding Name="dvt_sortdir" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="dvt_sortfield" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="dvt_startposition" Location="Postback" DefaultValue=""/&gt;
+                          &lt;ParameterBinding Name="dvt_firstrow" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="OpenMenuKeyAccessible" Location="Resource(wss,OpenMenuKeyAccessible)" /&gt;
+                          &lt;ParameterBinding Name="open_menu" Location="Resource(wss,open_menu)" /&gt;
+                          &lt;ParameterBinding Name="select_deselect_all" Location="Resource(wss,select_deselect_all)" /&gt;
+                          &lt;ParameterBinding Name="idPresEnabled" Location="Resource(wss,idPresEnabled)" /&gt;&lt;ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" /&gt;&lt;ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" /&gt;
+                        </property>
+                        <property name="DataSourceMode" type="Microsoft.SharePoint.WebControls.SPDataSourceMode, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">List</property>
+                        <property name="AutoRefreshInterval" type="int">60</property>
+                        <property name="AsyncRefresh" type="bool">False</property>
+                        <property name="HelpUrl" type="string" />
+                        <property name="MissingAssembly" type="string">Cannot import this Web Part.</property>
+                        <property name="XslLink" type="string" null="true" />
+                        <property name="SelectParameters" type="string" />
+                        <property name="HasClientDataSource" type="bool">False</property>
+                      </properties>
+                    </data>
+                  </webPart>
+                </webParts>
+              </pnp:Contents>
+            </pnp:WebPart>
+            <pnp:WebPart Title="Grant Thronton Voice" Row="1" Column="1">
+              <pnp:Contents>
+                <webParts>
+                  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+                    <metaData>
+                      <type name="Microsoft.SharePoint.Portal.WebControls.RSSAggregatorWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+                      <importErrorMessage>Cannot import this web part.</importErrorMessage>
+                    </metaData>
+                    <data>
+                      <properties>
+                        <property name="InitialAsyncDataFetch" type="bool">False</property>
+                        <property name="ChromeType" type="chrometype">Default</property>
+                        <property name="ListName" type="string">{{listid:Site Pages}}</property>
+                        <property name="Height" type="string" />
+                        <property name="CacheXslStorage" type="bool">True</property>
+                        <property name="Default" type="string" />
+                        <property name="ParameterBindings" type="string">&lt;ParameterBinding Name="RequestUrl" Location="WPProperty[FeedUrl]"/&gt;</property>
+                        <property name="AllowZoneChange" type="bool">True</property>
+                        <property name="AutoRefresh" type="bool">False</property>
+                        <property name="XmlDefinitionLink" type="string" />
+                        <property name="DataFields" type="string" />
+                        <property name="FeedLimit" type="int">5</property>
+                        <property name="Hidden" type="bool">False</property>
+                        <property name="NoDefaultStyle" type="string" />
+                        <property name="XslLink" type="string" null="true" />
+                        <property name="ViewFlag" type="string">0</property>
+                        <property name="CatalogIconImageUrl" type="string" />
+                        <property name="FireInitialRow" type="bool">True</property>
+                        <property name="AutoRefreshInterval" type="int">60</property>
+                        <property name="AllowConnect" type="bool">True</property>
+                        <property name="FeedUrl" type="string">http://feeds2.feedburner.com/grantthornton/cep/TaxPublications?format=xml</property>
+                        <property name="AllowClose" type="bool">True</property>
+                        <property name="ShowWithSampleData" type="bool">False</property>
+                        <property name="Xsl" type="string">
+                          &lt;xsl:stylesheet xmlns:x="http://www.w3.org/2001/XMLSchema"
+                          version="1.0" exclude-result-prefixes="xsl ddwrt msxsl rssaggwrt"
+                          xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"
+                          xmlns:rssaggwrt="http://schemas.microsoft.com/WebParts/v3/rssagg/runtime"
+                          xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"
+                          xmlns:rssFeed="urn:schemas-microsoft-com:sharepoint:RSSAggregatorWebPart"
+                          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                          xmlns:rss1="http://purl.org/rss/1.0/" xmlns:atom="http://www.w3.org/2005/Atom"
+                          xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+                          xmlns:atom2="http://purl.org/atom/ns#"&gt;
+
+                          &lt;xsl:param name="rss_FeedLimit"&gt;5&lt;/xsl:param&gt;
+                          &lt;xsl:param name="rss_ExpandFeed"&gt;false&lt;/xsl:param&gt;
+                          &lt;xsl:param name="rss_LCID"&gt;1033&lt;/xsl:param&gt;
+                          &lt;xsl:param name="rss_WebPartID"&gt;RSS_Viewer_WebPart&lt;/xsl:param&gt;
+                          &lt;xsl:param name="rss_alignValue"&gt;left&lt;/xsl:param&gt;
+                          &lt;xsl:param name="rss_IsDesignMode"&gt;True&lt;/xsl:param&gt;
+
+                          &lt;xsl:template match="rss"&gt;
+                          &lt;xsl:call-template name="RSSMainTemplate"/&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template match="rdf:RDF"&gt;
+                          &lt;xsl:call-template name="RDFMainTemplate"/&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template match="atom:feed"&gt;
+                          &lt;xsl:call-template name="ATOMMainTemplate"/&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template match="atom2:feed"&gt;
+                          &lt;xsl:call-template name="ATOM2MainTemplate"/&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="RSSMainTemplate" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:variable name="Rows" select="channel/item"/&gt;
+                          &lt;xsl:variable name="RowCount" select="count($Rows)"/&gt;
+                          &lt;div class="slm-layout-main" &gt;
+                          &lt;div class="groupheader item medium"&gt;
+                          &lt;a href="{ddwrt:EnsureAllowedProtocol(string(channel/link))}"&gt;
+                          &lt;xsl:value-of select="channel/title"/&gt;
+                          &lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;xsl:call-template name="RSSMainTemplate.body"&gt;
+                          &lt;xsl:with-param name="Rows" select="$Rows"/&gt;
+                          &lt;xsl:with-param name="RowCount" select="count($Rows)"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="RSSMainTemplate.body" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:param name="Rows"/&gt;
+                          &lt;xsl:param name="RowCount"/&gt;
+                          &lt;xsl:for-each select="$Rows"&gt;
+                          &lt;xsl:variable name="CurPosition" select="position()" /&gt;
+                          &lt;xsl:variable name="RssFeedLink" select="$rss_WebPartID" /&gt;
+                          &lt;xsl:variable name="CurrentElement" select="concat($RssFeedLink,$CurPosition)" /&gt;
+                          &lt;xsl:if test="($CurPosition &amp;lt;= $rss_FeedLimit)"&gt;
+                          &lt;div class="item link-item" &gt;
+                          &lt;a href="{concat(&amp;quot;javascript:ToggleItemDescription('&amp;quot;,$CurrentElement,&amp;quot;')&amp;quot;)}" &gt;
+                          &lt;xsl:value-of select="title"/&gt;
+                          &lt;/a&gt;
+                          &lt;xsl:if test="$rss_ExpandFeed = true()"&gt;
+                          &lt;xsl:call-template name="RSSMainTemplate.description"&gt;
+                          &lt;xsl:with-param name="DescriptionStyle" select="string('display:block;')"/&gt;
+                          &lt;xsl:with-param name="CurrentElement" select="$CurrentElement"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;xsl:if test="$rss_ExpandFeed = false()"&gt;
+                          &lt;xsl:call-template name="RSSMainTemplate.description"&gt;
+                          &lt;xsl:with-param name="DescriptionStyle" select="string('display:none;')"/&gt;
+                          &lt;xsl:with-param name="CurrentElement" select="$CurrentElement"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;/xsl:for-each&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="RSSMainTemplate.description" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:param name="DescriptionStyle"/&gt;
+                          &lt;xsl:param name="CurrentElement"/&gt;
+                          &lt;div id="{$CurrentElement}" class="description" align="{$rss_alignValue}" style="{$DescriptionStyle} text-align:{$rss_alignValue};"&gt;
+                          &lt;xsl:choose&gt;
+                          &lt;!-- some RSS2.0 contain pubDate tag, some others dc:date --&gt;
+                          &lt;xsl:when test="string-length(pubDate) &amp;gt; 0"&gt;
+                          &lt;xsl:variable name="pubDateLength" select="string-length(pubDate) - 3" /&gt;
+                          &lt;xsl:value-of select="ddwrt:FormatDate(substring(pubDate,0,$pubDateLength),number($rss_LCID),3)"/&gt;
+                          &lt;/xsl:when&gt;
+                          &lt;xsl:otherwise&gt;
+                          &lt;xsl:value-of select="ddwrt:FormatDate(string(dc:date),number($rss_LCID),3)"/&gt;
+                          &lt;/xsl:otherwise&gt;
+                          &lt;/xsl:choose&gt;
+
+                          &lt;xsl:if test="string-length(description) &amp;gt; 0"&gt;
+                          &lt;xsl:variable name="SafeHtml"&gt;
+                          &lt;xsl:call-template name="GetSafeHtml"&gt;
+                          &lt;xsl:with-param name="Html" select="description"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:variable&gt;
+                          - &lt;xsl:value-of select="$SafeHtml" disable-output-escaping="yes"/&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;div class="description"&gt;
+                          &lt;a href="{ddwrt:EnsureAllowedProtocol(string(link))}"&gt;More...&lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:template&gt;
+
+
+                          &lt;xsl:template name="RDFMainTemplate" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:variable name="Rows" select="rss1:item"/&gt;
+                          &lt;xsl:variable name="RowCount" select="count($Rows)"/&gt;
+                          &lt;div class="slm-layout-main" &gt;
+                          &lt;div class="groupheader item medium"&gt;
+                          &lt;a href="{ddwrt:EnsureAllowedProtocol(string(rss1:channel/rss1:link))}"&gt;
+                          &lt;xsl:value-of select="rss1:channel/rss1:title"/&gt;
+                          &lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;xsl:call-template name="RDFMainTemplate.body"&gt;
+                          &lt;xsl:with-param name="Rows" select="$Rows"/&gt;
+                          &lt;xsl:with-param name="RowCount" select="count($Rows)"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="RDFMainTemplate.body" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:param name="Rows"/&gt;
+                          &lt;xsl:param name="RowCount"/&gt;
+                          &lt;xsl:for-each select="$Rows"&gt;
+                          &lt;xsl:variable name="CurPosition" select="position()" /&gt;
+                          &lt;xsl:variable name="RssFeedLink" select="$rss_WebPartID" /&gt;
+                          &lt;xsl:variable name="CurrentElement" select="concat($RssFeedLink,$CurPosition)" /&gt;
+                          &lt;xsl:if test="($CurPosition &amp;lt;= $rss_FeedLimit)"&gt;
+                          &lt;div class="item link-item" &gt;
+                          &lt;a href="{concat(&amp;quot;javascript:ToggleItemDescription('&amp;quot;,$CurrentElement,&amp;quot;')&amp;quot;)}" &gt;
+                          &lt;xsl:value-of select="rss1:title"/&gt;
+                          &lt;/a&gt;
+                          &lt;xsl:if test="$rss_ExpandFeed = true()"&gt;
+                          &lt;xsl:call-template name="RDFMainTemplate.description"&gt;
+                          &lt;xsl:with-param name="DescriptionStyle" select="string('display:block;')"/&gt;
+                          &lt;xsl:with-param name="CurrentElement" select="$CurrentElement"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;xsl:if test="$rss_ExpandFeed = false()"&gt;
+                          &lt;xsl:call-template name="RDFMainTemplate.description"&gt;
+                          &lt;xsl:with-param name="DescriptionStyle" select="string('display:none;')"/&gt;
+                          &lt;xsl:with-param name="CurrentElement" select="$CurrentElement"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;/xsl:for-each&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="RDFMainTemplate.description" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:param name="DescriptionStyle"/&gt;
+                          &lt;xsl:param name="CurrentElement"/&gt;
+                          &lt;div id="{$CurrentElement}" class="description" align="{$rss_alignValue}" style="{$DescriptionStyle} text-align:{$rss_alignValue};"&gt;
+                          &lt;xsl:value-of select="ddwrt:FormatDate(string(dc:date),number($rss_LCID),3)"/&gt;
+                          &lt;xsl:if test="string-length(rss1:description) &amp;gt; 0"&gt;
+                          &lt;xsl:variable name="SafeHtml"&gt;
+                          &lt;xsl:call-template name="GetSafeHtml"&gt;
+                          &lt;xsl:with-param name="Html" select="rss1:description"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:variable&gt;
+                          - &lt;xsl:value-of select="$SafeHtml" disable-output-escaping="yes"/&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;div class="description"&gt;
+                          &lt;a href="{ddwrt:EnsureAllowedProtocol(string(rss1:link))}"&gt;More...&lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:template&gt;
+
+
+                          &lt;xsl:template name="ATOMMainTemplate" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:variable name="Rows" select="atom:entry"/&gt;
+                          &lt;xsl:variable name="RowCount" select="count($Rows)"/&gt;
+                          &lt;div class="slm-layout-main" &gt;
+                          &lt;div class="groupheader item medium"&gt;
+                          &lt;a href="{ddwrt:EnsureAllowedProtocol(string(atom:link/@href))}"&gt;
+                          &lt;xsl:value-of select="atom:title"/&gt;
+                          &lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;xsl:call-template name="ATOMMainTemplate.body"&gt;
+                          &lt;xsl:with-param name="Rows" select="$Rows"/&gt;
+                          &lt;xsl:with-param name="RowCount" select="count($Rows)"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="ATOMMainTemplate.body" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:param name="Rows"/&gt;
+                          &lt;xsl:param name="RowCount"/&gt;
+                          &lt;xsl:for-each select="$Rows"&gt;
+                          &lt;xsl:variable name="CurPosition" select="position()" /&gt;
+                          &lt;xsl:variable name="RssFeedLink" select="$rss_WebPartID" /&gt;
+                          &lt;xsl:variable name="CurrentElement" select="concat($RssFeedLink,$CurPosition)" /&gt;
+                          &lt;xsl:if test="($CurPosition &amp;lt;= $rss_FeedLimit)"&gt;
+                          &lt;div class="item link-item" &gt;
+                          &lt;a href="{concat(&amp;quot;javascript:ToggleItemDescription('&amp;quot;,$CurrentElement,&amp;quot;')&amp;quot;)}" &gt;
+                          &lt;xsl:value-of select="atom:title"/&gt;
+                          &lt;/a&gt;
+                          &lt;xsl:if test="$rss_ExpandFeed = true()"&gt;
+                          &lt;xsl:call-template name="ATOMMainTemplate.description"&gt;
+                          &lt;xsl:with-param name="DescriptionStyle" select="string('display:block;')"/&gt;
+                          &lt;xsl:with-param name="CurrentElement" select="$CurrentElement"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;xsl:if test="$rss_ExpandFeed = false()"&gt;
+                          &lt;xsl:call-template name="ATOMMainTemplate.description"&gt;
+                          &lt;xsl:with-param name="DescriptionStyle" select="string('display:none;')"/&gt;
+                          &lt;xsl:with-param name="CurrentElement" select="$CurrentElement"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;/xsl:for-each&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="ATOMMainTemplate.description" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:param name="DescriptionStyle"/&gt;
+                          &lt;xsl:param name="CurrentElement"/&gt;
+                          &lt;div id="{$CurrentElement}" class="description" align="{$rss_alignValue}" style="{$DescriptionStyle} text-align:{$rss_alignValue};"&gt;
+                          &lt;xsl:value-of select="ddwrt:FormatDate(string(atom:updated),number($rss_LCID),3)"/&gt;
+                          &lt;xsl:choose&gt;
+                          &lt;xsl:when test="string-length(atom:summary) &amp;gt; 0"&gt;
+                          &lt;xsl:variable name="SafeHtml"&gt;
+                          &lt;xsl:call-template name="GetSafeHtml"&gt;
+                          &lt;xsl:with-param name="Html" select="atom:summary"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:variable&gt;
+                          - &lt;xsl:value-of select="$SafeHtml" disable-output-escaping="yes"/&gt;
+                          &lt;/xsl:when&gt;
+                          &lt;xsl:when test="string-length(atom:content) &amp;gt; 0"&gt;
+                          &lt;xsl:variable name="SafeHtml"&gt;
+                          &lt;xsl:call-template name="GetSafeHtml"&gt;
+                          &lt;xsl:with-param name="Html" select="atom:content"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:variable&gt;
+                          - &lt;xsl:value-of select="$SafeHtml" disable-output-escaping="yes"/&gt;
+                          &lt;/xsl:when&gt;
+                          &lt;/xsl:choose&gt;
+                          &lt;div class="description"&gt;
+                          &lt;a href="{ddwrt:EnsureAllowedProtocol(string(atom:link/@href))}"&gt;More...&lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="ATOM2MainTemplate" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:variable name="Rows" select="atom2:entry"/&gt;
+                          &lt;xsl:variable name="RowCount" select="count($Rows)"/&gt;
+                          &lt;div class="slm-layout-main" &gt;
+                          &lt;div class="groupheader item medium"&gt;
+                          &lt;a href="{ddwrt:EnsureAllowedProtocol(string(atom2:link/@href))}"&gt;
+                          &lt;xsl:value-of select="atom2:title"/&gt;
+                          &lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;xsl:call-template name="ATOM2MainTemplate.body"&gt;
+                          &lt;xsl:with-param name="Rows" select="$Rows"/&gt;
+                          &lt;xsl:with-param name="RowCount" select="count($Rows)"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="ATOM2MainTemplate.body" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:param name="Rows"/&gt;
+                          &lt;xsl:param name="RowCount"/&gt;
+                          &lt;xsl:for-each select="$Rows"&gt;
+                          &lt;xsl:variable name="CurPosition" select="position()" /&gt;
+                          &lt;xsl:variable name="RssFeedLink" select="$rss_WebPartID" /&gt;
+                          &lt;xsl:variable name="CurrentElement" select="concat($RssFeedLink,$CurPosition)" /&gt;
+                          &lt;xsl:if test="($CurPosition &amp;lt;= $rss_FeedLimit)"&gt;
+                          &lt;div class="item link-item" &gt;
+                          &lt;a href="{concat(&amp;quot;javascript:ToggleItemDescription('&amp;quot;,$CurrentElement,&amp;quot;')&amp;quot;)}" &gt;
+                          &lt;xsl:value-of select="atom2:title"/&gt;
+                          &lt;/a&gt;
+                          &lt;xsl:if test="$rss_ExpandFeed = true()"&gt;
+                          &lt;xsl:call-template name="ATOM2MainTemplate.description"&gt;
+                          &lt;xsl:with-param name="DescriptionStyle" select="string('display:block;')"/&gt;
+                          &lt;xsl:with-param name="CurrentElement" select="$CurrentElement"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;xsl:if test="$rss_ExpandFeed = false()"&gt;
+                          &lt;xsl:call-template name="ATOM2MainTemplate.description"&gt;
+                          &lt;xsl:with-param name="DescriptionStyle" select="string('display:none;')"/&gt;
+                          &lt;xsl:with-param name="CurrentElement" select="$CurrentElement"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:if&gt;
+                          &lt;/xsl:for-each&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="ATOM2MainTemplate.description" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"&gt;
+                          &lt;xsl:param name="DescriptionStyle"/&gt;
+                          &lt;xsl:param name="CurrentElement"/&gt;
+                          &lt;div id="{$CurrentElement}" class="description" align="{$rss_alignValue}" style="{$DescriptionStyle} text-align:{$rss_alignValue};"&gt;
+                          &lt;xsl:value-of select="ddwrt:FormatDate(string(atom2:updated),number($rss_LCID),3)"/&gt;
+                          &lt;xsl:choose&gt;
+                          &lt;xsl:when test="string-length(atom2:summary) &amp;gt; 0"&gt;
+                          &lt;xsl:variable name="SafeHtml"&gt;
+                          &lt;xsl:call-template name="GetSafeHtml"&gt;
+                          &lt;xsl:with-param name="Html" select="atom2:summary"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:variable&gt;
+                          - &lt;xsl:value-of select="$SafeHtml" disable-output-escaping="yes"/&gt;
+                          &lt;/xsl:when&gt;
+                          &lt;xsl:when test="string-length(atom2:content) &amp;gt; 0"&gt;
+                          &lt;xsl:variable name="SafeHtml"&gt;
+                          &lt;xsl:call-template name="GetSafeHtml"&gt;
+                          &lt;xsl:with-param name="Html" select="atom2:content"/&gt;
+                          &lt;/xsl:call-template&gt;
+                          &lt;/xsl:variable&gt;
+                          - &lt;xsl:value-of select="$SafeHtml" disable-output-escaping="yes"/&gt;
+                          &lt;/xsl:when&gt;
+                          &lt;/xsl:choose&gt;
+                          &lt;div class="description"&gt;
+                          &lt;a href="{ddwrt:EnsureAllowedProtocol(string(atom2:link/@href))}"&gt;More...&lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;xsl:template name="GetSafeHtml"&gt;
+                          &lt;xsl:param name="Html"/&gt;
+                          &lt;xsl:choose&gt;
+                          &lt;xsl:when test="$rss_IsDesignMode = 'True'"&gt;
+                          &lt;xsl:value-of select="$Html"/&gt;
+                          &lt;/xsl:when&gt;
+                          &lt;xsl:otherwise&gt;
+                          &lt;xsl:value-of select="rssaggwrt:MakeSafe($Html)"/&gt;
+                          &lt;/xsl:otherwise&gt;
+                          &lt;/xsl:choose&gt;
+                          &lt;/xsl:template&gt;
+
+                          &lt;/xsl:stylesheet&gt;
+                        </property>
+                        <property name="EnableOriginalValue" type="bool">False</property>
+                        <property name="ExpandFeed" type="bool">False</property>
+                        <property name="ListUrl" type="string" null="true" />
+                        <property name="DataSourceID" type="string" />
+                        <property name="CacheXslTimeOut" type="int">600</property>
+                        <property name="ManualRefresh" type="bool">False</property>
+                        <property name="ViewFlags" type="Microsoft.SharePoint.SPViewFlags, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">None</property>
+                        <property name="ChromeState" type="chromestate">Normal</property>
+                        <property name="AllowHide" type="bool">True</property>
+                        <property name="ListDisplayName" type="string" null="true" />
+                        <property name="SampleData" type="string" null="true" />
+                        <property name="AsyncRefresh" type="bool">False</property>
+                        <property name="Direction" type="direction">NotSet</property>
+                        <property name="Title" type="string">Grant Thronton Voice</property>
+                        <property name="ListId" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">{listid:Site Pages}</property>
+                        <property name="Description" type="string">Displays an RSS feed.</property>
+                        <property name="AllowMinimize" type="bool">True</property>
+                        <property name="TitleUrl" type="string" />
+                        <property name="DataSourcesString" type="string">
+                          &lt;%@ Register TagPrefix="WebControls" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %&gt;
+                          &lt;%@ Register TagPrefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %&gt;
+                          &lt;WebControls:XmlUrlDataSource runat="server" AuthType="None" HttpMethod="GET"&gt;
+                          &lt;DataFileParameters&gt;
+                          &lt;WebPartPages:DataFormParameter Name="RequestUrl" ParameterKey="RequestUrl" PropertyName="ParameterValues"/&gt;
+                          &lt;/DataFileParameters&gt;
+                          &lt;/WebControls:XmlUrlDataSource&gt;
+                        </property>
+                        <property name="DisplayName" type="string" />
+                        <property name="PageType" type="Microsoft.SharePoint.PAGETYPE, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">PAGE_NORMALVIEW</property>
+                        <property name="Width" type="string" />
+                        <property name="AllowEdit" type="bool">True</property>
+                        <property name="ExportMode" type="exportmode">All</property>
+                        <property name="CacheRefreshTimeInMins" type="int">120</property>
+                        <property name="PageSize" type="int">-1</property>
+                        <property name="ViewContentTypeId" type="string" />
+                        <property name="HelpUrl" type="string" />
+                        <property name="XmlDefinition" type="string" />
+                        <property name="UseSQLDataSourcePaging" type="bool">True</property>
+                        <property name="TitleIconImageUrl" type="string" />
+                        <property name="MissingAssembly" type="string">Cannot import this web part.</property>
+                        <property name="HelpMode" type="helpmode">Modeless</property>
+                      </properties>
+                    </data>
+                  </webPart>
+                </webParts>
+              </pnp:Contents>
+            </pnp:WebPart>
+            <pnp:WebPart Title="Contact Lists" Row="1" Column="1">
+              <pnp:Contents>
+                <webParts>
+                  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+                    <metaData>
+                      <type name="Microsoft.SharePoint.WebPartPages.XsltListViewWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+                      <importErrorMessage>Cannot import this Web Part.</importErrorMessage>
+                    </metaData>
+                    <data>
+                      <properties>
+                        <property name="ShowWithSampleData" type="bool">False</property>
+                        <property name="Default" type="string" />
+                        <property name="NoDefaultStyle" type="string" />
+                        <property name="CacheXslStorage" type="bool">True</property>
+                        <property name="ViewContentTypeId" type="string" />
+                        <property name="XmlDefinitionLink" type="string" />
+                        <property name="ManualRefresh" type="bool">False</property>
+                        <property name="ListUrl" type="string" null="true" />
+                        <property name="ListId" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">{listid:Contact Lists}</property>
+                        <property name="TitleUrl" type="string">{site}/Lists/ContactLists</property>
+                        <property name="EnableOriginalValue" type="bool">False</property>
+                        <property name="Direction" type="direction">NotSet</property>
+                        <property name="ServerRender" type="bool">False</property>
+                        <property name="ViewFlags" type="Microsoft.SharePoint.SPViewFlags, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Html, TabularView, Hidden, Mobile</property>
+                        <property name="AllowConnect" type="bool">True</property>
+                        <property name="ListName" type="string">{{listid:Contact Lists}}</property>
+                        <property name="ListDisplayName" type="string" null="true" />
+                        <property name="AllowZoneChange" type="bool">True</property>
+                        <property name="ChromeState" type="chromestate">Normal</property>
+                        <property name="DisableSaveAsNewViewButton" type="bool">False</property>
+                        <property name="ViewFlag" type="string" />
+                        <property name="DataSourceID" type="string" />
+                        <property name="ExportMode" type="exportmode">All</property>
+                        <property name="AutoRefresh" type="bool">False</property>
+                        <property name="FireInitialRow" type="bool">True</property>
+                        <property name="AllowEdit" type="bool">True</property>
+                        <property name="Description" type="string" />
+                        <property name="HelpMode" type="helpmode">Modeless</property>
+                        <property name="BaseXsltHashKey" type="string" null="true" />
+                        <property name="AllowMinimize" type="bool">True</property>
+                        <property name="CacheXslTimeOut" type="int">86400</property>
+                        <property name="ChromeType" type="chrometype">Default</property>
+                        <property name="Xsl" type="string" null="true" />
+                        <property name="JSLink" type="string" null="true" />
+                        <property name="CatalogIconImageUrl" type="string">/_layouts/15/images/itcontct.png?rev=44</property>
+                        <property name="SampleData" type="string" null="true" />
+                        <property name="UseSQLDataSourcePaging" type="bool">True</property>
+                        <property name="TitleIconImageUrl" type="string" />
+                        <property name="PageSize" type="int">-1</property>
+                        <property name="ShowTimelineIfAvailable" type="bool">True</property>
+                        <property name="Width" type="string" />
+                        <property name="DataFields" type="string" />
+                        <property name="Hidden" type="bool">False</property>
+                        <property name="Title" type="string" />
+                        <property name="PageType" type="Microsoft.SharePoint.PAGETYPE, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">PAGE_NORMALVIEW</property>
+                        <property name="DataSourcesString" type="string" />
+                        <property name="AllowClose" type="bool">True</property>
+                        <property name="InplaceSearchEnabled" type="bool">True</property>
+                        <property name="WebId" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">00000000-0000-0000-0000-000000000000</property>
+                        <property name="Height" type="string" />
+                        <property name="GhostedXslLink" type="string">main.xsl</property>
+                        <property name="DisableViewSelectorMenu" type="bool">False</property>
+                        <property name="DisplayName" type="string" />
+                        <property name="IsClientRender" type="bool">False</property>
+                        <property name="XmlDefinition" type="string">&lt;View Name="{CE889DBB-F154-4AC1-876C-5FD0AE80EED0}" MobileView="TRUE" Type="HTML" Hidden="TRUE" DisplayName="" Url="{site}/SitePages/Home.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/contacts.png?rev=44" &gt;&lt;Query&gt;&lt;OrderBy&gt;&lt;FieldRef Name="Title"/&gt;&lt;FieldRef Name="FirstName"/&gt;&lt;/OrderBy&gt;&lt;/Query&gt;&lt;ViewFields&gt;&lt;FieldRef Name="Attachments"/&gt;&lt;FieldRef Name="LinkTitle"/&gt;&lt;FieldRef Name="FirstName"/&gt;&lt;FieldRef Name="Company"/&gt;&lt;FieldRef Name="WorkPhone"/&gt;&lt;FieldRef Name="HomePhone"/&gt;&lt;FieldRef Name="Email"/&gt;&lt;/ViewFields&gt;&lt;RowLimit Paged="TRUE"&gt;30&lt;/RowLimit&gt;&lt;JSLink&gt;clienttemplates.js&lt;/JSLink&gt;&lt;XslLink Default="TRUE"&gt;main.xsl&lt;/XslLink&gt;&lt;Toolbar Type="Standard"/&gt;&lt;/View&gt;</property>
+                        <property name="InitialAsyncDataFetch" type="bool">False</property>
+                        <property name="AllowHide" type="bool">True</property>
+                        <property name="ParameterBindings" type="string">
+                          &lt;ParameterBinding Name="dvt_sortdir" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="dvt_sortfield" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="dvt_startposition" Location="Postback" DefaultValue=""/&gt;
+                          &lt;ParameterBinding Name="dvt_firstrow" Location="Postback;Connection"/&gt;
+                          &lt;ParameterBinding Name="OpenMenuKeyAccessible" Location="Resource(wss,OpenMenuKeyAccessible)" /&gt;
+                          &lt;ParameterBinding Name="open_menu" Location="Resource(wss,open_menu)" /&gt;
+                          &lt;ParameterBinding Name="select_deselect_all" Location="Resource(wss,select_deselect_all)" /&gt;
+                          &lt;ParameterBinding Name="idPresEnabled" Location="Resource(wss,idPresEnabled)" /&gt; &lt;ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" /&gt;
+                          &lt;ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(core,noXinviewofY_DEFAULT)" /&gt;
+                          &lt;ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" /&gt;
+                          &lt;ParameterBinding Name="MoreAnnouncements" Location="Resource(wss,moreItemsParen)" /&gt;
+                        </property>
+                        <property name="DataSourceMode" type="Microsoft.SharePoint.WebControls.SPDataSourceMode, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">List</property>
+                        <property name="AutoRefreshInterval" type="int">60</property>
+                        <property name="AsyncRefresh" type="bool">False</property>
+                        <property name="HelpUrl" type="string" />
+                        <property name="MissingAssembly" type="string">Cannot import this Web Part.</property>
+                        <property name="XslLink" type="string" null="true" />
+                        <property name="SelectParameters" type="string" />
+                        <property name="HasClientDataSource" type="bool">False</property>
+                      </properties>
+                    </data>
+                  </webPart>
+                </webParts>
+              </pnp:Contents>
+            </pnp:WebPart>
+            <pnp:WebPart Title="Calendar" Row="1" Column="1">
+              <pnp:Contents>
+                <WebPart xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/WebPart/v2">
+                  <Title>Calendar</Title>
+                  <FrameType>Default</FrameType>
+                  <Description />
+                  <IsIncluded>true</IsIncluded>
+                  <ZoneID>wpz</ZoneID>
+                  <PartOrder>6</PartOrder>
+                  <FrameState>Normal</FrameState>
+                  <Height />
+                  <Width />
+                  <AllowRemove>true</AllowRemove>
+                  <AllowZoneChange>true</AllowZoneChange>
+                  <AllowMinimize>true</AllowMinimize>
+                  <AllowConnect>true</AllowConnect>
+                  <AllowEdit>true</AllowEdit>
+                  <AllowHide>true</AllowHide>
+                  <IsVisible>true</IsVisible>
+                  <DetailLink>{site}/Lists/Calendar</DetailLink>
+                  <HelpLink />
+                  <HelpMode>Modeless</HelpMode>
+                  <Dir>Default</Dir>
+                  <PartImageSmall />
+                  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+                  <PartImageLarge>/_layouts/15/images/itgen.png?rev=44</PartImageLarge>
+                  <IsIncludedFilter />
+                  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+                  <TypeName>Microsoft.SharePoint.WebPartPages.ListViewWebPart</TypeName>
+                  <WebId xmlns="http://schemas.microsoft.com/WebPart/v2/ListView">00000000-0000-0000-0000-000000000000</WebId>
+                  <ListViewXml xmlns="http://schemas.microsoft.com/WebPart/v2/ListView">&lt;View Name="{DE48D358-2A6D-4D39-B814-93A97DA28BDE}" Type="CALENDAR" Hidden="TRUE" RecurrenceRowset="TRUE" DisplayName="" Url="{site}/SitePages/Home.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44"&gt;&lt;ViewFields&gt;&lt;FieldRef Name="EventDate" /&gt;&lt;FieldRef Name="EndDate" /&gt;&lt;FieldRef Name="fRecurrence" /&gt;&lt;FieldRef Name="EventType" /&gt;&lt;FieldRef Name="Attachments" /&gt;&lt;FieldRef Name="Title" /&gt;&lt;FieldRef Name="Location" /&gt;&lt;FieldRef Name="Description" /&gt;&lt;FieldRef Name="MasterSeriesItemID" /&gt;&lt;FieldRef Name="fAllDayEvent" /&gt;&lt;/ViewFields&gt;&lt;Query&gt;&lt;Where&gt;&lt;DateRangesOverlap&gt;&lt;FieldRef Name="EventDate" /&gt;&lt;FieldRef Name="EndDate" /&gt;&lt;FieldRef Name="RecurrenceID" /&gt;&lt;Value Type="DateTime"&gt;&lt;Month /&gt;&lt;/Value&gt;&lt;/DateRangesOverlap&gt;&lt;/Where&gt;&lt;/Query&gt;&lt;RowLimit Paged="FALSE"&gt;0&lt;/RowLimit&gt;&lt;ViewData&gt;&lt;FieldRef Name="Title" Type="CalendarMonthTitle" /&gt;&lt;FieldRef Name="Title" Type="CalendarWeekTitle" /&gt;&lt;FieldRef Name="Location" Type="CalendarWeekLocation" /&gt;&lt;FieldRef Name="Title" Type="CalendarDayTitle" /&gt;&lt;FieldRef Name="Location" Type="CalendarDayLocation" /&gt;&lt;/ViewData&gt;&lt;XslLink Default="TRUE"&gt;main.xsl&lt;/XslLink&gt;&lt;JSLink&gt;clienttemplates.js&lt;/JSLink&gt;&lt;Toolbar Type="Standard" /&gt;&lt;ParameterBindings&gt;&lt;ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" /&gt;&lt;ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" /&gt;&lt;/ParameterBindings&gt;&lt;/View&gt;</ListViewXml>
+                  <ListName xmlns="http://schemas.microsoft.com/WebPart/v2/ListView">{{listid:Calendar}}</ListName>
+                  <ListId xmlns="http://schemas.microsoft.com/WebPart/v2/ListView">{listid:Calendar}</ListId>
+                  <ViewFlag xmlns="http://schemas.microsoft.com/WebPart/v2/ListView">532493</ViewFlag>
+                  <ViewFlags xmlns="http://schemas.microsoft.com/WebPart/v2/ListView">Html TabularView Hidden RecurrenceRowset Calendar</ViewFlags>
+                  <ViewContentTypeId xmlns="http://schemas.microsoft.com/WebPart/v2/ListView">0x</ViewContentTypeId>
+                </WebPart>
+              </pnp:Contents>
+            </pnp:WebPart>
+            <pnp:WebPart Title="Image Viewer" Row="1" Column="2">
+              <pnp:Contents>
+                <WebPart xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/WebPart/v2">
+                  <Title>Image Viewer</Title>
+                  <FrameType>None</FrameType>
+                  <Description>Displays a specified image.</Description>
+                  <IsIncluded>true</IsIncluded>
+                  <ZoneID>wpz</ZoneID>
+                  <PartOrder>4</PartOrder>
+                  <FrameState>Normal</FrameState>
+                  <Height />
+                  <Width />
+                  <AllowRemove>true</AllowRemove>
+                  <AllowZoneChange>true</AllowZoneChange>
+                  <AllowMinimize>true</AllowMinimize>
+                  <AllowConnect>true</AllowConnect>
+                  <AllowEdit>true</AllowEdit>
+                  <AllowHide>true</AllowHide>
+                  <IsVisible>true</IsVisible>
+                  <DetailLink />
+                  <HelpLink />
+                  <HelpMode>Modeless</HelpMode>
+                  <Dir>Default</Dir>
+                  <PartImageSmall />
+                  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+                  <PartImageLarge>/_layouts/15/images/msimagel.gif</PartImageLarge>
+                  <IsIncludedFilter />
+                  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+                  <TypeName>Microsoft.SharePoint.WebPartPages.ImageWebPart</TypeName>
+                  <ImageLink xmlns="http://schemas.microsoft.com/WebPart/v2/Image">/TenantResources/images/ts3logo.png</ImageLink>
+                  <AlternativeText xmlns="http://schemas.microsoft.com/WebPart/v2/Image" />
+                  <VerticalAlignment xmlns="http://schemas.microsoft.com/WebPart/v2/Image">Middle</VerticalAlignment>
+                  <HorizontalAlignment xmlns="http://schemas.microsoft.com/WebPart/v2/Image">Center</HorizontalAlignment>
+                  <BackgroundColor xmlns="http://schemas.microsoft.com/WebPart/v2/Image">transparent</BackgroundColor>
+                </WebPart>
+              </pnp:Contents>
+            </pnp:WebPart>
+            <pnp:WebPart Title="Site Users" Row="1" Column="2">
+              <pnp:Contents>
+                <WebPart xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/WebPart/v2">
+                  <Title>Site Users</Title>
+                  <FrameType>Default</FrameType>
+                  <Description>Use the Site Users Web Part to see a list of the site users and their online status.</Description>
+                  <IsIncluded>true</IsIncluded>
+                  <ZoneID>wpz</ZoneID>
+                  <PartOrder>2</PartOrder>
+                  <FrameState>Normal</FrameState>
+                  <Height />
+                  <Width />
+                  <AllowRemove>true</AllowRemove>
+                  <AllowZoneChange>true</AllowZoneChange>
+                  <AllowMinimize>true</AllowMinimize>
+                  <AllowConnect>true</AllowConnect>
+                  <AllowEdit>true</AllowEdit>
+                  <AllowHide>true</AllowHide>
+                  <IsVisible>true</IsVisible>
+                  <DetailLink />
+                  <HelpLink />
+                  <HelpMode>Modeless</HelpMode>
+                  <Dir>Default</Dir>
+                  <PartImageSmall />
+                  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+                  <PartImageLarge>/_layouts/15/images/msmeml.gif</PartImageLarge>
+                  <IsIncludedFilter />
+                  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+                  <TypeName>Microsoft.SharePoint.WebPartPages.MembersWebPart</TypeName>
+                  <DisplayType xmlns="http://schemas.microsoft.com/WebPart/v2/Members">WebMemberGroup</DisplayType>
+                </WebPart>
+              </pnp:Contents>
+            </pnp:WebPart>
+          </pnp:WebParts>
+        </pnp:Page>
+        <pnp:Page Layout="OneColumn" Overwrite="true" Url="{site}/SitePages/Statement.aspx">
+          <pnp:WebParts>
+            <pnp:WebPart Title="Statement" Column="1" Row="1">
+              <pnp:Contents>
+                <WebPart xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/WebPart/v2">
+                  <Title>Appropriate Use Statement</Title>
+                  <FrameType>Default</FrameType>
+                  <Description>Allows authors to enter rich text content.</Description>
+                  <IsIncluded>true</IsIncluded>
+                  <ZoneID>WebPartZone0</ZoneID>
+                  <PartOrder>0</PartOrder>
+                  <FrameState>Normal</FrameState>
+                  <Height />
+                  <Width />
+                  <AllowRemove>true</AllowRemove>
+                  <AllowZoneChange>true</AllowZoneChange>
+                  <AllowMinimize>true</AllowMinimize>
+                  <AllowConnect>true</AllowConnect>
+                  <AllowEdit>true</AllowEdit>
+                  <AllowHide>true</AllowHide>
+                  <IsVisible>true</IsVisible>
+                  <DetailLink />
+                  <HelpLink />
+                  <HelpMode>Modeless</HelpMode>
+                  <Dir>Default</Dir>
+                  <PartImageSmall />
+                  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+                  <PartImageLarge>/_layouts/15/images/mscontl.gif</PartImageLarge>
+                  <IsIncludedFilter />
+                  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+                  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName>
+                  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+                  <Content xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" ><![CDATA[<P>This site is provided by Grant Thornton LLP as a means to enable efficient project and engagement management. Only relevant and appropriate business content is to be posted on the site. The content posted on this site is subject to periodic monitoring by the system administrator. Documents subject to retention are to be saved to the appropriate long-term repository. Other content will be permanently deleted at the termination of the project. Users have the responsibility to keep client lists, log-in passwords and other information strictly confidential. </P>]]></Content>
+                  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+                </WebPart>
+              </pnp:Contents>
+            </pnp:WebPart>
+          </pnp:WebParts>
+        </pnp:Page>
+      </pnp:Pages>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

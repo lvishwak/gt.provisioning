@@ -40,6 +40,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GT.EventReceivers", "GT.Eve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GT.EventReceiversWeb", "GT.EventReceiversWeb\GT.EventReceiversWeb.csproj", "{AD9400F9-0FAA-4DD6-ADEE-0849B183926B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "post-migration", "post-migration", "{524D4C9E-AEFB-450B-9013-E14CB8335782}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\post-migration\clientspace-template.xml = Solution Items\post-migration\clientspace-template.xml
+		Solution Items\post-migration\InputTargetUrls.csv = Solution Items\post-migration\InputTargetUrls.csv
+		Solution Items\post-migration\post-migration-fixes.ps1 = Solution Items\post-migration\post-migration-fixes.ps1
+		Solution Items\post-migration\ProvisioningSchema-2016-05.xsd = Solution Items\post-migration\ProvisioningSchema-2016-05.xsd
+		Solution Items\post-migration\rootweb-template.xml = Solution Items\post-migration\rootweb-template.xml
+		Solution Items\post-migration\teamspace-template.xml = Solution Items\post-migration\teamspace-template.xml
+		Solution Items\post-migration\vendorspace-template.xml = Solution Items\post-migration\vendorspace-template.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,5 +91,6 @@ Global
 		{20BE9032-AC9B-4AEF-A6A0-A7EB01E77E7A} = {AB973840-C312-491F-9145-EC052D9DE6DB}
 		{0DD3CA98-5D8C-4558-BF88-7B55A70E4C91} = {8679557A-0CED-4BB5-80E8-46A25BD7713A}
 		{AD9400F9-0FAA-4DD6-ADEE-0849B183926B} = {8679557A-0CED-4BB5-80E8-46A25BD7713A}
+		{524D4C9E-AEFB-450B-9013-E14CB8335782} = {4A27A43B-1CE0-439A-9773-1D611E3910AE}
 	EndGlobalSection
 EndGlobal
