@@ -20,18 +20,10 @@
       <pnp:Navigation>
         <pnp:CurrentNavigation NavigationType="StructuralLocal">
           <pnp:StructuralNavigation RemoveExistingNodes="true">
-            <pnp:NavigationNode Title="Documents" Url="{site}/_layouts/15/viewlsts.aspx" IsExternal="false">
-              <pnp:NavigationNode Title="Document Library" Url="{site}/DocumentLibrary/Forms/AllItems.aspx" IsExternal="false"></pnp:NavigationNode>
-            </pnp:NavigationNode>
-            <pnp:NavigationNode Title="Firm Resources" Url="{site}" IsExternal="false">
-              <pnp:NavigationNode Title="Tax Symphony Blog" Url="http://ksource.gt.com/cop/ServiceLine/Tax/Blog/default.aspx" IsExternal="true"></pnp:NavigationNode>
-              <pnp:NavigationNode Title="Lighthouse" Url="http://lighthouse.gt.com/TPQ/default.aspx" IsExternal="true"></pnp:NavigationNode>
-              <pnp:NavigationNode Title="K-Source" Url="http://ksource.gt.com/Pages/default.aspx" IsExternal="true"></pnp:NavigationNode>
-              <pnp:NavigationNode Title="GTUS Intranet Home" Url="http://www.gtus.com/" IsExternal="true"></pnp:NavigationNode>
-              <pnp:NavigationNode Title="GrantThornton.com" Url="http://www.grantthornton.com/" IsExternal="true"></pnp:NavigationNode>
-              <pnp:NavigationNode Title="OTIS" Url="https://otis.gt.com/" IsExternal="true"></pnp:NavigationNode>
-            </pnp:NavigationNode>
-            <pnp:NavigationNode Title="Appropriate Use Statement" Url="{site}/sitepages/statement.aspx" IsExternal="false"></pnp:NavigationNode>
+            <pnp:NavigationNode Title="Document Library" Url="{site}/DocumentLibrary/Forms/AllItems.aspx" />
+            <pnp:NavigationNode Title="Help and Traning" Url="{site}/Lists/Calendar/calendar.aspx" />
+            <pnp:NavigationNode Title="Appropriate Use Statement" Url="{site}/SitePages/Statement.aspx" />
+            <pnp:NavigationNode Title="Privacy Policy" Url="https://www.grantthornton.com/privacy-policy.aspx" IsExternal="true" />
           </pnp:StructuralNavigation>
         </pnp:CurrentNavigation>
       </pnp:Navigation>
@@ -245,6 +237,40 @@
                   <VerticalAlignment xmlns="http://schemas.microsoft.com/WebPart/v2/Image">Middle</VerticalAlignment>
                   <HorizontalAlignment xmlns="http://schemas.microsoft.com/WebPart/v2/Image">Center</HorizontalAlignment>
                   <BackgroundColor xmlns="http://schemas.microsoft.com/WebPart/v2/Image">transparent</BackgroundColor>
+                </WebPart>
+              </pnp:Contents>
+            </pnp:WebPart>
+            <pnp:WebPart Title="Site Users" Row="1" Column="2">
+              <pnp:Contents>
+                <WebPart xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/WebPart/v2">
+                  <Title>Site Users</Title>
+                  <FrameType>Default</FrameType>
+                  <Description>Use the Site Users Web Part to see a list of the site users and their online status.</Description>
+                  <IsIncluded>true</IsIncluded>
+                  <ZoneID>wpz</ZoneID>
+                  <PartOrder>0</PartOrder>
+                  <FrameState>Normal</FrameState>
+                  <Height />
+                  <Width />
+                  <AllowRemove>true</AllowRemove>
+                  <AllowZoneChange>true</AllowZoneChange>
+                  <AllowMinimize>true</AllowMinimize>
+                  <AllowConnect>true</AllowConnect>
+                  <AllowEdit>true</AllowEdit>
+                  <AllowHide>true</AllowHide>
+                  <IsVisible>true</IsVisible>
+                  <DetailLink />
+                  <HelpLink />
+                  <HelpMode>Modeless</HelpMode>
+                  <Dir>Default</Dir>
+                  <PartImageSmall />
+                  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+                  <PartImageLarge>/_layouts/15/images/msmeml.gif</PartImageLarge>
+                  <IsIncludedFilter />
+                  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+                  <TypeName>Microsoft.SharePoint.WebPartPages.MembersWebPart</TypeName>
+                  <DisplayType xmlns="http://schemas.microsoft.com/WebPart/v2/Members">WebMemberGroup</DisplayType>
+                  <Toolbar xmlns="http://schemas.microsoft.com/WebPart/v2/Members">false</Toolbar>
                 </WebPart>
               </pnp:Contents>
             </pnp:WebPart>
